@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MedNet</title>
+		<base href="/">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="./assets/front/images/favicon.ico">
+
+		<!-- Dashboard Assets -->
+		<link rel="stylesheet"
+			href="assets/dashboard/assets/simple-line-icons/simple-line-icons.min.css">
+		<!-- <link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"> -->
+		<link rel="stylesheet" href="assets/front/css/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet"
+			href="assets/dashboard/assets/material/material.min.css">
+		<link rel="stylesheet" href="assets/dashboard/css/material_style.css">
+		<link rel="stylesheet" href="assets/dashboard/css/theme_style.css">
+		<link rel="stylesheet" href="assets/dashboard/css/plugins.min.css">
+		<link rel="stylesheet" href="assets/dashboard/css/style.css">
+		<link rel="stylesheet" href="assets/dashboard/css/responsive.css">
+		<link rel="stylesheet" href="assets/dashboard/css/theme-color.css">
+		<!-- Dashboard Assets Ends -->
+
+
+		<!-- Front- Assets -->
+		<link rel="stylesheet" href="assets/front/css/bootstrap.css">
+		<link rel="stylesheet" href="assets/front/css/style.css">
+		<link rel="stylesheet" href="assets/front/css/yamm.css">
+		<link rel="stylesheet" href="assets/front/css/animate.css">
+		<link rel="stylesheet" href="assets/front/fonts/flaticon.css">
+		<link rel="stylesheet" href="assets/front/css/normalize.css">
+		<link rel="stylesheet" href="assets/front/css/component.css">
+		<script src="assets/front/js/jquery-3.1.1.min.js"></script> 
+
+		<script src="assets/front/js/bootstrap.min.js"></script> 
+		
+		<script src="assets/front/js/modernizr.custom.js"></script>
+		<!-- REVOLUTION STYLE SHEETS -->
+		<link href="assets/front/js/revslider/settings.css" rel="stylesheet"
+			type="text/css">
+		<link href="assets/front/js/revslider/layers.css" rel="stylesheet"
+			type="text/css">
+		<link href="assets/front/js/revslider/navigation.css" rel="stylesheet"
+			type="text/css"><!-- REVOLUTION LAYERS STYLES -->
+
+		<!-- Front Assets Ends -->
+		<!-- My Assets -->
+		<link rel="stylesheet" type="text/css" href="assets/front/css/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="assets/front/css/select2/select2.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="assets/front/css/util.css">
+		<link rel="stylesheet" type="text/css" href="assets/front/css/main.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" type="text/css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+		<style>
+			body {
+				font-family: 'Roboto', sans-serif !important;
+			}
+			.tp-bullets , .tp-leftarrow .tparrows .new-bullet-bar .tp-forcenotvisible{
+				display: none;
+			}
+			.tp-rightarrow .tparrows .new-bullet-bar .tp-forcenotvisible, .tp-leftarrow .tparrows .new-bullet-bar .tp-forcenotvisible {
+				display: none;
+			}
+			.loader {
+				background: none repeat scroll 0 0 #ffffff;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 9999; 
+			}
+
+			.loader .loader_inner {
+				background-image: url("./assets/front/images/heartbeat.gif");
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-color: #fff;
+				height: 60px;
+				width: 60px;
+				margin-top: -30px;
+				margin-left: -30px;
+				left: 50%;
+				top: 50%;
+				position: absolute; 
+			}
+
+
+		</style>
+	    <script>
+				$(function() {
+					var clickedItem;
+
+					$(window).on('load', function() {
+
+							$(".loader_inner").fadeOut();
+							$(".loader").delay(400).fadeOut("slow");
+							
+					});
+				});
+		</script>
+		
+		
+ 	</head>
+	<body>
+		<app-root>
+			<div class="loader">
+				<div class="loader_inner"></div>
+			</div>
+		</app-root>
+
+		<script src="assets/front/js/bootstrap/js/popper.js"></script>
+		<script src="assets/front/js/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+			<script src="assets/front/js/select2/select2.min.js"></script>
+			<!-- Dashboard Assets -->
+			<script src="assets/dashboard/assets/popper/popper.js"></script>
+			<script src="assets/dashboard/assets/jquery.blockui.min.js"></script>
+			<script src="assets/dashboard/assets/jquery.slimscroll.js"></script>
+			<!-- bootstrap -->
+			<script src="assets/dashboard/assets/bootstrap/js/bootstrap.min.js"></script>
+			<script
+				src="assets/dashboard/assets/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+			<!-- counterup -->
+			<script src="assets/dashboard/assets/counterup/jquery.waypoints.min.js"></script>
+			<script src="assets/dashboard/assets/counterup/jquery.counterup.min.js"></script>
+			<!-- Common js-->
+			<script src="assets/dashboard/assets/app.js"></script>
+			<script src="assets/dashboard/assets/layout.js"></script>
+			<script src="assets/dashboard/assets/theme-color.js"></script>
+			<!-- material -->
+			<script src="assets/dashboard/assets/material/material.min.js"></script>
+			<!-- chart js -->
+			<!-- <script src="assets/dashboard/assets/chart-js/Chart.bundle.js"></script>
+			<script src="assets/dashboard/assets/chart-js/utils.js"></script>
+			<script src="assets/dashboard/assets/chart-js/home-data2.js"></script>
+			<script src="assets/dashboard/assets/sparkline/jquery.sparkline.js"></script>
+			<script src="assets/dashboard/assets/sparkline/sparkline-data.js"></script> -->
+			<!-- Dashboard Assets Ends -->
+
+			<!-- Front Assets -->
+			<!-- REVOLUTION JS FILES -->
+			<script src="assets/front/js/revslider/jquery.themepunch.tools.min.js">
+			</script>
+			<script src="assets/front/js/revslider/jquery.themepunch.revolution.min.js">
+			</script> <!-- REVOLUTION JS FILES -->
+			<!-- SLIDER REVOLUTION -->
+			<script src='assets/front/js/revslider/revolution.extension.actions.min.js'>
+			</script>
+			<script
+				src="assets/front/js/revslider/revolution.extension.layeranimation.min.js">
+			</script>
+			<script
+				src="assets/front/js/revslider/revolution.extension.navigation.min.js">
+			</script>
+			<script src="assets/front/js/revslider/revolution.extension.parallax.min.js">
+			</script>
+			<script src='assets/front/js/revslider/revolution.extension.video.min.js'>
+			</script>
+			<script
+				src="assets/front/js/revslider/revolution.extension.slideanims.min.js">
+			</script> <!-- SLIDER REVOLUTION -->
+			<!-- Parallax Start -->
+			<script src="assets/front/js/parallax.js">
+			</script> <!-- Parallax End -->
+			<!-- Ofi-Script -->
+			<script src="assets/front/js/ofi.js">
+			</script> <!-- Ofi-Script -->
+			<!-- Mobile Menu Js Start -->
+			<script src="assets/front/js/jquery.dlmenu.js">
+			</script> <!-- Mobile Menu Js End -->
+			<script src="assets/front/js/slick.js">
+			</script> <!-- Slick Sider -->
+			<!-- Selectric Start -->
+			<script src="assets/front/js/jquery.selectric.js">
+			</script> <!-- Selectric End -->
+			<script src="assets/front/js/jquery-ui.js">
+			</script> <!-- Range Slide -->
+			<!-- Jquery Ui Date Picker -->
+			<!-- Bootstrap Time Picker -->
+			<script src="assets/front/js/jquery.timepicker.js">
+			</script> <!-- Bootstrap Time Picker -->
+
+			<script>
+					$(function() {
+							"use strict";
+							//Rev slider
+							var setREVStartSize=function(){
+								try{var e=new Object,i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;
+									e.c = jQuery('#rev_slider_1_1');
+									e.responsiveLevels = [1240,1024,778,480];
+									e.gridwidth = [1240,992,778,480];
+									e.gridheight = [868,768,960,720];
+									e.sliderLayout = "fullwidth";
+									if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})
+										}catch(d){console.log(" Failure at Presize of Slider:" +d)}
+										};
+										setREVStartSize();
+
+										var tpj=jQuery;
+										var revapi1;
+										tpj(document).ready(function() {
+										if(tpj(" #rev_slider_1_1" ).revolution== undefined){
+										revslider_showDoubleJqueryError(" #rev_slider_1_1" );
+										}else{
+										revapi1= tpj(" #rev_slider_1_1" ).show().revolution({
+										sliderType:" standard" ,
+										jsFileLocation:" js/" ,
+										sliderLayout:" auto" ,
+										dottedOverlay:" none" ,
+										delay:9000,
+										navigation: {
+										keyboardNavigation:" off" ,
+										keyboard_direction:" horizontal" ,
+										mouseScrollNavigation:" off" ,
+										mouseScrollReverse:" default" ,
+										onHoverStop:" off" ,
+										touch:{
+										touchenabled:" on" ,
+										swipe_threshold: 75,
+										swipe_min_touches: 1,
+										swipe_direction:" horizontal" ,
+										drag_block_vertical: false
+										},
+										arrows: {
+										style:" new-bullet-bar" ,
+										enable:true,
+										hide_onmobile:true,
+										hide_under:778,
+										hide_onleave:false,
+										left: {
+										h_align:" left" ,
+										v_align:" center" ,
+										h_offset:30,
+										v_offset:0
+										},
+										right: {
+										h_align:" right" ,
+										v_align:" center" ,
+										h_offset:30,
+										v_offset:0
+										}
+										},
+										bullets: {
+										enable:true,
+										hide_onmobile:true,
+										hide_under:992,
+										style:" uranus" ,
+										hide_onleave:true,
+										hide_delay:200,
+										hide_delay_mobile:1200,
+										direction:" horizontal" ,
+										h_align:" center" ,
+										v_align:" bottom" ,
+										h_offset:0,
+										v_offset:220,
+										space:10,
+										tmp:'<span class="tp-bullet-inner"><\/span>'
+										}
+									},
+									responsiveLevels:[1240,1024,778,480],
+									visibilityLevels:[1240,1024,778,480],
+									gridwidth:[1240,1024,778,480],
+									gridheight:[900,768,960,720],
+									lazyType:"none",
+									parallax: {
+										type:"scroll",
+										origo:"slidercenter",
+										speed:1000,
+										speedbg:0,
+										speedls:1000,
+										levels:[5,10,15,20,25,30,35,40,45,46,47,48,49,50,51,30],
+									},
+									shadow:0,
+									spinner:"spinner5",
+									stopLoop:"off",
+									stopAfterLoops:-1,
+									stopAtSlide:-1,
+									shuffle:"off",
+									autoHeight:"off",
+									disableProgressBar:"on",
+									fullScreenAutoWidth:"off",
+									fullScreenAlignForce:"off",
+									fullScreenOffsetContainer: "",
+									fullScreenOffset: "",
+									hideThumbsOnMobile:"off",
+									hideSliderAtLimit:0,
+									hideCaptionAtLimit:0,
+									hideAllCaptionAtLilmit:0,
+									debugMode:false,
+									fallbacks: {
+										simplifyAll:"off",
+										nextSlideOnWindowFocus:"off",
+										disableFocusListener:false,
+									}
+								});
+								jQuery(document).ready(function() {
+									jQuery('.hover1').on('hover', function() {
+										jQuery('.arrow1').stop().animate({
+											'margin-left': '10px'
+										}, 200);
+									}, function() {
+										jQuery('.arrow1').stop().animate({
+											'margin-left': '0px'
+										}, 200);
+									});
+									jQuery('.hover2').on('hover', function() {
+										jQuery('.arrow2').stop().animate({
+											'margin-left': '10px'
+										}, 200);
+									}, function() {
+										jQuery('.arrow2').stop().animate({
+											'margin-left': '0px'
+										}, 200);
+									});
+									jQuery('.hover3').on('hover', function() {
+										jQuery('.arrow3').stop().animate({
+											'margin-left': '10px'
+										}, 200);
+									}, function() {
+										jQuery('.arrow3').stop().animate({
+											'margin-left': '0px'
+										}, 200);
+									});
+								});
+								}
+							}); /*ready*/
+						});
+					</script>
+					<script src="assets/front/js/script.js"></script>
+					<!-- Front Assets Ends -->
+					
+				</body>
+			</html>

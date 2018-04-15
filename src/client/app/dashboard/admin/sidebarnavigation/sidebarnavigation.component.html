@@ -1,0 +1,259 @@
+<ul class="sidemenu page-header-fixed"
+  data-keep-expanded="false" data-auto-scroll="true"
+  data-slide-speed="200" style="padding-top: 20px">
+  <li class="sidebar-toggler-wrapper hide">
+    <div class="sidebar-toggler">
+      <span></span>
+    </div>
+  </li>
+  <li class="sidebar-user-panel">
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img
+          src="./assets/dashboard/img/user_profile_pic.png"
+          class="img-circle
+          user-img-circle" alt="User Image"
+          />
+      </div>
+      <div class="pull-left info">
+        <p> Dr.Abel Tilahun</p>
+        <a href="#">
+          <i class="fa fa-circle user-online"></i>
+          <span class="txtOnline"> Online</span>
+        </a>
+      </div>
+    </div>
+  </li>
+  <!-- Dashboard Goes Here -->
+  <li class="nav-item">
+    <a [routerLink]="['/admin/dash']" class="nav-link">
+      <i class="fa fa-desktop"></i>
+      <span class="title">Dashboard</span>
+    </a>
+  </li>
+  <!-- Dashboard Ends -->
+
+  <!-- Departments Goes Here -->
+  <li class="nav-item active">
+    <a class="nav-link" >
+      <i class="fa fa-sitemap"></i>
+      <span class="title">Departments</span>
+      <span class="arrow open"></span>
+
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/departments/add']">
+          <span class="title">Add Department</span>
+        </a>
+      </li>
+      <li class="nav-item"> 
+        <a [routerLink]="['/departments']"  class="nav-link">
+          <span class="title">View Departments</span>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+  <!-- Deparments Ends -->
+
+  <!-- Doctors Goes Here -->
+  <li class="nav-item active">
+    <a class="nav-link">
+      <i class="fa fa-user-md"></i>
+      <span class="title">Doctor</span>
+      <span class="arrow open"></span>
+      <span class="label label-rouded label-menu
+        deepPink-bgcolor">3</span>
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a [routerLink]="['/doctors/add']" class="nav-link">
+          <span class="title">Add Doctor</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/doctors']" class="nav-link">
+          <span class="title">View Doctors</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- Doctors Ends -->
+
+  <!-- Patient Goes Here -->
+  <li class="nav-item active">
+    <a [routerLink]="['/patients']" class="nav-link nav-toggle">
+      <i class="fa fa-user"></i>
+      <span class="title">Patients</span>
+      <span class="selected"></span>
+    </a>
+  </li>
+  <!-- Patient Ends -->
+
+
+  <li class="nav-item active">
+    <a class="nav-link">
+      <i class="fa fa-plus-square"></i>
+      <span class="title">Nurse</span>
+      <span class="arrow open"></span>
+      <span class="label label-rouded label-menu
+        deepPink-bgcolor">3</span>
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a [routerLink]="['/nurses/add']" class="nav-link">
+          <span class="title">Add Nurse</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/nurses']" class="nav-link">
+          <span class="title">View Nurses</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- Nurse Ends -->
+
+  <!-- Pharmacist Goes Here -->
+  <li class="nav-item active">
+    <a class="nav-link">
+      <i class="fa fa-medkit"></i>
+      <span class="title">Pharmacist</span>
+      <span class="selected"></span>
+      <span class="arrow open"></span>
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a [routerLink]="['/pharmacists/add']" class="nav-link">
+          <span class="title">Add Pharmacist</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/pharmacists']" class="nav-link">
+          <span class="title">View Pharmacist</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- Pharmacist Ends -->
+
+  <!-- Laboratorist Starts -->
+  <li class="nav-item active">
+    <a class="nav-link nav-toggle">
+      <i class="fa fa-user"></i>
+      <span class="title">Laboratorist</span>
+      <span class="selected"></span>
+      <span class="arrow open"></span>
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a [routerLink]="['/laboratorists/add']" class="nav-link">
+          <span class="title">Add Laboratorist</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/laboratorists']" class="nav-link">
+          <span class="title">View Laboratorists</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- Laboratorist Ends -->
+
+  <!-- Receptionist Starts -->
+  <li class="nav-item active">
+    <a class="nav-link nav-toggle">
+      <i class="fa fa-plus-square"></i>
+      <span class="title">Receptionist</span>
+      <span class="selected"></span>
+      <span class="arrow open"></span>
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a [routerLink]="['/receptionists/add']" class="nav-link">
+          <span class="title">Add Receptionist</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/receptionists']" class="nav-link">
+          <span class="title">View Receptionist</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- Receptionist Ends -->
+
+  <!-- Monitor Hospital Starts -->
+  <li class="nav-item active">
+    <a href="#" class="nav-link nav-toggle">
+      <i class="fa fa-plus-square"></i>
+      <span class="title">Monitor Hospital</span>
+      <span class="selected"></span>
+      <span class="arrow open"></span>
+    </a>
+    <ul class="sub-menu">
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Payment History</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Bed Allotment</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Blood Bank</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Blood Donor</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Medicine</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Operation Report</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Birth Report</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="" class="nav-link">
+          <span class="title">Death Report</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!-- Receptionist Ends -->
+
+
+  <!-- NoticeBorad Goes Here -->
+  <li class="nav-item ">
+    <a href="#" class="nav-link nav-toggle">
+      <i class="fa fa-clipboard"></i>
+      <span class="title">NoticeBoard</span>
+    </a>
+  </li>
+  <!-- NoticeBoard Ends-->
+
+  <!-- Account {Profile} Goes Here -->
+  <li class="nav-item ">
+    <a href="#" class="nav-link nav-toggle">
+      <i class="fa fa-heartbeat"></i>
+      <span class="title">Account</span>
+    </a>
+  </li>
+  <!-- Account Ends-->
+
+</ul>

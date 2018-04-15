@@ -1,0 +1,334 @@
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+    <app-dashboard-header></app-dashboard-header>
+    <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+    <div class="page-container">
+        <!-- start sidebar menu -->
+        <div class="sidebar-container">
+            <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+                <div id="remove-scroll">
+                    <!-- Navigation SideBar Starts -->
+                    <app-sidebarnavigation-admin></app-sidebarnavigation-admin>
+                    <!-- Navigation SideBar Ends -->
+                </div>
+            </div>
+        </div>
+        <!-- end sidebar menu -->
+        <!-- start page content -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div class="page-bar">
+                    <div class="page-title-breadcrumb">
+                        <div class=" pull-left">
+                            <div class="page-title">Doctors</div>
+                        </div>
+                        <ol class="breadcrumb page-breadcrumb pull-right">
+                            <li>
+                                <i class="fa fa-home"></i>&nbsp;
+                                <a class="parent-item" [routerLink]="['/admin/dash']">Home</a>&nbsp;
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a class="parent-item active" href="">Doctors</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tabbable-line">
+                            <!-- <ul class="nav nav-tabs">
+                                  <li class="active">
+                                      <a href="#tab1" data-toggle="tab"> List View </a>
+                                  </li>
+                                  <li>
+                                      <a href="#tab2" data-toggle="tab"> Grid View </a>
+                                  </li>
+                              </ul> -->
+                            <!-- <ul class="nav customtab nav-tabs" role="tablist">
+                                <li class="nav-item"><a href="#tab1" class="nav-link active"  data-toggle="tab" >List View</a></li>
+                                <li class="nav-item"><a href="#tab2" class="nav-link" data-toggle="tab">Grid View</a></li>
+                            </ul> -->
+
+                            <div class="tab-pane" id="tab2">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc1.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Rita Tesfaye </div>
+                                                        <div class="name-center"> Cardiology </div>
+                                                    </div>
+                                                    <p>Bole
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc2.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Yodit Abebe </div>
+                                                        <div class="name-center"> General surgery </div>
+                                                    </div>
+                                                    <p>Gotera , Nifas Silk
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc3.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Yohannes Girma </div>
+                                                        <div class="name-center"> Anaesthetics </div>
+                                                    </div>
+                                                    <p>Mebrat Haile, Jemo
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc4.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Amanuel Geremew </div>
+                                                        <div class="name-center"> Dentist </div>
+                                                    </div>
+                                                    <p>Bulgaria , Kirkos
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc5.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Sirak Esubalew </div>
+                                                        <div class="name-center"> General Physician </div>
+                                                    </div>
+                                                    <p>Semit,Yeka
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fier</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc6.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Abeba Getnet </div>
+                                                        <div class="name-center"> Urology </div>
+                                                    </div>
+                                                    <p>Agona , Nifas Silk
+                                                        <br /> Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc7.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Alebachew Tesfaye </div>
+                                                        <div class="name-center"> Gynaecology </div>
+                                                    </div>
+                                                    <p>Akaki Kaliti
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc8.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Nahom Belachew</div>
+                                                        <div class="name-center"> General surgery </div>
+                                                    </div>
+                                                    <p>4 kilo , Arada
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc9.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Fiseha Kassa </div>
+                                                        <div class="name-center"> Anaesthetics </div>
+                                                    </div>
+                                                    <p>Merkato, Addis Ketema
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc10.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Elbetel Gezahegn </div>
+                                                        <div class="name-center"> Cardiology </div>
+                                                    </div>
+                                                    <p>Lafto, Nifas Silk
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card card-box">
+                                            <div class="card-body no-padding ">
+                                                <div class="doctor-profile">
+                                                    <img src="./assets/dashboard/img/doc/doc3.png" class="doctor-pic" alt="">
+                                                    <div class="profile-usertitle">
+                                                        <div class="doctor-name">Dr.Efrem Desalegn </div>
+                                                        <div class="name-center"> General surgery </div>
+                                                    </div>
+                                                    <p>Teklehaymenot, Addis Ketema
+                                                        <br />Addis Ababa</p>
+                                                    <div>
+                                                        <p>
+                                                            <i class="fa fa-phone"></i>
+                                                            <a href="tel:(123)456-7890"> (123)456-7890</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="profile-userbuttons">
+                                                        <a href="#" class="btn btn-circle deepPink-bgcolor btn-sm">Fire</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page content -->
+</div>

@@ -1,0 +1,50 @@
+[
+    { "firstname": "Alex", "role": "patient", "password": "pass5",
+      "lastname": "Birhanu" , "email": "alex@gmail.com", "phone": "0924757323", 
+      "gender": "male", "age": 36,"bloodCategory": "A+"
+    },
+    { "firstname": "Ishere", "role": "patient", "password": "pass6",
+      "lastname": "Gizaw" , "email": "ishere.gizaw@gmail.com", "phone": "0924757323", 
+      "gender": "male", "age": 26,"bloodCategory": "O-"
+    },
+    { "firstname": "Abel", "role": "patient", "password": "pass6",
+      "lastname": "Kassaye" , "email": "abel.kassa@gmail.com", "phone": "0920843136", 
+      "gender": "male", "age": 24,"bloodCategory": "A-"
+    },
+    { "firstname": "Mikiyas", "role": "patient", "password": "pass6",
+      "lastname": "Cherenet" , "email": "miko2018cherenet@gmail.com", "phone": "0912457896", 
+      "gender": "male", "age": 19,"bloodCategory": "B+"
+    },
+    { "firstname": "Yeabsira", "role": "patient", "password": "pass6",
+      "lastname": "Gashaw" , "email": "span13me@gmail.com", "phone": "0945784125", 
+      "gender": "male", "age": 20,"bloodCategory": "O+"
+    },
+    { "firstname": "Bersufekad", "role": "patient", "password": "pass6",
+      "lastname": "Getachew" , "email": "besse@tripcush.com", "phone": "0933031106", 
+      "gender": "male", "age": 23,"bloodCategory": "B-"
+    },
+    { "firstname": "Heldana", "role": "patient", "password": "pass6",
+      "lastname": "Kirubel" , "email": "heldi.kiru@yahoo.com", "phone": "0911748596", 
+      "gender": "female", "age": 26,"bloodCategory": "B+"
+    },
+    { "firstname": "John", "role": "patient", "password": "pass6",
+      "lastname": "Girma" , "email": "johnny.manito@gmail.com", "phone": "0948752103", 
+      "gender": "male", "age": 48,"bloodCategory": "O-"
+    },
+    { "firstname": "Abiy", "role": "patient", "password": "pass6",
+      "lastname": "Ashebir" , "email": "ashe.abiy@gmail.com", "phone": "0924757323", 
+      "gender": "male", "age": 25,"bloodCategory": "B+"
+    },
+    { "firstname": "Amanuel", "role": "patient", "password": "pass6",
+      "lastname": "Geremew" , "email": "amangeremew@gmail.com", "phone": "0912857496", 
+      "gender": "male", "age": 22,"bloodCategory": "A+"
+    },
+    { "firstname": "Amare", "role": "patient", "password": "pass6",
+      "lastname": "Mamo" , "email": "amex.football@gmail.com", "phone": "0958741258", 
+      "gender": "male", "age": 29,"bloodCategory": "O-"
+    },
+    { "firstname": "Abenezer", "role": "patient", "password": "pass6",
+      "lastname": "Densamo" , "email": "abeni@custstat.com", "phone": "0958741258", 
+      "gender": "male", "age": 28,"bloodCategory": "O-"
+    }
+]

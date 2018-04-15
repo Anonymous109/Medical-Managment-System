@@ -1,0 +1,8 @@
+[
+  { "username": "admin", "role": "admin", "password": "password"},
+  { "username": "vmejia", "role": "doctor", "password": "doctor"},
+  { "username": "john", "role": "labratorist", "password": "labratory"},
+  { "username": "melat", "role": "nurse", "password": "crash"},
+  { "username": "lydia", "role": "pharmacist", "password": "overdoze"},
+  { "username": "yonas", "role": "receptionist", "password": "welcome"}
+]

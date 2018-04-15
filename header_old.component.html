@@ -1,0 +1,2424 @@
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+    
+    <!-- Header Becha -->
+
+    <div class="page-header navbar navbar-fixed-top">
+            <div class="page-header-inner">
+                <!-- logo start -->
+                <div class="page-logo">
+                    <a href="index.html">
+                        <img src="./assets/front/images/logo-new-white.png">
+                    </a>
+                </div>
+                <!-- logo end -->
+                <ul class="nav navbar-nav navbar-left in">
+                    <li>
+                        <a class="menu-toggler sidebar-toggler">
+                            <i style="color:white;" class="fa fa-heart"></i>
+                        </a>
+                    </li>
+                </ul>
+                <form class="search-form-opened" action="#" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control"
+                            placeholder="Search..." name="query" [(ngModel)]="term">
+                            <div *ngFor = "let item of items |filter:term" >
+                                    <p>
+                                      {{item}}
+                                    </p>
+                                  </div>
+                        <!-- <span class="input-group-btn">
+                            <a href="javascript:;" class="btn submit">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </span> -->
+                    </div>
+                </form>
+                <!-- start mobile menu -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler"
+                    data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+                <!-- end mobile menu -->
+                <!-- start header menu -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <!-- start language menu -->
+                        <li class="dropdown language-switch">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="./assets/dashboard/img/flags/gb.png"
+                                    class="position-left" alt=""> English
+                                <span class="fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="deutsch">
+                                        <img
+                                            src="./assets/dashboard/img/flags/de.png"
+                                            alt=""> Deutsch</a>
+                                </li>
+                                <li>
+                                    <a class="ukrainian">
+                                        <img
+                                            src="./assets/dashboard/img/flags/ua.png"
+                                            alt=""> Українська</a>
+                                </li>
+                                <li>
+                                    <a class="english">
+                                        <img
+                                            src="./assets/dashboard/img/flags/gb.png"
+                                            alt=""> English</a>
+                                </li>
+                                <li>
+                                    <a class="espana">
+                                        <img
+                                            src="./assets/dashboard/img/flags/es.png"
+                                            alt=""> España</a>
+                                </li>
+                                <li>
+                                    <a class="russian">
+                                        <img
+                                            src="./assets/dashboard/img/flags/ru.png"
+                                            alt=""> Русский</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end language menu -->
+                        <!-- start notification dropdown -->
+                        <li class="dropdown dropdown-extended dropdown-notification"
+                            id="header_notification_bar">
+                            <a href="javascript:;" class="dropdown-toggle"
+                                data-toggle="dropdown" data-hover="dropdown"
+                                data-close-others="true">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="badge headerBadgeColor1"> 6 </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="external">
+                                    <h3>
+                                        <span class="bold">Notifications</span>
+                                    </h3>
+                                    <span class="notification-label purple-bgcolor">New
+                                        6</span>
+                                </li>
+                                <li>
+                                    <ul class="dropdown-menu-list
+                                        small-slimscroll-style"
+                                        data-handle-color="#637283">
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="time">just now</span>
+                                                <span class="details">
+                                                    <span class="notification-icon
+                                                        circle deepPink-bgcolor">
+                                                        <i class="fa fa-check"></i>
+                                                    </span> Congratulations!.
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="time">3 mins</span>
+                                                <span class="details">
+                                                    <span class="notification-icon
+                                                        circle purple-bgcolor">
+                                                        <i class="fa fa-user o"></i>
+                                                    </span>
+                                                    <b>John Micle </b>is now
+                                                    following you. </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="time">7 mins</span>
+                                                <span class="details">
+                                                    <span class="notification-icon
+                                                        circle blue-bgcolor">
+                                                        <i class="fa fa-comments-o"></i>
+                                                    </span>
+                                                    <b>Sneha Jogi </b>sent you a
+                                                    message. </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="time">12 mins</span>
+                                                <span class="details">
+                                                    <span class="notification-icon
+                                                        circle pink">
+                                                        <i class="fa fa-heart"></i>
+                                                    </span>
+                                                    <b>Ravi Patel </b>like your
+                                                    photo. </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="time">15 mins</span>
+                                                <span class="details">
+                                                    <span class="notification-icon
+                                                        circle yellow">
+                                                        <i class="fa fa-warning"></i>
+                                                    </span> Warning! </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="time">10 hrs</span>
+                                                <span class="details">
+                                                    <span class="notification-icon
+                                                        circle red">
+                                                        <i class="fa fa-times"></i>
+                                                    </span> Application error.
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown-menu-footer">
+                                        <a href="javascript:void(0)"> All
+                                            notifications </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end notification dropdown -->
+                        <!-- start message dropdown -->
+                        <li class="dropdown dropdown-extended dropdown-inbox"
+                            id="header_inbox_bar">
+                            <a href="javascript:;" class="dropdown-toggle"
+                                data-toggle="dropdown" data-hover="dropdown"
+                                data-close-others="true">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="badge headerBadgeColor2"> 2 </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="external">
+                                    <h3>
+                                        <span class="bold">Messages</span>
+                                    </h3>
+                                    <span class="notification-label cyan-bgcolor">New
+                                        2</span>
+                                </li>
+                                <li>
+                                    <ul class="dropdown-menu-list
+                                        small-slimscroll-style"
+                                        data-handle-color="#637283">
+                                        <li>
+                                            <a href="#">
+                                                <span class="photo">
+                                                    <img
+                                                        src="./assets/dashboard/img/doc/doc2.jpg"
+                                                        class="./assets/dashboard/img-circle"
+                                                        alt=""> </span>
+                                                <span class="subject">
+                                                    <span class="from"> Sarah Smith
+                                                    </span>
+                                                    <span class="time">Just Now
+                                                    </span>
+                                                </span>
+                                                <span class="message"> Jatin I found
+                                                    you on LinkedIn... </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="photo">
+                                                    <img
+                                                        src="./assets/dashboard/img/doc/doc3.jpg"
+                                                        class="./assets/dashboard/img-circle"
+                                                        alt=""> </span>
+                                                <span class="subject">
+                                                    <span class="from"> John Deo
+                                                    </span>
+                                                    <span class="time">16 mins
+                                                    </span>
+                                                </span>
+                                                <span class="message"> Fwd:
+                                                    Important Notice Regarding Your
+                                                    Domain Name... </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="photo">
+                                                    <img
+                                                        src="./assets/dashboard/img/doc/doc1.jpg"
+                                                        class="./assets/dashboard/img-circle"
+                                                        alt=""> </span>
+                                                <span class="subject">
+                                                    <span class="from"> Rajesh
+                                                    </span>
+                                                    <span class="time">2 hrs </span>
+                                                </span>
+                                                <span class="message"> pls take a
+                                                    print of attachments. </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="photo">
+                                                    <img
+                                                        src="./assets/dashboard/img/doc/doc8.jpg"
+                                                        class="./assets/dashboard/img-circle"
+                                                        alt=""> </span>
+                                                <span class="subject">
+                                                    <span class="from"> Lina Smith
+                                                    </span>
+                                                    <span class="time">40 mins
+                                                    </span>
+                                                </span>
+                                                <span class="message"> Apply for
+                                                    Ortho Surgeon </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="photo">
+                                                    <img
+                                                        src="./assets/dashboard/img/doc/doc5.jpg"
+                                                        class="./assets/dashboard/img-circle"
+                                                        alt=""> </span>
+                                                <span class="subject">
+                                                    <span class="from"> Jacob Ryan
+                                                    </span>
+                                                    <span class="time">46 mins
+                                                    </span>
+                                                </span>
+                                                <span class="message"> Request for
+                                                    leave application. </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="dropdown-menu-footer">
+                                        <a href="#"> All Messages </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end message dropdown -->
+                        <!-- start manage user dropdown -->
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle"
+                                data-toggle="dropdown" data-hover="dropdown"
+                                data-close-others="true">
+                                <img alt="" class="./assets/dashboard/img-circle"src="./assets/dashboard/img/user_profile_pic.png"
+                                    />
+                                <span class="username username-hide-on-mobile">
+                                    Abel </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="">
+                                        <i class="icon-user"></i> Profile </a>
+                                </li>
+                                <li class="divider"> </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-lock"></i> Lock
+                                    </a>
+                                </li>
+                                <li>
+                                    <a (click)="logOut()">
+                                        <i class="icon-logout" ></i>Log Out </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- end manage user dropdown -->
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            <a id="headerSettingButton" class="mdl-button
+                                mdl-js-button mdl-button--icon pull-right"
+                                data-upgraded=",MaterialButton">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    <!-- Header Ends -->
+    
+    <!-- start header -->
+    <div class="page-header navbar navbar-fixed-top">
+        <div class="page-header-inner">
+            <!-- logo start -->
+            <div class="page-logo">
+                <a href="index.html">
+                    <img src="./assets/front/images/logo-new-white.png">
+                </a>
+            </div>
+            <!-- logo end -->
+            <ul class="nav navbar-nav navbar-left in">
+                <li>
+                    <a class="menu-toggler sidebar-toggler">
+                        <i style="color:white;" class="fa fa-heart"></i>
+                    </a>
+                </li>
+            </ul>
+            <form class="search-form-opened" action="#" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                        placeholder="Search..." name="query" [(ngModel)]="term">
+                        <div *ngFor = "let item of items |filter:term" >
+                                <p>
+                                  {{item}}
+                                </p>
+                              </div>
+                    <!-- <span class="input-group-btn">
+                        <a href="javascript:;" class="btn submit">
+                            <i class="icon-magnifier"></i>
+                        </a>
+                    </span> -->
+                </div>
+            </form>
+            <!-- start mobile menu -->
+            <a href="javascript:;" class="menu-toggler responsive-toggler"
+                data-toggle="collapse" data-target=".navbar-collapse">
+                <span></span>
+            </a>
+            <!-- end mobile menu -->
+            <!-- start header menu -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <!-- start language menu -->
+                    <li class="dropdown language-switch">
+                        <a class="dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="./assets/dashboard/img/flags/gb.png"
+                                class="position-left" alt=""> English
+                            <span class="fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="deutsch">
+                                    <img
+                                        src="./assets/dashboard/img/flags/de.png"
+                                        alt=""> Deutsch</a>
+                            </li>
+                            <li>
+                                <a class="ukrainian">
+                                    <img
+                                        src="./assets/dashboard/img/flags/ua.png"
+                                        alt=""> Українська</a>
+                            </li>
+                            <li>
+                                <a class="english">
+                                    <img
+                                        src="./assets/dashboard/img/flags/gb.png"
+                                        alt=""> English</a>
+                            </li>
+                            <li>
+                                <a class="espana">
+                                    <img
+                                        src="./assets/dashboard/img/flags/es.png"
+                                        alt=""> España</a>
+                            </li>
+                            <li>
+                                <a class="russian">
+                                    <img
+                                        src="./assets/dashboard/img/flags/ru.png"
+                                        alt=""> Русский</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end language menu -->
+                    <!-- start notification dropdown -->
+                    <li class="dropdown dropdown-extended dropdown-notification"
+                        id="header_notification_bar">
+                        <a href="javascript:;" class="dropdown-toggle"
+                            data-toggle="dropdown" data-hover="dropdown"
+                            data-close-others="true">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge headerBadgeColor1"> 6 </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3>
+                                    <span class="bold">Notifications</span>
+                                </h3>
+                                <span class="notification-label purple-bgcolor">New
+                                    6</span>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list
+                                    small-slimscroll-style"
+                                    data-handle-color="#637283">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">just now</span>
+                                            <span class="details">
+                                                <span class="notification-icon
+                                                    circle deepPink-bgcolor">
+                                                    <i class="fa fa-check"></i>
+                                                </span> Congratulations!.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">3 mins</span>
+                                            <span class="details">
+                                                <span class="notification-icon
+                                                    circle purple-bgcolor">
+                                                    <i class="fa fa-user o"></i>
+                                                </span>
+                                                <b>John Micle </b>is now
+                                                following you. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">7 mins</span>
+                                            <span class="details">
+                                                <span class="notification-icon
+                                                    circle blue-bgcolor">
+                                                    <i class="fa fa-comments-o"></i>
+                                                </span>
+                                                <b>Sneha Jogi </b>sent you a
+                                                message. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">12 mins</span>
+                                            <span class="details">
+                                                <span class="notification-icon
+                                                    circle pink">
+                                                    <i class="fa fa-heart"></i>
+                                                </span>
+                                                <b>Ravi Patel </b>like your
+                                                photo. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">15 mins</span>
+                                            <span class="details">
+                                                <span class="notification-icon
+                                                    circle yellow">
+                                                    <i class="fa fa-warning"></i>
+                                                </span> Warning! </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">10 hrs</span>
+                                            <span class="details">
+                                                <span class="notification-icon
+                                                    circle red">
+                                                    <i class="fa fa-times"></i>
+                                                </span> Application error.
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="dropdown-menu-footer">
+                                    <a href="javascript:void(0)"> All
+                                        notifications </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end notification dropdown -->
+                    <!-- start message dropdown -->
+                    <li class="dropdown dropdown-extended dropdown-inbox"
+                        id="header_inbox_bar">
+                        <a href="javascript:;" class="dropdown-toggle"
+                            data-toggle="dropdown" data-hover="dropdown"
+                            data-close-others="true">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge headerBadgeColor2"> 2 </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="external">
+                                <h3>
+                                    <span class="bold">Messages</span>
+                                </h3>
+                                <span class="notification-label cyan-bgcolor">New
+                                    2</span>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list
+                                    small-slimscroll-style"
+                                    data-handle-color="#637283">
+                                    <li>
+                                        <a href="#">
+                                            <span class="photo">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc2.jpg"
+                                                    class="./assets/dashboard/img-circle"
+                                                    alt=""> </span>
+                                            <span class="subject">
+                                                <span class="from"> Sarah Smith
+                                                </span>
+                                                <span class="time">Just Now
+                                                </span>
+                                            </span>
+                                            <span class="message"> Jatin I found
+                                                you on LinkedIn... </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="photo">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc3.jpg"
+                                                    class="./assets/dashboard/img-circle"
+                                                    alt=""> </span>
+                                            <span class="subject">
+                                                <span class="from"> John Deo
+                                                </span>
+                                                <span class="time">16 mins
+                                                </span>
+                                            </span>
+                                            <span class="message"> Fwd:
+                                                Important Notice Regarding Your
+                                                Domain Name... </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="photo">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc1.jpg"
+                                                    class="./assets/dashboard/img-circle"
+                                                    alt=""> </span>
+                                            <span class="subject">
+                                                <span class="from"> Rajesh
+                                                </span>
+                                                <span class="time">2 hrs </span>
+                                            </span>
+                                            <span class="message"> pls take a
+                                                print of attachments. </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="photo">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc8.jpg"
+                                                    class="./assets/dashboard/img-circle"
+                                                    alt=""> </span>
+                                            <span class="subject">
+                                                <span class="from"> Lina Smith
+                                                </span>
+                                                <span class="time">40 mins
+                                                </span>
+                                            </span>
+                                            <span class="message"> Apply for
+                                                Ortho Surgeon </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="photo">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc5.jpg"
+                                                    class="./assets/dashboard/img-circle"
+                                                    alt=""> </span>
+                                            <span class="subject">
+                                                <span class="from"> Jacob Ryan
+                                                </span>
+                                                <span class="time">46 mins
+                                                </span>
+                                            </span>
+                                            <span class="message"> Request for
+                                                leave application. </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="dropdown-menu-footer">
+                                    <a href="#"> All Messages </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end message dropdown -->
+                    <!-- start manage user dropdown -->
+                    <li class="dropdown dropdown-user">
+                        <a href="javascript:;" class="dropdown-toggle"
+                            data-toggle="dropdown" data-hover="dropdown"
+                            data-close-others="true">
+                            <img alt="" class="./assets/dashboard/img-circle"src="./assets/dashboard/img/user_profile_pic.png"
+                                />
+                            <span class="username username-hide-on-mobile">
+                                Abel </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="">
+                                    <i class="icon-user"></i> Profile </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-lock"></i> Lock
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="logOut()">
+                                    <i class="icon-logout" ></i>Log Out </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end manage user dropdown -->
+                    <li class="dropdown dropdown-quick-sidebar-toggler">
+                        <a id="headerSettingButton" class="mdl-button
+                            mdl-js-button mdl-button--icon pull-right"
+                            data-upgraded=",MaterialButton">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-container">
+        <!-- start sidebar menu -->
+        <div class="sidebar-container">
+            <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+                <div id="remove-scroll">
+                    <ul class="sidemenu page-header-fixed"
+                        data-keep-expanded="false" data-auto-scroll="true"
+                        data-slide-speed="200" style="padding-top: 20px">
+                        <li class="sidebar-toggler-wrapper hide">
+                            <div class="sidebar-toggler">
+                                <span></span>
+                            </div>
+                        </li>
+                        <li class="sidebar-user-panel">
+                            <div class="user-panel">
+                                <div class="pull-left image">
+                                    <img
+                                        src="./assets/dashboard/img/user_profile_pic.png"
+                                        class="./assets/dashboard/img-circle
+                                        user-img-circle" alt="User Image"
+                                        />
+                                </div>
+                                <div class="pull-left info">
+                                    <p> Dr.Abel Tilahun</p>
+                                    <a href="#">
+                                        <i class="fa fa-circle user-online"></i>
+                                        <span class="txtOnline"> Online</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <!-- Navogation SideBar Starts -->
+
+                        <!-- Dashboard Goes Here -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="fa fa-desktop"></i>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        <!-- Dashboard Ends -->
+
+                        <!-- Departments Goes Here -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="fa fa-sitemap"></i>
+                                <span class="title">Departments</span>
+                                <span class="arrow"></span>
+                                
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Add Department</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">View Departments</span>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <!-- Deparments Ends -->
+
+                        <!-- Doctors Goes Here -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="fa fa-user-md"></i>
+                                <span class="title">Doctor</span>
+                                <span class="arrow"></span>
+                                <span class="label label-rouded label-menu
+                                    deepPink-bgcolor">3</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Add Doctor</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">View Doctors</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Doctors Ends -->
+                        
+                        <!-- Patient Goes Here -->
+                        <li class="nav-item active open">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="fa fa-user"></i>
+                                <span class="title">Patient</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Add Patient</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">View Patients</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Patient Ends -->
+                        
+                        <!-- Manage Appointment Goes Here -->
+                        <li class="nav-item">
+                                <a href="#" class="nav-link nav-toggle">
+                                    <i class="fa fa-calendar"></i>
+                                    <span class="title">Manage Appointments</span>
+                                </a>
+                        </li>
+                        <!-- Manage Appointments Ends -->
+
+                        <li class="nav-item">
+                                <a href="#" class="nav-link nav-toggle">
+                                    <i class="fa fa-plus-square"></i>
+                                    <span class="title">Nurse</span>
+                                    <span class="arrow"></span>
+                                    <span class="label label-rouded label-menu
+                                        deepPink-bgcolor">3</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            <span class="title">Inbox</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            <span class="title">View Mail</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            <span class="title">Compose Mail</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">email</i>
+                                <span class="title">Email</span>
+                                <span class="arrow"></span>
+                                <span class="label label-rouded label-menu
+                                    deepPink-bgcolor">3</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Inbox</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">View Mail</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Compose Mail</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">assignment</i>
+                                <span class="title">Appointment</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Doctor Schedule</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <span class="title">Book Appointment</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="view_appointment.html"
+                                        class="nav-link">
+                                        <span class="title">View All Appointment</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">person</i>
+                                <span class="title">Doctors</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="all_doctors.html" class="nav-link">
+                                        <span class="title">All Doctor</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="add_doctor.html" class="nav-link">
+                                        <span class="title">Add Doctor</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="edit_doctor.html" class="nav-link">
+                                        <span class="title">Edit Doctor</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">group</i>
+                                <span class="title">Other Staff</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="all_staffs.html" class="nav-link">
+                                        <span class="title">All Staff</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="add_staff.html" class="nav-link">
+                                        <span class="title">Add Staff</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="edit_staff.html" class="nav-link">
+                                        <span class="title">Edit Staff</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">hotel</i>
+                                <span class="title">Rooms</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href=""
+                                        class="nav-link">
+                                        <span class="title">Alloted Rooms</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href=""
+                                        class="nav-link">
+                                        <span class="title">New Allotment</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href=""
+                                        class="nav-link">
+                                        <span class="title">Edit Allotment</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">monetization_on</i>
+                                <span class="title">Bill</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item">
+                                    <a href="payments.html" class="nav-link">
+                                        <span class="title">Payments</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="add_payment.html" class="nav-link">
+                                        <span class="title">Add Payments</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="invoice_payment.html"
+                                        class="nav-link">
+                                        <span class="title">Patient Invoice</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end sidebar menu -->
+        <!-- start page content -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <div class="page-bar">
+                    <div class="page-title-breadcrumb">
+                        <div class="pull-left">
+                            <div class="page-title">Dashboard</div>
+                        </div>
+                        <ol class="breadcrumb page-breadcrumb pull-right">
+                            <li>
+                                <i class="fa fa-home"></i>&nbsp;
+                                <a class="parent-item" href="index.html">Home</a>&nbsp;
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- start widget -->
+                <div class="row">
+                    <div class="col-md-3 col-xs-12 col-sm-6">
+                        <div class="analysis-box m-b-0 bg-purple">
+                            <h3 class="text-white box-title">Appointments
+                                <span class="pull-right">
+                                    <i class="fa fa-caret-up"></i> 345</span>
+                            </h3>
+                            <div id="sparkline7">
+                                <canvas style="display: inline-block; width:
+                                    267px; height: 70px; vertical-align: top;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6">
+                        <div class="analysis-box m-b-0 bg-danger">
+                            <h3 class="text-white box-title">New Patients
+                                <span class="pull-right">
+                                    <i class="fa fa-caret-up"></i> 643</span>
+                            </h3>
+                            <div id="sparkline12">
+                                <canvas style="display: inline-block; width:
+                                    367px; height: 70px; vertical-align: top;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6">
+                        <div class="analysis-box m-b-0 bg-blue">
+                            <h3 class="text-white box-title">Today's OPD
+                                <span class="pull-right">
+                                    <i class="fa fa-caret-up"></i>765</span>
+                            </h3>
+                            <div id="sparkline9">
+                                <canvas style="display: inline-block; width:
+                                    267px; height: 70px; vertical-align: top;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6">
+                        <div class="analysis-box m-b-0 bg-success">
+                            <h3 class="text-white box-title">Visitors
+                                <span class="pull-right">
+                                    <i class="fa fa-caret-up"></i> 323</span>
+                            </h3>
+                            <div id="sparkline16" class="text-center">
+                                <canvas style="display: inline-block; width:
+                                    215px; height: 70px; vertical-align: top;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end widget -->
+                <!-- chart start -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card card-box">
+                            <div class="card-head">
+                                <header>HOSPITAL SURVEY</header>
+                                <div class="tools">
+                                    <a class="fa fa-repeat btn-color
+                                        box-refresh" href="javascript:;"></a>
+                                    <a class="t-collapse btn-color fa
+                                        fa-chevron-down" href="javascript:;"></a>
+                                    <a class="t-close btn-color fa fa-times"
+                                        href="javascript:;"></a>
+                                </div>
+                            </div>
+                            <div class="card-body no-padding height-9">
+                                <div class="row">
+                                    <!-- <canvas id="bar-chart"></canvas> -->
+                                    <canvas baseChart
+                                        [data]="lineChartData"
+                                        [labels]="lineChartLabels"
+                                        [options]="lineChartOptions"
+                                        [chartType]="lineChartType"
+                                        (chartHover)="chartHovered($event)"
+                                        (chartClick)="chartClicked($event)"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card card-box">
+                            <div class="card-head">
+                                <header>HOSPITAL SURVEY</header>
+                                <div class="tools">
+                                    <a class="fa fa-repeat btn-color
+                                        box-refresh" href="javascript:;"></a>
+                                    <a class="t-collapse btn-color fa
+                                        fa-chevron-down" href="javascript:;"></a>
+                                    <a class="t-close btn-color fa fa-times"
+                                        href="javascript:;"></a>
+                                </div>
+                            </div>
+                            <div class="card-body no-padding height-9">
+                                <div class="row">
+                                    <!-- <canvas id="myChart"></canvas> -->
+                                    <div style="display: block">
+                                        <canvas baseChart
+                                                    [data]="doughnutChartData"
+                                                    [labels]="doughnutChartLabels"
+                                                    [chartType]="doughnutChartType"
+                                                    (chartHover)="chartHovered($event)"
+                                                    (chartClick)="chartClicked($event)"></canvas>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chart end -->
+                <!-- start new patient list -->
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                        <div class="card card-box">
+                            <div class="card-head">
+                                <header>NEW PATIENT LIST</header>
+                                <div class="tools">
+                                    <a class="fa fa-repeat btn-color
+                                        box-refresh" href="javascript:;"></a>
+                                    <a class="t-collapse btn-color fa
+                                        fa-chevron-down" href="javascript:;"></a>
+                                    <a class="t-close btn-color fa fa-times"
+                                        href="javascript:;"></a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+                                        <table class="table display
+                                            product-overview mb-30"
+                                            id="support_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Name</th>
+                                                    <th>Assigned Doctor</th>
+                                                    <th>Diseases</th>
+                                                    <th>Room No</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Jens Brincker</td>
+                                                    <td>Dr.Kenny Josh</td>
+                                                    <td>
+                                                        <span class="label
+                                                            label-sm
+                                                            label-success">Influenza</span>
+                                                    </td>
+                                                    <td>101</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Mark Hay</td>
+                                                    <td>Dr. Mark</td>
+                                                    <td>
+                                                        <span class="label
+                                                            label-sm
+                                                            label-warning">
+                                                            Cholera </span>
+                                                    </td>
+                                                    <td>105</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>David Perry</td>
+                                                    <td>Dr.Felix </td>
+                                                    <td>
+                                                        <span class="label
+                                                            label-sm
+                                                            label-danger">Jaundice</span>
+                                                    </td>
+                                                    <td>105</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Anthony Davie</td>
+                                                    <td>Dr.Beryl</td>
+                                                    <td>
+                                                        <span class="label
+                                                            label-sm
+                                                            label-success">Leptospirosis</span>
+                                                    </td>
+                                                    <td>102</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>Mark Hay</td>
+                                                    <td>Dr.Jayesh</td>
+                                                    <td>
+                                                        <span class="label
+                                                            label-sm
+                                                            label-success">Typhoid</span>
+                                                    </td>
+                                                    <td>107</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>Sue Woodger</td>
+                                                    <td>Dr.Sharma</td>
+                                                    <td>
+                                                        <span class="label
+                                                            label-sm
+                                                            label-danger">Malaria</span>
+                                                    </td>
+                                                    <td>108</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="card card-box">
+                            <div class="card-head">
+                                <header>TODO LIST</header>
+                                <div class="tools">
+                                    <a class="fa fa-repeat btn-color
+                                        box-refresh" href="javascript:;"></a>
+                                    <a class="t-collapse btn-color fa
+                                        fa-chevron-down" href="javascript:;"></a>
+                                    <a class="t-close btn-color fa fa-times"
+                                        href="javascript:;"></a>
+                                </div>
+                            </div>
+                            <div class="card-body no-padding height-9">
+                                <div class="row">
+                                    <ul class="to-do-list ui-sortable"
+                                        id="sortable-todo">
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox"
+                                                    value="None"
+                                                    id="todo-check1">
+                                                <label for="todo-check1"></label>
+                                            </div>
+                                            <p class="todo-title">UI perfection
+                                                testing for Mega Section
+                                            </p>
+                                            <div class="todo-actionlist
+                                                pull-right clearfix">
+                                                <a href="#" class="todo-remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox"
+                                                    value="None"
+                                                    id="todo-check2">
+                                                <label for="todo-check2"></label>
+                                            </div>
+                                            <p class="todo-title">UI perfection
+                                                testing for Mega Section
+                                            </p>
+                                            <div class="todo-actionlist
+                                                pull-right clearfix">
+                                                <a href="#" class="todo-remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox"
+                                                    value="None"
+                                                    id="todo-check3">
+                                                <label for="todo-check3"></label>
+                                            </div>
+                                            <p class="todo-title">Wiget &amp;
+                                                Design placement</p>
+                                            <div class="todo-actionlist
+                                                pull-right clearfix">
+                                                <a href="#" class="todo-remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox"
+                                                    value="None"
+                                                    id="todo-check4">
+                                                <label for="todo-check4"></label>
+                                            </div>
+                                            <p class="todo-title">Development
+                                                &amp; Wiget placement
+                                            </p>
+                                            <div class="todo-actionlist
+                                                pull-right clearfix">
+                                                <a href="#" class="todo-remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="todo-check pull-left">
+                                                <input type="checkbox"
+                                                    value="None"
+                                                    id="todo-check5">
+                                                <label for="todo-check5"></label>
+                                            </div>
+                                            <p class="todo-title">Test Complete
+                                            </p>
+                                            <div class="todo-actionlist
+                                                pull-right clearfix">
+                                                <a href="#" class="todo-remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="box-footer">
+                                    <form action="#" method="post">
+                                        <div class="input-group">
+                                            <input type="text" name="message"
+                                                placeholder="Enter your ToDo
+                                                List" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn
+                                                    btn-warning btn-flat">Add</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end new patient list -->
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="card card-box">
+                            <div class="card-head">
+                                <header>Booked Appointment List</header>
+                                <div class="tools">
+                                    <a class="fa fa-repeat btn-color
+                                        box-refresh" href="javascript:;"></a>
+                                    <a class="t-collapse btn-color fa
+                                        fa-chevron-down" href="javascript:;"></a>
+                                    <a class="t-close btn-color fa fa-times"
+                                        href="javascript:;"></a>
+                                </div>
+                            </div>
+                            <div class="card-body no-padding height-9">
+                                <div class="row table-padding">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="btn-group">
+                                            <a
+                                                href="book_appointment_material.html"
+                                                id="addRow" class="btn
+                                                btn-info">
+                                                Add New
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="btn-group pull-right">
+                                            <a class="btn deepPink-bgcolor
+                                                btn-outline dropdown-toggle"
+                                                data-toggle="dropdown">Tools
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu
+                                                pull-right">
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa fa-print"></i>
+                                                        Print </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa
+                                                            fa-file-pdf-o"></i>
+                                                        Save as PDF </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <i class="fa
+                                                            fa-file-excel-o"></i>
+                                                        Export to Excel </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped
+                                        table-bordered table-hover
+                                        table-checkable order-column"
+                                        id="example4">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="group-checkable"
+                                                            data-set="#sample_1
+                                                            .checkboxes" />
+                                                        <span></span>
+                                                    </label>
+                                                </th>
+                                                <th>Patient Name</th>
+                                                <th>Assigned Doctor</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Actions </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd gradeX">
+                                                <td>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="checkboxes"
+                                                            value="1" />
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td> Jayesh Patel </td>
+                                                <td>
+                                                    <a
+                                                        href="mailto:shuxer@gmail.com">
+                                                        Dr.Rajesh </a>
+                                                </td>
+                                                <td class="center"> 12/05/2016
+                                                </td>
+                                                <td class="center"> 10:45 </td>
+                                                <td class="center">
+                                                    <div class="btn-group">
+                                                        <button class="btn
+                                                            btn-xs btn-warning
+                                                            dropdown-toggle
+                                                            center no-margin"
+                                                            type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                            <i class="fa
+                                                                fa-angle-down"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu
+                                                            pull-left"
+                                                            role="menu">
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-trash-o"></i>
+                                                                    Delete </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-ban"></i>
+                                                                    Cancel </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-clock-o"></i>
+                                                                    Postpone
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd gradeX">
+                                                <td>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="checkboxes"
+                                                            value="1" />
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td> Pooja Patel </td>
+                                                <td>
+                                                    <a
+                                                        href="mailto:looper90@gmail.com">
+                                                        Dr.Sarah Smith </a>
+                                                </td>
+                                                <td class="center"> 12/05/2016
+                                                </td>
+                                                <td class="center"> 10:55 </td>
+                                                <td class="center">
+                                                    <div class="btn-group">
+                                                        <button class="btn
+                                                            btn-xs btn-info
+                                                            dropdown-toggle
+                                                            no-margin"
+                                                            type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                            <i class="fa
+                                                                fa-angle-down"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu"
+                                                            role="menu">
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-trash-o"></i>
+                                                                    Delete </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-ban"></i>
+                                                                    Cancel </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-clock-o"></i>
+                                                                    Postpone
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd gradeX">
+                                                <td>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="checkboxes"
+                                                            value="1" />
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td> Pankaj Singh </td>
+                                                <td>
+                                                    <a
+                                                        href="mailto:userwow@yahoo.com">
+                                                        Dr.Rajesh </a>
+                                                </td>
+                                                <td class="center"> 12/05/2016
+                                                </td>
+                                                <td class="center"> 11:15 </td>
+                                                <td class="center">
+                                                    <div class="btn-group">
+                                                        <button class="btn
+                                                            btn-xs btn-success
+                                                            dropdown-toggle
+                                                            no-margin"
+                                                            type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                            <i class="fa
+                                                                fa-angle-down"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu"
+                                                            role="menu">
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-trash-o"></i>
+                                                                    Delete </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-ban"></i>
+                                                                    Cancel </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-clock-o"></i>
+                                                                    Postpone
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd gradeX">
+                                                <td>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="checkboxes"
+                                                            value="1" />
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td> Raj Malhotra </td>
+                                                <td>
+                                                    <a
+                                                        href="mailto:doctormail@gmail.com">
+                                                        Dr.Megha Trivedi </a>
+                                                </td>
+                                                <td class="center"> 12/05/2016
+                                                </td>
+                                                <td class="center"> 11:25 </td>
+                                                <td class="center">
+                                                    <div class="btn-group">
+                                                        <button class="btn
+                                                            btn-xs btn-primary
+                                                            dropdown-toggle
+                                                            no-margin"
+                                                            type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                            <i class="fa
+                                                                fa-angle-down"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu"
+                                                            role="menu">
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-trash-o"></i>
+                                                                    Delete </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-ban"></i>
+                                                                    Cancel </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-clock-o"></i>
+                                                                    Postpone
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd gradeX">
+                                                <td>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="checkboxes"
+                                                            value="1" />
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td> Sneha Pandya </td>
+                                                <td>
+                                                    <a
+                                                        href="mailto:doctormail@gmail.com">
+                                                        Dr.Sarah Smith </a>
+                                                </td>
+                                                <td class="center"> 12/05/2016
+                                                </td>
+                                                <td class="center"> 11:35 </td>
+                                                <td class="center">
+                                                    <div class="btn-group">
+                                                        <button class="btn
+                                                            btn-xs btn-warning
+                                                            dropdown-toggle
+                                                            no-margin"
+                                                            type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                            <i class="fa
+                                                                fa-angle-down"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu"
+                                                            role="menu">
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-trash-o"></i>
+                                                                    Delete </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-ban"></i>
+                                                                    Cancel </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-clock-o"></i>
+                                                                    Postpone
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd gradeX">
+                                                <td>
+                                                    <label class="rt-chkbox
+                                                        rt-chkbox-single
+                                                        rt-chkbox-outline">
+                                                        <input type="checkbox"
+                                                            class="checkboxes"
+                                                            value="1" />
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td> Sameer Jain </td>
+                                                <td>
+                                                    <a
+                                                        href="mailto:doctormail@gmail.com">
+                                                        Dr.Megha Trivedi </a>
+                                                </td>
+                                                <td class="center"> 12/05/2016
+                                                </td>
+                                                <td class="center"> 11:45 </td>
+                                                <td class="center">
+                                                    <div class="btn-group">
+                                                        <button class="btn
+                                                            btn-xs btn-danger
+                                                            dropdown-toggle
+                                                            no-margin"
+                                                            type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            Actions
+                                                            <i class="fa
+                                                                fa-angle-down"></i>
+                                                        </button>
+                                                        <ul
+                                                            class="dropdown-menu"
+                                                            role="menu">
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-trash-o"></i>
+                                                                    Delete </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-ban"></i>
+                                                                    Cancel </a>
+                                                            </li>
+                                                            <li>
+                                                                <a
+                                                                    href="javascript:;">
+                                                                    <i class="fa
+                                                                        fa-clock-o"></i>
+                                                                    Postpone
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-box">
+                            <div class="card-head">
+                                <header>Doctors List</header>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <ul class="docListWindow">
+                                        <li>
+                                            <div class="prog-avatar">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc1.jpg"
+                                                    alt="" width="40"
+                                                    height="40">
+                                            </div>
+                                            <div class="details">
+                                                <div class="title">
+                                                    <a href="#">Dr.Rajesh</a>
+                                                    -(MBBS,MD)
+                                                </div>
+                                                <div>
+                                                    <span class="clsAvailable">Available</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="prog-avatar">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc2.jpg"
+                                                    alt="" width="40"
+                                                    height="40">
+                                            </div>
+                                            <div class="details">
+                                                <div class="title">
+                                                    <a href="#">Dr.Sarah Smith</a>
+                                                    -(MBBS,MD)
+                                                </div>
+                                                <div>
+                                                    <span class="clsAvailable">Available</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="prog-avatar">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc3.jpg"
+                                                    alt="" width="40"
+                                                    height="40">
+                                            </div>
+                                            <div class="details">
+                                                <div class="title">
+                                                    <a href="#">Dr.John Deo</a>
+                                                    - (BDS,MDS)
+                                                </div>
+                                                <div>
+                                                    <span
+                                                        class="clsNotAvailable">Not
+                                                        Available</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="prog-avatar">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc4.jpg"
+                                                    alt="" width="40"
+                                                    height="40">
+                                            </div>
+                                            <div class="details">
+                                                <div class="title">
+                                                    <a href="#">Dr.Jay Soni</a>
+                                                    - (BHMS)
+                                                </div>
+                                                <div>
+                                                    <span class="clsOnLeave">On
+                                                        Leave</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="prog-avatar">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc5.jpg"
+                                                    alt="" width="40"
+                                                    height="40">
+                                            </div>
+                                            <div class="details">
+                                                <div class="title">
+                                                    <a href="#">Dr.Jacob Ryan</a>
+                                                    - (MBBS,MS)
+                                                </div>
+                                                <div>
+                                                    <span
+                                                        class="clsNotAvailable">Not
+                                                        Available</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="prog-avatar">
+                                                <img
+                                                    src="./assets/dashboard/img/doc/doc6.jpg"
+                                                    alt="" width="40"
+                                                    height="40">
+                                            </div>
+                                            <div class="details">
+                                                <div class="title">
+                                                    <a href="#">Dr.Megha Trivedi</a>
+                                                    - (MBBS,MS)
+                                                </div>
+                                                <div>
+                                                    <span class="clsAvailable">Available</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="text-center full-width">
+                                        <a href="#">View all</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page content -->
+        <!-- start chat sidebar -->
+        <div class="chat-sidebar-container" data-close-on-body-click="false">
+            <div class="chat-sidebar">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#quick_sidebar_tab_1" class="nav-link active
+                            tab-icon" data-toggle="tab">
+                            <i class="material-icons">chat</i>Chat
+                            <span class="badge badge-danger">4</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#quick_sidebar_tab_3" class="nav-link tab-icon"
+                            data-toggle="tab">
+                            <i class="material-icons">settings</i> Settings
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!-- Start Doctor Chat -->
+                    <div class="tab-pane active chat-sidebar-chat in active
+                        show" role="tabpanel" id="quick_sidebar_tab_1">
+                        <div class="chat-sidebar-list">
+                            <div class="chat-sidebar-chat-users
+                                slimscroll-style" data-rail-color="#ddd"
+                                data-wrapper-class="chat-sidebar-list">
+                                <div class="chat-header">
+                                    <h5 class="list-heading">Online</h5>
+                                </div>
+                                <ul class="media-list list-items">
+                                    <li class="media">
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc3.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="online dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">John Deo</h5>
+                                            <div class="media-heading-sub">Spine
+                                                Surgeon</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-status">
+                                            <span class="badge badge-success">5</span>
+                                        </div>
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc1.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="busy dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Rajesh</h5>
+                                            <div class="media-heading-sub">Director</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc5.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="away dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Jacob Ryan</h5>
+                                            <div class="media-heading-sub">Ortho
+                                                Surgeon</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-status">
+                                            <span class="badge badge-danger">8</span>
+                                        </div>
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc4.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="online dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Kehn
+                                                Anderson</h5>
+                                            <div class="media-heading-sub">CEO</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc2.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="busy dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Sarah
+                                                Smith</h5>
+                                            <div class="media-heading-sub">Anaesthetics</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc7.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="online dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Vlad
+                                                Cardella</h5>
+                                            <div class="media-heading-sub">Cardiologist</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="chat-header">
+                                    <h5 class="list-heading">Offline</h5>
+                                </div>
+                                <ul class="media-list list-items">
+                                    <li class="media">
+                                        <div class="media-status">
+                                            <span class="badge badge-warning">4</span>
+                                        </div>
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc6.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="offline dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Jennifer
+                                                Maklen</h5>
+                                            <div class="media-heading-sub">Nurse</div>
+                                            <div class="media-heading-small">Last
+                                                seen 01:20 AM</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc8.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="offline dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Lina Smith</h5>
+                                            <div class="media-heading-sub">Ortho
+                                                Surgeon</div>
+                                            <div class="media-heading-small">Last
+                                                seen 11:14 PM</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <div class="media-status">
+                                            <span class="badge badge-success">9</span>
+                                        </div>
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc9.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="offline dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Jeff Adam</h5>
+                                            <div class="media-heading-sub">Compounder</div>
+                                            <div class="media-heading-small">Last
+                                                seen 3:31 PM</div>
+                                        </div>
+                                    </li>
+                                    <li class="media">
+                                        <img class="media-object"
+                                            src="./assets/dashboard/img/doc/doc10.jpg"
+                                            width="35" height="35"
+                                            alt="...">
+                                        <i class="offline dot"></i>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Anjelina
+                                                Cardella</h5>
+                                            <div class="media-heading-sub">Physiotherapist</div>
+                                            <div class="media-heading-small">Last
+                                                seen 7:45 PM</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chat-sidebar-item">
+                            <div class="chat-sidebar-chat-user">
+                                <div class="page-quick-sidemenu">
+                                    <a href="javascript:;"
+                                        class="chat-sidebar-back-to-list">
+                                        <i class="fa fa-angle-double-left"></i>Back
+                                    </a>
+                                </div>
+                                <div class="chat-sidebar-chat-user-messages">
+                                    <div class="post out">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/dp.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Kiran
+                                                Patel</a>
+                                            <span class="datetime">9:10</span>
+                                            <span class="body-out"> could you
+                                                send me menu icons ? </span>
+                                        </div>
+                                    </div>
+                                    <div class="post in">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/doc/doc5.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Jacob
+                                                Ryan</a>
+                                            <span class="datetime">9:10</span>
+                                            <span class="body"> please give me
+                                                10 minutes. </span>
+                                        </div>
+                                    </div>
+                                    <div class="post out">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/dp.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Kiran
+                                                Patel</a>
+                                            <span class="datetime">9:11</span>
+                                            <span class="body-out"> ok fine :)
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="post in">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/doc/doc5.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Jacob
+                                                Ryan</a>
+                                            <span class="datetime">9:22</span>
+                                            <span class="body">Sorry for the
+                                                delay. i sent mail to you. let
+                                                me know if it is ok or not.</span>
+                                        </div>
+                                    </div>
+                                    <div class="post out">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/dp.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Kiran
+                                                Patel</a>
+                                            <span class="datetime">9:26</span>
+                                            <span class="body-out"> it is
+                                                perfect! :) </span>
+                                        </div>
+                                    </div>
+                                    <div class="post out">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/dp.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Kiran
+                                                Patel</a>
+                                            <span class="datetime">9:26</span>
+                                            <span class="body-out"> Great!
+                                                Thanks. </span>
+                                        </div>
+                                    </div>
+                                    <div class="post in">
+                                        <img class="avatar" alt=""
+                                            src="./assets/dashboard/img/doc/doc5.jpg"
+                                            />
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a href="javascript:;" class="name">Jacob
+                                                Ryan</a>
+                                            <span class="datetime">9:27</span>
+                                            <span class="body"> it is my
+                                                pleasure :) </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-sidebar-chat-user-form">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                            placeholder="Type a message
+                                            here...">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn
+                                                deepPink-bgcolor">
+                                                <i class="fa fa-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Doctor Chat -->
+                    <!-- Start Setting Panel -->
+                    <div class="tab-pane chat-sidebar-settings" role="tabpanel"
+                        id="quick_sidebar_tab_3">
+                        <div class="chat-sidebar-settings-list
+                            slimscroll-style">
+                            <div class="chat-header">
+                                <h5 class="list-heading">Layout Settings</h5>
+                            </div>
+                            <div class="chatpane inner-content">
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-text">Sidebar
+                                            Position</div>
+                                        <div class="setting-set">
+                                            <select class="sidebar-pos-option
+                                                form-control input-inline
+                                                input-sm input-small">
+                                                <option value="left"
+                                                    selected="selected">Left</option>
+                                                <option value="right">Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Header</div>
+                                        <div class="setting-set">
+                                            <select class="page-header-option
+                                                form-control input-inline
+                                                input-sm input-small">
+                                                <option value="fixed"
+                                                    selected="selected">Fixed</option>
+                                                <option value="default">Default</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Sidebar Menu
+                                        </div>
+                                        <div class="setting-set">
+                                            <select class="sidebar-menu-option
+                                                form-control input-inline
+                                                input-sm input-small">
+                                                <option value="accordion"
+                                                    selected="selected">Accordion</option>
+                                                <option value="hover">Hover</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Footer</div>
+                                        <div class="setting-set">
+                                            <select class="page-footer-option
+                                                form-control input-inline
+                                                input-sm input-small">
+                                                <option value="fixed">Fixed</option>
+                                                <option value="default"
+                                                    selected="selected">Default</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-header">
+                                    <h5 class="list-heading">Account Settings</h5>
+                                </div>
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-text">Notifications</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-1">
+                                                    <input type="checkbox"
+                                                        id="switch-1"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Show Online</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-7">
+                                                    <input type="checkbox"
+                                                        id="switch-7"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Status</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-2">
+                                                    <input type="checkbox"
+                                                        id="switch-2"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">2 Steps
+                                            Verification</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-3">
+                                                    <input type="checkbox"
+                                                        id="switch-3"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-header">
+                                    <h5 class="list-heading">General Settings</h5>
+                                </div>
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-text">Location</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-4">
+                                                    <input type="checkbox"
+                                                        id="switch-4"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Save Histry</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-5">
+                                                    <input type="checkbox"
+                                                        id="switch-5"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="setting-item">
+                                        <div class="setting-text">Auto Updates</div>
+                                        <div class="setting-set">
+                                            <div class="switch">
+                                                <label class="mdl-switch
+                                                    mdl-js-switch
+                                                    mdl-js-ripple-effect"
+                                                    for="switch-6">
+                                                    <input type="checkbox"
+                                                        id="switch-6"
+                                                        class="mdl-switch__input"
+                                                        checked>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end chat sidebar -->
+    </div>
+</div>
+
+<!-- end header -->>
