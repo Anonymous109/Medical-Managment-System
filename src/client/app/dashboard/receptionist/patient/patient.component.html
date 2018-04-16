@@ -74,11 +74,11 @@
                             </thead>
                             <tbody>
                               <tr class="odd gradeX" *ngFor="let patientDisplay
-                                of patients">
+                                of patients | async">
                                 <td class="patient-img">
                                   <img
                                     src="./assets/dashboard/img/patients/patient1.png"
-                                    alt="">
+                                    alt=""> 
                                 </td>
                                 <td>{{patientDisplay.firstname}}
                                   {{patientDisplay.lastname}}</td>

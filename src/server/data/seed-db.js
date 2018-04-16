@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 
 const users = require('./users');
 const patients = require('./patients');
+const appointments = require('./appointments');
 
 require('dotenv').config();
 
@@ -38,3 +39,4 @@ function seedCollection(collectionName, initialRecords) {
 
 seedCollection('users', users);
 seedCollection('patients', patients);
+seedCollection('appointments', appointments);

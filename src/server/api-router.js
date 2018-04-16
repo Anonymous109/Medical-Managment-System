@@ -82,6 +82,7 @@ function apiRouter(database) {
     });
   })
 
+  
   //Lockscreen
   router.post('/lock', (req, res)=> {
 

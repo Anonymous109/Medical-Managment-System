@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Patient } from '../shared/patient.model';
+import { Observable } from 'rxjs';
 @Injectable()
 export class AdminDataFetcherService {
 
   private doctorsAmount: Number;
-  patients:Patient[];
+  patients:Observable<Array<any>>;
 
   constructor(private api: ApiService) {
         
@@ -26,9 +27,11 @@ export class AdminDataFetcherService {
     return 1;
    }
 
-   getPatients():Patient[] {
-      
-       return this.patients;
+   currentUser:string;
+   getCurrentUser():string {
+       this.api.get('/lock').subscribe(data=>{
+            this.currentUser = data.user;
+       });
+       return this.currentUser;
    }
-
 }

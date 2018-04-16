@@ -1,0 +1,11 @@
+[
+    {
+        "name":"Alex Birhanu", "email": "alex@gmail.com", "dateOfAppointment": "12 Jun 2018", "from":"07:15",
+        "to": "07:45","gender": "male", "phone": "0924757323", "consultingDoctor": "Yohannes Girma", "Injury/Condition": "Fever"
+    },
+    {
+        "name":"Bemnet Wondemu", "email": "emnetbesu@outlook.com", "dateOfAppointment": "28 July 2018", "from":"12:25",
+        "to": "12:45","gender":"female",  "phone": "0913478545", "consultingDoctor": "Yohannes Girma", "Injury/Condition": "Malaria"
+    }
+    
+]
