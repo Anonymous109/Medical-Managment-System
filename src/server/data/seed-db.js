@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const users = require('./users');
 const patients = require('./patients');
 const appointments = require('./appointments');
+const doctors = require('./doctors');
 
 require('dotenv').config();
 
@@ -19,7 +20,6 @@ function seedCollection(collectionName, initialRecords) {
 
     initialRecords.forEach((item) => {
       if (item.password) {
-        console.log("items " + item.password);
         item.password = bcrypt.hashSync(item.password, 10);
       }
     });
@@ -27,7 +27,7 @@ function seedCollection(collectionName, initialRecords) {
     console.log('inserting records...');
 
     collection.insertMany(initialRecords, (err, result) => {
-      console.log(`${result.insertedCount} records inserted.`);
+      console.log(`${result.insertedCount} ${collectionName} records inserted.`);
       console.log('closing connection...');
       db.close();
       console.log('done.');
@@ -40,3 +40,4 @@ function seedCollection(collectionName, initialRecords) {
 seedCollection('users', users);
 seedCollection('patients', patients);
 seedCollection('appointments', appointments);
+seedCollection('doctors', doctors);

@@ -50,6 +50,16 @@ import { PatientComponent as ReceptionistDashPatientComponent } from './dashboar
 import { AppointmentComponent as ReceptionistDashAppointmentComponent } from './dashboard/receptionist/appointment/appointment.component';
 import { AddAppointmentComponent as ReceptionistDashAddAppointmentComponent } from './dashboard/receptionist/appointment/add-appointment/add-appointment.component';
 
+// Nurse UI
+import { BedComponent as NurseDashBedComponent } from './dashboard/nurse/bed/bed.component';
+import { BloodBankComponent as NurseDashBloodBankComponent } from './dashboard/nurse/blood-bank/blood-bank.component';
+import { DashboardComponent as NurseDashComponent } from './dashboard/nurse/dashboard/dashboard.component';
+import { PatientComponent as NurseDashPatientComponent } from './dashboard/nurse/patient/patient.component';
+import { ProfileComponent as NurseDashProfileComponent } from './dashboard/nurse/profile/profile.component';
+import { ReportComponent as NurseDashReportComponent } from './dashboard/nurse/report/report.component';
+
+
+
 const routes: Routes = [
   {
     path: '',
@@ -171,23 +181,52 @@ const routes: Routes = [
   },
   {
     path: "receptionist/dash",
-    component: ReceptionistDashComponent
+    component: ReceptionistDashComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/patients",
-    component: ReceptionistDashPatientComponent
+    component: ReceptionistDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/patients/add",
-    component: ReceptionistDashAddPatientComponent
+    component: ReceptionistDashAddPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/appointments",
-    component: ReceptionistDashAppointmentComponent
+    component: ReceptionistDashAppointmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/appointments/add",
-    component: ReceptionistDashAddAppointmentComponent
+    component: ReceptionistDashAddAppointmentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path : "nurse/dash",
+    component: NurseDashComponent
+  },
+  {
+    path: "nurse/patients",
+    component: NurseDashPatientComponent
+  },
+  {
+    path: "nurse/beds",
+    component: NurseDashBedComponent
+  },
+  {
+    path: "nurse/bloodBank",
+    component: NurseDashBloodBankComponent
+  },
+  {
+    path: "nurse/profile",
+    component: NurseDashProfileComponent
+  },
+  {
+    path: "nurse/report",
+    component: NurseDashReportComponent
   }, 
   {
     path: 'lock/:user',

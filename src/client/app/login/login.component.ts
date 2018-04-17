@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit {
     private flashMessagesService: FlashMessagesService,
     public toastr: ToastsManager,
     vcr: ViewContainerRef
-  ) { 
+  ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
     if (this.auth.isLoggedIn()) {
-      
+
       const payload = {
         tempToken: this.auth.getToken()
       };
@@ -65,16 +65,16 @@ export class LoginComponent implements OnInit {
       password: values.password
     };
 
-   
+
     this.api.post('authenticate', payload)
       .subscribe(data => {
 
         //Handle request for login {where user is not found or password is incorrect}
         if (data.error) {
-            this.flashMessagesService.show(data.error, {
-              classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
-              timeout: 3000, // Default is 3000
-            });
+          this.flashMessagesService.show(data.error, {
+            classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
+            timeout: 3000, // Default is 3000
+          });
         }
 
         this.auth.setToken(data.token);
@@ -82,6 +82,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin/dash']);
         } else if (data.role == 'receptionist') {
           this.router.navigate(['/receptionist/dash']);
+        } else if (data.role == 'nurse') {
+          this.router.navigate(['/nurse/dash']);
         }
 
       });

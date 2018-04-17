@@ -8,7 +8,7 @@ function apiRouter(database) {
   const router = express.Router();
 
   router.use(
-      checkJwt({ secret: process.env.JWT_SECRET }).unless({ path: '/api/authenticate'})
+    checkJwt({ secret: process.env.JWT_SECRET }).unless({ path: '/api/authenticate' })
   );
 
   router.use((err, req, res, next) => {
@@ -27,12 +27,12 @@ function apiRouter(database) {
 
   });
 
+  //Fetch and Send Doctors List
+  router.get('/doctorsList', (req, res) => {
+    const doctorsCollection = database.collection('doctors');
 
-  router.get('/getDoctors', (req, res) => {
-    const userCollection = database.collection('users');
-
-    userCollection.find({role: 'doctor'}).toArray((err,docs) => {
-        return res.json(docs);
+    doctorsCollection.find({}).toArray((err, docs) => {
+      return res.json(docs);
     })
   })
 
@@ -52,111 +52,87 @@ function apiRouter(database) {
     });
   });
 
+  /* -------------------  Doctors Section -----------------------*/
+
+        router.get('doctorsList', (req, res)=> {
+          const doctorsCollection = database.collection('doctors');
+          doctorsCollection.find({}).toArray((err,result)=> {
+            if(err){
+              return res.json({ error: "Error: Unable to reterive doctors" });
+            }
+            return res.json(result);
+          })
+        })
   
-  //SignUp
 
-  router.post('/signup', (req, res) => {
-    const user = req.body;
-    
-    user.password = bcrypt.hashSync(user.password, 10);
+   /* -------------------  Doctors Section Ends -----------------------*/      
 
-    const userCollection = database.collection('users');
-    userCollection.insertOne(user, (err, r) => {
-      if(err) {
-        return res.status(500).json({error: 'Error Occured when inserting new Record'});
-      }
 
-      const userInserted = r.ops[0];
-      //return res.status(201).json(userInserted);
-      const payload = {
-        username: user.username,
-        role: user.role
-      };
+  /* ---------------------   Patients Section ------------------*/
 
-      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '4h' });
+        router.get('/patientsList', (req, res) => {
 
-      return res.json({
-        message: 'successfuly registered',
-        token: token
-      });
-    });
-  })
+          const patientCollection = database.collection('patients');
+          //Get list of patients from the collection
+          patientCollection.find({}).toArray((err, result) => {
+            if (err) {
+              return res.json({ error: "Error: Unable to reterive patients" });
+            }
+            return res.json(result);
 
-  
-  //Lockscreen
-  router.post('/lock', (req, res)=> {
+          });
+        })
 
-    const tokenFetched = req.body.token;
-    var decoded = jwt.verify(tokenFetched, process.env.JWT_SECRET);
-    
-    res.json({
-      message : "Account Lock Successs",
-      user : decoded.username,
-      role: decoded.role 
-    });
-  });
+        //Patient Add
+        router.post('/addPatient', (req, res) => {
+          const info = req.body;
+          const patientCollection = database.collection('patients');
 
-  router.get('/patientsList', (req,res) => {
+          //Check whether the patient is found or not
+          patientCollection.findOne({
+            firstname: info.firstname, lastname: info.lastname,
+            gender: info.gender, bloodCategory: info.bloodCategory
+          }, (err, result) => {
+            if (result || err) {
+              return res.json({ warning: 'Error : User already registered' });
+            }
 
-    const patientCollection = database.collection('patients');
-    //Get list of patients from the collection
-    patientCollection.find({}).toArray((err,result) => {
-        if(err){
-            return res.json({error: "Error: Unable to reterive patients"});
-        }
-        return res.json(result);
-           
-    });
-  })
+            //now we checked the patient is new , so insert it
+            patientCollection.insertOne(info, (err, r) => {
 
-  //Patient Add
-  router.post('/addPatient', (req, res) => {
-      const info = req.body;
-      const patientCollection = database.collection('patients');
-      
-      //Check whether the patient is found or not
-      patientCollection.findOne({ firstname: info.firstname,lastname: info.lastname, 
-                                gender: info.gender, bloodCategory: info.bloodCategory},(err, result) => {
-                                  if(result || err) {
-                                    return res.json({ warning: 'Error : User already registered' });
-                                  }
-                      
-                    //now we checked the patient is new , so insert it
-                    patientCollection.insertOne(info, (err, r)=> {
+              if (err) {
+                return res.json({ error: 'Error Occured while inserting Patient Record.' });
+              }
 
-                      if (err) {
-                        return res.json({ error: 'Error Occured while inserting Patient Record.' });
-                      }
-                
-                      const newRecord = r.ops[0];
-                
-                      return res.json({status: 'Patient successfully inserted'});
-              
-                    });
-      });
+              const newRecord = r.ops[0];
 
-      
-  });
+              return res.json({ status: 'Patient successfully inserted' });
 
+            });
+          });
+
+
+        });
+
+  /* ---------------------   Patients Section Ends ------------------*/
 
   //Login 
-
   router.post('/authenticate', (req, res) => {
     const user = req.body;
 
     const usersCollection = database.collection('users');
-    
+
     usersCollection
       .findOne({ username: user.username }, (err, result) => {
         if (!result) {
-          return res.json({ 
+          return res.json({
             error: 'user not found',
-            statusCode: 404  
+            statusCode: 404
           })
         }
 
         if (!bcrypt.compareSync(user.password, result.password)) {
-          return res.json({ 
+          return res.json({
             error: 'incorrect password',
             statusCode: 401
           });
@@ -175,6 +151,48 @@ function apiRouter(database) {
           role: payload.role
         });
       });
+  });
+
+  //SignUp
+  router.post('/signup', (req, res) => {
+    const user = req.body;
+
+    user.password = bcrypt.hashSync(user.password, 10);
+
+    const userCollection = database.collection('users');
+    userCollection.insertOne(user, (err, r) => {
+      if (err) {
+        return res.status(500).json({ error: 'Error Occured when inserting new Record' });
+      }
+
+      const userInserted = r.ops[0];
+      //return res.status(201).json(userInserted);
+      const payload = {
+        username: user.username,
+        role: user.role
+      };
+
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '4h' });
+
+      return res.json({
+        message: 'successfuly registered',
+        token: token
+      });
+    });
+  })
+
+
+  //Lockscreen
+  router.post('/lock', (req, res) => {
+
+    const tokenFetched = req.body.token;
+    var decoded = jwt.verify(tokenFetched, process.env.JWT_SECRET);
+
+    res.json({
+      message: "Account Lock Successs",
+      user: decoded.username,
+      role: decoded.role
+    });
   });
 
   return router;

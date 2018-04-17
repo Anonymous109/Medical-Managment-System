@@ -1,0 +1,15 @@
+[
+    {
+        "firstname": "Abenezer", "lastname": "Mikiyas", "email":"abimilik2018@msn.com", "password":"password",
+        "Address": "Gotera , Addis Ababa", "phone": "0945784515","department": "Cardiology"
+    },
+    {
+        "firstname": "Sirak", "lastname": "Tefera", "email":"sirak.milkiyas@gmail.com", "password":"password",
+        "Address": "Bole , Addis Ababa", "phone": "0914587596","department": "General Surgery"
+    },
+    {
+        "firstname": "Ephrem", "lastname": "Desalegn", "email":"f.konjo@gmail.com", "password":"password",
+        "Address": "Teklehaymanot , Addis Ababa", "phone": "0923698574","department": "Anaesthetics"
+    }
+    
+]

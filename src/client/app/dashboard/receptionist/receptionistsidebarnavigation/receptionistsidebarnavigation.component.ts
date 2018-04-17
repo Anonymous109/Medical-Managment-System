@@ -32,7 +32,7 @@ export class ReceptionistsidebarnavigationComponent implements OnInit {
       this.patients = Observable.interval(100).map(i=>data);
     });
     
-    this.username = this.dataService.getCurrentUser();
+    //this.username = this.dataService.getCurrentUser();
     const tokenFetched = {
       "token" : this.auth.getToken()
     };

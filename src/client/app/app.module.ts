@@ -111,6 +111,7 @@ import { DashboardComponent as NurseDashComponent } from './dashboard/nurse/dash
 import { PatientComponent as NurseDashPatientComponent } from './dashboard/nurse/patient/patient.component';
 import { ProfileComponent as NurseDashProfileComponent } from './dashboard/nurse/profile/profile.component';
 import { ReportComponent as NurseDashReportComponent } from './dashboard/nurse/report/report.component';
+import { NurseSideBarNavigationComponent  } from './dashboard/nurse/nurse-side-bar-navigation/nurse-side-bar-navigation.component';
 
 // -------------------------- --------------------------Nurse Dash Component Ends ------------------ -------------------------- ---------//
 
@@ -140,7 +141,6 @@ import { ReceptionistsidebarnavigationComponent } from './dashboard/receptionist
 
 // -------------------------- --------------------------Receptionist Dash Component Ends ------------------ -------------------------- ---------//
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
-import { NurseSideBarNavigationComponent } from './dashboard/nurse/nurse-side-bar-navigation/nurse-side-bar-navigation.component';
 
 
 @NgModule({
@@ -203,6 +203,7 @@ import { NurseSideBarNavigationComponent } from './dashboard/nurse/nurse-side-ba
     NurseDashPatientComponent,
     NurseDashProfileComponent,
     NurseDashReportComponent,
+    NurseSideBarNavigationComponent,
     PatientDashAdmitHistoryComponent,
     PatientDashAppointmentComponent,
     PatientDashBloodComponent,
@@ -219,8 +220,8 @@ import { NurseSideBarNavigationComponent } from './dashboard/nurse/nurse-side-ba
     LockscreenComponent,
     ReceptionistsidebarnavigationComponent,
     ReceptionistDashAddPatientComponent,
-    ReceptionistDashAddAppointmentComponent,
-    NurseSideBarNavigationComponent
+    ReceptionistDashAddAppointmentComponent
+    
   ],
   imports: [
     BrowserModule,
