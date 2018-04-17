@@ -50,6 +50,14 @@ export class HeaderComponent implements OnInit {
   term:string = "jake";
   
   ngOnInit() {
+    const tokenFetched = {
+      "token" : this.auth.getToken()
+    };
+    
+    //console.log(tokenFetched + " Token Fetched" );
+    this.api.post('lock', tokenFetched).subscribe(data=> {
+        this.userLock = data.user;
+    });
   }
 
   logOut(){
@@ -60,7 +68,7 @@ export class HeaderComponent implements OnInit {
     const tokenFetched = {
       "token" : this.auth.getToken()
     };
-    console.log(tokenFetched);
+    
     //console.log(tokenFetched + " Token Fetched" );
     this.api.post('lock', tokenFetched).subscribe(data=> {
         this.userLock = data.user;

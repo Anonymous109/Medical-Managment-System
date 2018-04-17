@@ -2,16 +2,22 @@
     <h1>MedNet</h1>
 </div>
 <!-- Login Form-->
-<div class="lockscreen-form text-center">
-    <div class="toggle"><a href="index.html"><i class="fa fa-times white-color"></i></a>
-    </div>
-    <div class="form">
-        <img src="./assets/dashboard/img/doc/doc1.png" class="imgroundcorners " alt="John Doe" />
-        <h3>{{username}}</h3>
-        <p>Enter your password to retrieve your session.</p>
-        <input type="password" placeholder="Password" />
-        <button>Login</button>
-        <div class="newaccount"><a href="javascript:void(0)">sign in as a different user</a>
+<form #lockscreenForm="ngForm" (submit)="login(lockscreenForm)">
+    <div class="lockscreen-form text-center">
+        <div class="toggle"><a href="index.html"><i class="fa fa-times
+                    white-color"></i></a>
+        </div>
+        <div class="form">
+            <img src="./assets/dashboard/img/doc/doc1.png"
+                class="imgroundcorners"alt="Lockscreen User Photo" />
+            <h3>{{username}}</h3>
+            <p>Enter your password to retrieve your session.</p>
+            <input type="password" placeholder="Password" name="password" ngModel/>
+            <ngx-flash-messages></ngx-flash-messages>
+            <button type="submit">Login</button>
+            <div class="newaccount"><a [routerLink]="['/login']">sign in as a
+                    different user</a>
+            </div>
         </div>
     </div>
-</div>
+</form>>

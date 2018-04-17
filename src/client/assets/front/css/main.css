@@ -177,7 +177,7 @@ iframe {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
+  opacity: 0.9;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

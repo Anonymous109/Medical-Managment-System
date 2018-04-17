@@ -140,6 +140,7 @@ import { ReceptionistsidebarnavigationComponent } from './dashboard/receptionist
 
 // -------------------------- --------------------------Receptionist Dash Component Ends ------------------ -------------------------- ---------//
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
+import { NurseSideBarNavigationComponent } from './dashboard/nurse/nurse-side-bar-navigation/nurse-side-bar-navigation.component';
 
 
 @NgModule({
@@ -218,7 +219,8 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
     LockscreenComponent,
     ReceptionistsidebarnavigationComponent,
     ReceptionistDashAddPatientComponent,
-    ReceptionistDashAddAppointmentComponent
+    ReceptionistDashAddAppointmentComponent,
+    NurseSideBarNavigationComponent
   ],
   imports: [
     BrowserModule,
