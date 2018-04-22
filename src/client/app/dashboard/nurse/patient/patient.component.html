@@ -72,7 +72,7 @@
                     </thead>
                     <tbody>
                       <tr class="odd gradeX" *ngFor="let patientDisplay
-                        of patients | async">
+                        of patients | async;">
                         <td>
                           <label class="rt-chkbox
                             rt-chkbox-single
@@ -86,9 +86,9 @@
                           {{patientDisplay.lastname}} </td>
                         <td>
                           <select class="form-control
-                            input-height" name="department" #bloodTypeCategory >
+                            input-height" name="department" #bloodTypeCategory [(ngModel)]="selectedValue">
                             <option  value="">Select...</option>
-                            <option  *ngFor="let doctorsDisplay of doctors" value=[doctorsDisplay.email]>{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
+                            <option  *ngFor="let doctorsDisplay of doctors" [ngValue]="doctorsDisplay">{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
                           </select>
                         </td>
                         <td class="center"> 12/05/2016
@@ -112,7 +112,7 @@
                                   Take Vital Sign </a>
                               </li>
                               <li>
-                                <a (click)="assignDoctor()">
+                                <a (click)="assignDoctor(patientDisplay)">
                                   <i class="fa fa-user"></i>
                                   Assign Doctor
                                 </a>

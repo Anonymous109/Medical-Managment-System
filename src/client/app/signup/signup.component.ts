@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       password: values.pass,
       role: "subscriber"
     };
-    console.log('payload '  + payload.firstname + " " + payload.lastname + " " + payload.gender + " " + payload.dateofbirth + " " + payload.password);
+    console.log('payload ' + payload.firstname + " " + payload.lastname + " " + payload.gender + " " + payload.dateofbirth + " " + payload.password);
 
     this.api.post('signup', payload)
       .subscribe(data => {

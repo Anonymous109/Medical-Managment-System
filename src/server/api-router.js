@@ -70,6 +70,34 @@ function apiRouter(database) {
 
   /* ---------------------   Patients Section ------------------*/
 
+        router.post('/assignDoctor', (req,res)=>{
+          
+          const patientInfo = req.body;
+          
+          const patientToBeAssignedFirstName = patientInfo.patientFirstName;
+          const patientToBeAssignedLastName = patientInfo.patientLastName;
+          const patientToBeAssignedGender = patientInfo.patientGender;
+          const patientToBeAssignedAge = patientInfo.patientAge;
+          const assignedDoctorFirstName = patientInfo.assignedDoctorFirstName;
+          const assignedDoctorLastName = patientInfo.assignedDoctorLastName;
+
+          const patientCollection = database.collection('patients');
+          
+          patientCollection.remove({firstname:patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName,
+                                  gender: patientToBeAssignedGender, age: patientToBeAssignedAge},1);
+              
+              const patientsAssigned = database.collection('assignedPatients');
+
+              patientsAssigned.insertOne(patientInfo, (err,result)=>{
+                if (err) {
+                  return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
+                }
+
+                return res.json({message: "Patient " + patientToBeAssignedFirstName + " " + patientToBeAssignedLastName +  " has been Assigned to Dr. " + assignedDoctorFirstName});
+
+            });
+        })
+
         router.get('/patientsList', (req, res) => {
 
           const patientCollection = database.collection('patients');
@@ -94,7 +122,7 @@ function apiRouter(database) {
             gender: info.gender, bloodCategory: info.bloodCategory
           }, (err, result) => {
             if (result || err) {
-              return res.json({ warning: 'Error : User already registered' });
+              return res.json({ warning: 'Error : Patient is already registered' });
             }
 
             //now we checked the patient is new , so insert it
@@ -158,7 +186,7 @@ function apiRouter(database) {
     const user = req.body;
 
     user.password = bcrypt.hashSync(user.password, 10);
-
+    console.log("user pass "+ user.password);
     const userCollection = database.collection('users');
     userCollection.insertOne(user, (err, r) => {
       if (err) {
@@ -172,7 +200,7 @@ function apiRouter(database) {
         role: user.role
       };
 
-      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '4h' });
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' });
 
       return res.json({
         message: 'successfuly registered',
