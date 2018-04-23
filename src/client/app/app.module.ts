@@ -9,7 +9,7 @@ import { ApiService } from './shared/api.service';
 import { AuthService } from './shared/auth.service';
 import { AuthGuard } from './auth.guard';
 import { AdminDataFetcherService } from './shared/admin-data-fetcher.service';
-
+import { ChatServiceService } from './shared/chat-service.service';
 /* ----------- Dependencies Ends ------------------- */
 
 import { NgFlashMessagesModule } from 'ng-flash-messages';
@@ -236,7 +236,7 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
     FlashMessagesModule,
     CalendarModule.forRoot()
   ],
-  providers: [ApiService, AuthService, AuthGuard, AdminDataFetcherService],
+  providers: [ApiService, AuthService, AuthGuard, AdminDataFetcherService,ChatServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

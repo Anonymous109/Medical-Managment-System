@@ -58,7 +58,7 @@ export class PatientComponent implements OnInit {
   }
 
 
-
+  //Assign Patient to Doctor
   assignDoctor(patientDisplay: Patient) {
 
 

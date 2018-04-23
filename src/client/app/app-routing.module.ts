@@ -227,6 +227,10 @@ const routes: Routes = [
   {
     path: "nurse/report",
     component: NurseDashReportComponent
+  },
+  {
+    path: "nurse/profile",
+    component: NurseDashProfileComponent
   }, 
   {
     path: 'lock/:user',
