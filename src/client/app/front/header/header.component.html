@@ -31,9 +31,14 @@
               </ul>
             </div><!-- History Policy End -->
             <!-- Login-Register Start -->
-            <div class="h-login-register clearfix">
-              <a class="hidden-xs" [routerLink]="['/login']">Login</a> <a class="visible-xs" ><i aria-hidden="true" class="fa fa-sign-in"></i></a>
+            <div class="h-login-register clearfix" *ngIf="auth.isLoggedIn();else other">
+                Guest, User    <a class="hidden-xs" (click)="logout()">logout</a> <a class="visible-xs" ><i aria-hidden="true"></i></a>
             </div><!-- Login-Register End -->
+            <ng-template #other>
+                <div class="h-login-register clearfix" >
+                    <a class="hidden-xs" [routerLink]="['/login']">Login</a> <a class="visible-xs" ><i aria-hidden="true" class="fa fa-sign-in"></i></a>
+                  </div>
+            </ng-template>
           </div><!--/.h-right-->
         </div><!--/.col-sm-8 col-md-8"-->
       </div><!--/.row-->
@@ -210,7 +215,7 @@
           <div class="cart-right">
             <a class="phone-btn" href="#"><i aria-hidden="true" class="fa fa-phone"></i>+251 911-94-8745</a>
             <div class="header-cart">
-              <a class="headercartbtn" href="#"><i aria-hidden="true" class="fa fa-shopping-cart"></i> <span>1</span></a>
+              <a class="headercartbtn" href="#"><i aria-hidden="true" class="fa fa-shopping-cart"></i> <span>0</span></a>
               <div class="cart-down-panel">
                 <ul class="cart-list">
                   <li class="mini-cart-item">

@@ -27,16 +27,15 @@ export class SignupComponent implements OnInit {
     const values = form.value;
 
     const payload = {
-      firstname: values.firstname,
-      lastname: values.lastname,
+      fullname: values.fullname,
+      username: values.username,
       gender: values.gender,
-      dateofbirth: values.dob,
+      email: values.email,
       password: values.pass,
       role: "subscriber"
     };
-    console.log('payload ' + payload.firstname + " " + payload.lastname + " " + payload.gender + " " + payload.dateofbirth + " " + payload.password);
-
-    this.api.post('signup', payload)
+    
+    this.api.post("/signup", payload)
       .subscribe(data => {
         this.auth.setToken(data.token);
         this.router.navigate(['/home']);

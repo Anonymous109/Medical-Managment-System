@@ -7,9 +7,79 @@ var jwtDecode = require('jwt-decode');
 function apiRouter(database) {
   const router = express.Router();
 
+  //Login 
+  router.post('/authenticate', (req, res) => {
+    const user = req.body;
+
+    const usersCollection = database.collection('users');
+
+    usersCollection
+      .findOne({ username: user.username }, (err, result) => {
+        if (!result) {
+          return res.json({
+            error: 'user not found',
+            statusCode: 404
+          })
+        }
+
+        if (!bcrypt.compareSync(user.password, result.password)) {
+          return res.json({
+            error: 'incorrect password',
+            statusCode: 401
+          });
+        }
+
+        const payload = {
+          username: result.username,
+          role: result.role
+        };
+
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' });
+
+        return res.json({
+          message: 'successfuly authenticated',
+          token: token,
+          role: payload.role
+        });
+      });
+  });
+
+  //SignUp
+  router.post('/signup', (req, res) => {
+    const user = req.body;
+
+    user.password = bcrypt.hashSync(user.password, 10);
+    
+    const userCollection = database.collection('users');
+    
+    userCollection.insertOne(user, (err, r) => {
+      if (err) {
+        return res.status(500).json({ error: 'Error Occured when inserting new Record' });
+      }
+
+      const userInserted = r.ops[0];
+      //return res.status(201).json(userInserted);
+      const payload = {
+        username: user.username,
+        role: user.role
+      };
+
+      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' });
+
+      return res.json({
+        message: 'successfuly registered',
+        token: token
+      });
+    });
+  })
+  /* --------------------- Security Part Ends --------------------------- */
+
+  /* Other Api Urls goes through the Token Authentication */
+
   router.use(
-    checkJwt({ secret: process.env.JWT_SECRET }).unless({ path: '/api/authenticate' })
+    checkJwt({ secret: process.env.JWT_SECRET })
   );
+  
 
   router.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
@@ -166,71 +236,7 @@ function apiRouter(database) {
 
   /* ---------------------   Patients Section Ends ------------------*/
 
-  //Login 
-  router.post('/authenticate', (req, res) => {
-    const user = req.body;
-
-    const usersCollection = database.collection('users');
-
-    usersCollection
-      .findOne({ username: user.username }, (err, result) => {
-        if (!result) {
-          return res.json({
-            error: 'user not found',
-            statusCode: 404
-          })
-        }
-
-        if (!bcrypt.compareSync(user.password, result.password)) {
-          return res.json({
-            error: 'incorrect password',
-            statusCode: 401
-          });
-        }
-
-        const payload = {
-          username: result.username,
-          role: result.role
-        };
-
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' });
-
-        return res.json({
-          message: 'successfuly authenticated',
-          token: token,
-          role: payload.role
-        });
-      });
-  });
-
-  //SignUp
-  router.post('/signup', (req, res) => {
-    const user = req.body;
-
-    user.password = bcrypt.hashSync(user.password, 10);
-    console.log("user pass " + user.password);
-    const userCollection = database.collection('users');
-    userCollection.insertOne(user, (err, r) => {
-      if (err) {
-        return res.status(500).json({ error: 'Error Occured when inserting new Record' });
-      }
-
-      const userInserted = r.ops[0];
-      //return res.status(201).json(userInserted);
-      const payload = {
-        username: user.username,
-        role: user.role
-      };
-
-      const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' });
-
-      return res.json({
-        message: 'successfuly registered',
-        token: token
-      });
-    });
-  })
-
+  
 
   //Lockscreen
   router.post('/lock', (req, res) => {
