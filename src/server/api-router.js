@@ -140,6 +140,17 @@ function apiRouter(database) {
 
   /* ---------------------   Patients Section ------------------*/
 
+  router.get('/appointmentsList', (req,res)=> {
+    const appointmentsCollection = database.collection('appointments');
+    appointmentsCollection.find({}).toArray((err,result)=>{
+      if (err) {
+        return res.json({ error: "Error: Unable to reterive Appointments, Try Again!" });
+      }
+      return res.json(result);
+
+    })
+  })
+
   router.post('/addAppointment', (req, res) => {
 
     const appointmentBody = req.body;

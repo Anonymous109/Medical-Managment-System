@@ -196,8 +196,7 @@ const routes: Routes = [
   },
   {
     path: "receptionist/appointments",
-    component: ReceptionistDashAppointmentComponent,
-    canActivate: [AuthGuard]
+    component: ReceptionistDashAppointmentComponent
   },
   {
     path: "receptionist/appointments/add",

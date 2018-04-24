@@ -1,4 +1,14 @@
- body {
+.page_wrapper {
+  height: 100% !important;
+  background-image: url('./lockscreen.jpg');
+  font-family: 'RobotoDraft', 'Roboto', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
     
     /* background: linear-gradient(to bottom right, #5D67ED, #46D7EA); */
     color: #666666;
