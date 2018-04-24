@@ -19,7 +19,7 @@
         <div class="page-bar">
           <div class="page-title-breadcrumb">
             <div class="pull-left">
-              <div class="page-title">Add Appointment</div>
+              <!-- <div class="page-title">Add Appointment</div> -->
             </div>
             <ol class="breadcrumb page-breadcrumb pull-right">
               <li>
@@ -40,7 +40,7 @@
           <div class="col-md-12 col-sm-12">
             <div class="card card-box">
               <div class="card-head">
-                <header>Patient Information</header>
+                <header>Add Appointment</header>
                 <button id="panel-button" class="mdl-button mdl-js-button
                   mdl-button--icon pull-right" data-upgraded=",MaterialButton">
                   <i class="material-icons">more_vert</i>
@@ -61,139 +61,58 @@
                   <div class="form-body">
                     <div class="form-group row">
                       <label class="control-label
-                        col-md-3">First Name
+                        col-md-3">Date
                         <span class="required"> *
                         </span>
                       </label>
                       <div class="col-md-5">
-                        <input type="text" name="firstname" data-required="1"
-                          placeholder="enter first name" class="form-control
+                        <input type="date" name="appointment_date" [(ngModel)]="selectedDate" data-required="1"
+                          placeholder="Choose Appointment Date" class="form-control
                           input-height" /> </div>
                     </div>
                     <div class="form-group row">
                       <label class="control-label
-                        col-md-3">Last Name
+                        col-md-3">Doctor
                         <span class="required"> *
                         </span>
                       </label>
                       <div class="col-md-5">
-                        <input type="text" name="lastname" data-required="1"
-                          placeholder="enter last name" class="form-control
-                          input-height" /> </div>
+                          <select class="form-control
+                          input-height" name="appointmentDoctorList" [(ngModel)]="selectedDoctor">
+                            <option  value="">Select Doctor</option>
+                            <option  *ngFor="let doctorsDisplay of doctors" [ngValue]="doctorsDisplay">{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
+                        </select>  
+                      </div>
                     </div>
                     <div class="form-group row">
                       <label class="control-label
-                        col-md-3">Email
+                        col-md-3">Patient
+                        <span class="required"> *
+                        </span>
                       </label>
                       <div class="col-md-5">
                         <div class="input-group">
                           <span class="input-group-addon">
-                            <i class="fa
-                              fa-envelope"></i>
+                            
                           </span>
-                          <input type="text" class="form-control
-                            input-height" name="email" placeholder="Email
-                            Address"> </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="control-label
-                        col-md-3">Password
-                        <span class="required"> *
-                        </span>
-                      </label>
-                      <div class="col-md-5">
-                        <input type="password" name="pswd" data-required="1"
-                          placeholder="enter Password" class="form-control
-                          input-height" /> </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="control-label
-                        col-md-3">Phone
-                        <span class="required"> *
-                        </span>
-                      </label>
-                      <div class="col-md-5">
-                        <input type="text" name="designation" data-required="1"
-                          placeholder="enter your phone" class="form-control
-                          input-height" /> </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="control-label
-                        col-md-3">Gender
-                        <span class="required"> *
-                        </span>
-                      </label>
-                      <div class="col-md-5">
-                        <select class="form-control
-                          input-height" name="gender">
-                          <option value="">Select...</option>
-                          <option value="Category 1">Male</option>
-                          <option value="Category 2">Female</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="control-label
-                        col-md-3">Age.
-                        <span class="required"> *
-                        </span>
-                      </label>
-                      <div class="col-md-5">
-                        <input name="number" type="text" placeholder="age"
-                          class="form-control
-                          input-height" /> </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="control-label
-                        col-md-3">Date Of Birth
-                        <span class="required"> *
-                        </span>
-                      </label>
-                      <div class="col-md-5">
-                        <div class="input-group date
-                          form_date" data-date="" data-date-format="dd MM
-                          yyyy" data-link-field="dtp_input2"
-                          data-link-format="yyyy-mm-dd">
-                          <input class="form-control
-                            input-height" size="16" placeholder="date of
-                            Birth" type="text" value="">
-                          <span class="input-group-addon">
-                            <span class="fa
-                              fa-calendar"></span>
-                          </span>
+                          <select class="form-control
+                            input-height" name="appointmentPatientList" [(ngModel)]="selectedPatient">
+                            <option  value="">Select Patient</option>
+                            <option  *ngFor="let patientDisplay of patients | async;" [ngValue]="patientDisplay">{{patientDisplay.firstname}} {{patientDisplay.lastName }}</option>
+                          </select>  
                         </div>
-                        <input type="hidden" id="dtp_input2" value="" />
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="control-label
-                        col-md-3">Blood Group
-                        <span class="required"> *
-                        </span>
-                      </label>
-                      <div class="col-md-5">
-                        <select class="form-control
-                          input-height" name="department">
-                          <option value="">Select...</option>
-                          <option value="Category 1">A+</option>
-                          <option value="Category 2">A-</option>
-                          <option value="Category 3">B+</option>
-                          <option value="Category 3">B-</option>
-                          <option value="Category 3">AB+</option>
-                          <option value="Category 3">AB-</option>
-                          <option value="Category 3">O+</option>
-                          <option value="Category 3">O-</option>
-                        </select>
+                        <div>
+                          <ngx-flash-messages></ngx-flash-messages>
+                        </div>
                       </div>
                     </div>
                     <div class="form-actions">
                       <div class="row">
                         <div class="offset-md-3
                           col-md-9">
-                          <button class="btn btn-info">Submit</button>
+                          <button class="btn btn-info" (click)="addAppointment()">Save</button>
                           <button type="button" class="btn btn-warning"
-                            [routerLink]="['/receptionist/patients']">Cancel</button>
+                            [routerLink]="['/receptionist/appointments']">Cancel</button>
                         </div>
                       </div>
                     </div>

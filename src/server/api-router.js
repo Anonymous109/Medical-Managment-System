@@ -54,93 +54,115 @@ function apiRouter(database) {
 
   /* -------------------  Doctors Section -----------------------*/
 
-        router.get('doctorsList', (req, res)=> {
-          const doctorsCollection = database.collection('doctors');
-          doctorsCollection.find({}).toArray((err,result)=> {
-            if(err){
-              return res.json({ error: "Error: Unable to reterive doctors" });
-            }
-            return res.json(result);
-          })
-        })
-  
+  router.get('doctorsList', (req, res) => {
+    const doctorsCollection = database.collection('doctors');
+    doctorsCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error: Unable to reterive doctors" });
+      }
+      return res.json(result);
+    })
+  })
 
-   /* -------------------  Doctors Section Ends -----------------------*/      
+
+  /* -------------------  Doctors Section Ends -----------------------*/
 
 
   /* ---------------------   Patients Section ------------------*/
 
-        router.post('/assignDoctor', (req,res)=>{
-          
-          const patientInfo = req.body;
-          
-          const patientToBeAssignedFirstName = patientInfo.patientFirstName;
-          const patientToBeAssignedLastName = patientInfo.patientLastName;
-          const patientToBeAssignedGender = patientInfo.patientGender;
-          const patientToBeAssignedAge = patientInfo.patientAge;
-          const assignedDoctorFirstName = patientInfo.assignedDoctorFirstName;
-          const assignedDoctorLastName = patientInfo.assignedDoctorLastName;
+  router.post('/addAppointment', (req, res) => {
 
-          const patientCollection = database.collection('patients');
-          
-          patientCollection.remove({firstname:patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName,
-                                  gender: patientToBeAssignedGender, age: patientToBeAssignedAge},1);
-              
-              const patientsAssigned = database.collection('assignedPatients');
+    const appointmentBody = req.body;
+    
+    const patientFirstName = appointmentBody.patientFirstName;
+    const patientLastName = appointmentBody.patientLastName;
+    const doctorFirstName = appointmentBody.doctorFirstName;
+    const doctorLastName = appointmentBody.doctorLastName;
+    const appointmentStatus = appointmentBody.status;
 
-              patientsAssigned.insertOne(patientInfo, (err,result)=>{
-                if (err) {
-                  return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
-                }
+    const appointmentsCollection = database.collection('appointments');
+    appointmentsCollection.insertOne(appointmentBody, (err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to Add Appointment, Try Later" });
+      }
+      return res.json({ message: "Appointment for " + patientFirstName + " " + patientLastName + " has been successfully added." })
+    });
+  });
 
-                return res.json({message: "Patient " + patientToBeAssignedFirstName + " " + patientToBeAssignedLastName +  " has been Assigned to Dr. " + assignedDoctorFirstName});
+  router.post('/assignDoctor', (req, res) => {
 
-            });
-        })
+    const patientInfo = req.body;
+    console.log(" pp " + patientInfo);
 
-        router.get('/patientsList', (req, res) => {
+    const patientToBeAssignedFirstName = patientInfo.patientFirstName;
+    const patientToBeAssignedLastName = patientInfo.patientLastName;
+    const patientToBeAssignedGender = patientInfo.patientGender;
+    const patientToBeAssignedAge = patientInfo.patientAge;
+    const assignedDoctorFirstName = patientInfo.assignedDoctorFirstName;
+    const assignedDoctorLastName = patientInfo.assignedDoctorLastName;
 
-          const patientCollection = database.collection('patients');
-          //Get list of patients from the collection
-          patientCollection.find({}).toArray((err, result) => {
-            if (err) {
-              return res.json({ error: "Error: Unable to reterive patients" });
-            }
-            return res.json(result);
+    const patientCollection = database.collection('patients');
 
-          });
-        })
+    patientCollection.remove({
+      firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName,
+      gender: patientToBeAssignedGender, age: patientToBeAssignedAge
+    }, 1);
 
-        //Patient Add
-        router.post('/addPatient', (req, res) => {
-          const info = req.body;
-          const patientCollection = database.collection('patients');
+    const patientsAssigned = database.collection('assignedPatients');
 
-          //Check whether the patient is found or not
-          patientCollection.findOne({
-            firstname: info.firstname, lastname: info.lastname,
-            gender: info.gender, bloodCategory: info.bloodCategory
-          }, (err, result) => {
-            if (result || err) {
-              return res.json({ warning: 'Error : Patient is already registered' });
-            }
+    patientsAssigned.insertOne(patientInfo, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
+      }
 
-            //now we checked the patient is new , so insert it
-            patientCollection.insertOne(info, (err, r) => {
+      return res.json({ message: "Patient " + patientToBeAssignedFirstName + " " + patientToBeAssignedLastName + " has been Assigned to Dr. " + assignedDoctorFirstName });
 
-              if (err) {
-                return res.json({ error: 'Error Occured while inserting Patient Record.' });
-              }
+    });
+  })
 
-              const newRecord = r.ops[0];
+  router.get('/patientsList', (req, res) => {
 
-              return res.json({ status: 'Patient successfully inserted' });
+    const patientCollection = database.collection('patients');
+    //Get list of patients from the collection
+    patientCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error: Unable to reterive patients" });
+      }
+      return res.json(result);
 
-            });
-          });
+    });
+  })
+
+  //Patient Add
+  router.post('/addPatient', (req, res) => {
+    const info = req.body;
+    const patientCollection = database.collection('patients');
+
+    //Check whether the patient is found or not
+    patientCollection.findOne({
+      firstname: info.firstname, lastname: info.lastname,
+      gender: info.gender, bloodCategory: info.bloodCategory
+    }, (err, result) => {
+      if (result || err) {
+        return res.json({ warning: 'Error : Patient is already registered' });
+      }
+
+      //now we checked the patient is new , so insert it
+      patientCollection.insertOne(info, (err, r) => {
+
+        if (err) {
+          return res.json({ error: 'Error Occured while inserting Patient Record.' });
+        }
+
+        const newRecord = r.ops[0];
+
+        return res.json({ status: 'Patient successfully inserted' });
+
+      });
+    });
 
 
-        });
+  });
 
   /* ---------------------   Patients Section Ends ------------------*/
 
@@ -186,7 +208,7 @@ function apiRouter(database) {
     const user = req.body;
 
     user.password = bcrypt.hashSync(user.password, 10);
-    console.log("user pass "+ user.password);
+    console.log("user pass " + user.password);
     const userCollection = database.collection('users');
     userCollection.insertOne(user, (err, r) => {
       if (err) {
