@@ -175,6 +175,36 @@ function apiRouter(database) {
     });
   });
 
+  //Get all free beds
+  router.get('/getFreeBeds', (req, res)=> {
+    const bedCollection = database.collection('beds');
+    bedCollection.find({status: "free"}).toArray((err, result)=> {
+      if(err){
+        return res.json({error: "Unable to reterive free beds, Try Again"});
+      }
+      return res.json(result);
+    });
+  });
+
+  //Perform Bed Reserve for Patient
+  router.post('/reserveBed', (req, res)=> {
+    const reserveInfo = req.body;
+    const bedCollection = database.collection('beds');
+    
+    bedCollection.remove({bedNumber: reserveInfo.bedNumber},function(err,removed){
+      if(!err && removed){
+        bedCollection.insert(reserveInfo, (err,result)=>{
+          if(err){
+            return res.json({error: "Unable to Reserve Bed , Try Again"});
+          }
+          return res.json({message: "Bed " + reserveInfo.bedNumber + " has been assigned for " + reserveInfo.patientFirstName + reserveInfo.patientLastName});
+      });
+      }
+    });
+    
+    // bedCollection.update({"bedNumber":reserveInfo.bedNumber}, {$set: {}})
+  });
+
   //Remove Bed
   router.post('/removeBed', (req, res) => {
       

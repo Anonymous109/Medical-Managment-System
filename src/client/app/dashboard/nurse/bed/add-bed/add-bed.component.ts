@@ -38,7 +38,8 @@ export class AddBedComponent implements OnInit {
       const payload = {
         bedNumber: this.selectedBedNumber,
         bedType: this.selectedBedType,
-        bedDescription: this.bedDescription
+        bedDescription: this.bedDescription,
+        status: "free"
       }
 
       this.api.post('/addBed',payload).subscribe(data => {
