@@ -11,6 +11,7 @@ import { ApiService } from '../../shared/api.service';
 export class HeaderComponent implements OnInit {
 
   public userLock:string;
+  public userRole: string;
 
   public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   public doughnutChartData:number[] = [200, 450, 100];
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit {
   public pieChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
   public pieChartData:number[] = [300, 500, 100];
  
-  constructor(private auth: AuthService, private api: ApiService) { }
+  constructor(private auth: AuthService, private api: ApiService, private router:Router) { }
 
 
 
@@ -57,7 +58,18 @@ export class HeaderComponent implements OnInit {
     //console.log(tokenFetched + " Token Fetched" );
     this.api.post('lock', tokenFetched).subscribe(data=> {
         this.userLock = data.user;
+        this.userRole = data.role;
     });
+  }
+
+  profile(){
+    if (this.userRole == 'admin') {
+      this.router.navigate(['/admin/profile/'+ this.userLock]);
+    } else if (this.userRole == 'receptionist') {
+      this.router.navigate(['/receptionist/profile/'+ this.userLock]);
+    } else if (this.userRole == 'nurse') {
+      this.router.navigate(['/nurse/profile/' + this.userLock]);
+    }
   }
 
   logOut(){

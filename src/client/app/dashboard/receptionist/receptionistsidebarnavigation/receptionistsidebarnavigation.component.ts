@@ -14,6 +14,8 @@ import "rxjs/add/observable/interval";
 export class ReceptionistsidebarnavigationComponent implements OnInit {
 
   public patients:Observable<Array<any>>;
+  public appointments: Observable<Array<any>>;
+  
   patientsCounter:Observable<Number>;
   public username:string;
 
@@ -41,6 +43,10 @@ export class ReceptionistsidebarnavigationComponent implements OnInit {
         this.username = data.user; 
     });
 
+    this.api.get('/appointmentsList').subscribe(data=>{
+      //The interval is set to 1second , just to create some lag to indicate the data is fetched from Database
+      this.appointments = Observable.interval(5).map(i=>data);
+    });
   }
 
 }

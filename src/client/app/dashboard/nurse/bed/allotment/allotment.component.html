@@ -1,0 +1,183 @@
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+  <app-dashboard-header></app-dashboard-header>
+  <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+  <div class="page-container">
+    <!-- start sidebar menu -->
+    <div class="sidebar-container">
+      <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+        <div id="remove-scroll">
+          <!-- Navigation SideBar Starts -->
+          <app-nurse-side-bar-navigation></app-nurse-side-bar-navigation>
+          <!-- Navigation SideBar Ends -->
+        </div>
+      </div>
+    </div>
+    <!-- end sidebar menu -->
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="page-bar">
+          <div class="page-title-breadcrumb">
+            <div class="pull-left">
+              <!-- <div class="page-title">Add Patient</div> -->
+            </div>
+            <ol class="breadcrumb page-breadcrumb pull-right">
+              <li>
+                <i class="fa fa-home"></i>&nbsp;
+                <a class="parent-item" [routerLink]="['/nurse/dash']">Home</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a class="parent-item" [routerLink]="['/nurse/beds']">Beds</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li class="active">Allotment</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="card card-box">
+              <div class="card-head">
+                <header>Bed Allotment</header>
+                <button id="panel-button" class="mdl-button mdl-js-button
+                                  mdl-button--icon pull-right" data-upgraded=",MaterialButton">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right
+                                  mdl-js-menu mdl-js-ripple-effect" data-mdl-for="panel-button">
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">assistant_photo</i>Action</li>
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">print</i>Another action
+                  </li>
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">favorite</i>Something else here</li>
+                </ul>
+              </div>
+              <div class="card-body" id="bar-parent">
+                <form action="#" id="form_sample_1" class="form-horizontal" #patientAddForm="ngForm" (submit)="addPatient(patientAddForm,selectedCategory,bloodTypeCategory)">
+                  <div class="form-body form-group">
+                    <div class="form-group row">
+                      
+                      <label class="control-label
+                                              col-md-3">First Name
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <input type="text" name="firstname" data-required="1" placeholder="enter first name" class="form-control
+                                                  input-height" autocomplete="off" ngModel/> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Last Name
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <input type="text" name="lastname" data-required="1" placeholder="enter last name" class="form-control
+                                                  input-height" autocomplete="off" ngModel/> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Email
+                      </label>
+                      <div class="col-md-5">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <i class="fa
+                                                          fa-envelope"></i>
+                          </span>
+                          <input type="text" class="form-control
+                                                      input-height" name="email" placeholder="Email
+                                                      Address" autocomplete="off" ngModel> </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Password
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <input type="password" name="password" data-required="1" placeholder="enter Password" class="form-control
+                                                  input-height" autocomplete="off" ngModel/> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Phone
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <input type="text" name="phone" data-required="1" placeholder="enter your phone" class="form-control
+                                                  input-height" autocomplete="off" ngModel/> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Gender
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <select class="form-control
+                                                  input-height" name="gender" #selectedCategory>
+                          <option value="">Select...</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Age.
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <input name="age" type="number" placeholder="age" class="form-control
+                                                  input-height" ngModel/> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="control-label
+                                            col-md-3">Blood Group
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <select class="form-control
+                                                input-height" name="department" #bloodTypeCategory>
+                          <option value="">Select...</option>
+                          <option value="A+">A+</option>
+                          <option value="A-">A-</option>
+                          <option value="B+">B+</option>
+                          <option value="B-">B-</option>
+                          <option value="AB+">AB+</option>
+                          <option value="AB-">AB-</option>
+                          <option value="O+">O+</option>
+                          <option value="O-">O-</option>
+                        </select>
+                        <ngx-flash-messages></ngx-flash-messages>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <div class="row">
+                        <div class="offset-md-3
+                                                  col-md-9">
+                          <button type="submit" class="btn btn-info">Submit</button>
+                          <button type="button" class="btn btn-warning" [routerLink]="['/receptionist/patients']">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page content -->
+  </div>
+</div>

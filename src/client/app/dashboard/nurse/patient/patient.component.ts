@@ -57,6 +57,10 @@ export class PatientComponent implements OnInit {
     this.doctorPatientDataFetcher();
   }
 
+  //Take Vital Sign 
+  takeVitalSign(){
+    
+  }
 
   //Assign Patient to Doctor
   assignDoctor(patientDisplay: Patient) {
@@ -79,9 +83,11 @@ export class PatientComponent implements OnInit {
     };
 
     this.api.post('/assignDoctor', payload).subscribe(data => {
-
+      if(data.error){
+        this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
+      }
       if (data.message) {
-        this.toastr.success(data.message, 'Great !', { toastLife: 4000 });
+        this.toastr.success(data.message, 'Great !', { toastLife: 3000 });
       }
       this.doctorPatientDataFetcher();
     });

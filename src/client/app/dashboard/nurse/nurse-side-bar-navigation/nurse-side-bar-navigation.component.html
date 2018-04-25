@@ -46,21 +46,22 @@
       <i class="fa fa-bed"></i>
       <span class="title">Bed</span>
       <span class="arrow open"></span>
-
+      <span class="label label-rouded label-menu
+        deepPink-bgcolor">{{(beds | async)?.length}}</span>
     </a>
     <ul class="sub-menu">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/receptionist/appointments/add']">
+        <a class="nav-link" [routerLink]="['/nurse/beds/add']">
           <span class="title">Add Bed</span>
         </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/receptionist/appointments']" class="nav-link">
+        <a [routerLink]="['/nurse/beds/allotment']" class="nav-link">
           <span class="title">Bed Allotment</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/receptionist/appointments/add']">
+        <a class="nav-link" [routerLink]="['/nurse/beds']">
           <span class="title">Manage Bed</span>
         </a>
       </li>
@@ -141,15 +142,5 @@
     </ul>
   </li>
   <!-- Blood Bank Ends -->
-
-
-  <!-- Account {Profile} Goes Here -->
-  <li class="nav-item">
-    <a [routerLink]="['/nurse/profile']" class="nav-link nav-toggle">
-      <i class="fa fa-user-circle-o"></i>
-      <span class="title">Profile</span>
-    </a>
-  </li>
-  <!-- Account Ends-->
 
 </ul>

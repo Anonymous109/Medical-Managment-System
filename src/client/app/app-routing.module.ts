@@ -41,6 +41,7 @@ import { PharmacistComponent as AdminDashPharmacistComponent } from './dashboard
 import { AddPharmacistComponent as AdminDashAddPharmacistComponent } from './dashboard/admin/pharmacist/add-pharmacist/add-pharmacist.component';
 import { PharmacististDetailComponent as AdminDashPharmacistDetailComponent } from './dashboard/admin/pharmacist/pharmacistist-detail/pharmacistist-detail.component';
 import { NoticeboardComponent } from './dashboard/admin/noticeboard/noticeboard.component';
+import { ProfileComponent as AdminDashProfileComponent } from './dashboard/admin/profile/profile.component';
 // Admin UI Ends
 
 //Receptionist UI
@@ -49,6 +50,8 @@ import { AddpatientComponent as ReceptionistDashAddPatientComponent } from './da
 import { PatientComponent as ReceptionistDashPatientComponent } from './dashboard/receptionist/patient/patient.component';
 import { AppointmentComponent as ReceptionistDashAppointmentComponent } from './dashboard/receptionist/appointment/appointment.component';
 import { AddAppointmentComponent as ReceptionistDashAddAppointmentComponent } from './dashboard/receptionist/appointment/add-appointment/add-appointment.component';
+import { ProfileComponent  as ReceptionistDashProfileComponent } from './dashboard/receptionist/profile/profile.component';
+
 
 // Nurse UI
 import { BedComponent as NurseDashBedComponent } from './dashboard/nurse/bed/bed.component';
@@ -57,6 +60,9 @@ import { DashboardComponent as NurseDashComponent } from './dashboard/nurse/dash
 import { PatientComponent as NurseDashPatientComponent } from './dashboard/nurse/patient/patient.component';
 import { ProfileComponent as NurseDashProfileComponent } from './dashboard/nurse/profile/profile.component';
 import { ReportComponent as NurseDashReportComponent } from './dashboard/nurse/report/report.component';
+import { AddBedComponent as NurseDashAddBedComponent} from './dashboard/nurse/bed/add-bed/add-bed.component';
+import { AllotmentComponent as NurseDashBedAllotmentComponent } from './dashboard/nurse/bed/allotment/allotment.component';
+import { AddAllotmentComponent as NurseDashAddAllotmentComponent  } from './dashboard/nurse/bed/add-allotment/add-allotment.component';
 
 
 
@@ -196,7 +202,8 @@ const routes: Routes = [
   },
   {
     path: "receptionist/appointments",
-    component: ReceptionistDashAppointmentComponent
+    component: ReceptionistDashAppointmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/appointments/add",
@@ -216,6 +223,18 @@ const routes: Routes = [
     component: NurseDashBedComponent
   },
   {
+    path: "nurse/beds/add",
+    component: NurseDashAddBedComponent
+  },
+  {
+    path: "nurse/beds/allotment",
+    component: NurseDashBedAllotmentComponent
+  },
+  {
+    path: "nurse/beds/allotment/add",
+    component: NurseDashAddAllotmentComponent
+  },
+  {
     path: "nurse/bloodBank",
     component: NurseDashBloodBankComponent
   },
@@ -229,6 +248,18 @@ const routes: Routes = [
   },
   {
     path: "nurse/profile",
+    component: NurseDashProfileComponent
+  },
+  {
+    path: "admin/profile/:username",
+    component: AdminDashProfileComponent
+  },
+  {
+    path: "receptionist/profile/:username",
+    component: ReceptionistDashProfileComponent
+  },
+  {
+    path: "nurse/profile/:username",
     component: NurseDashProfileComponent
   }, 
   {

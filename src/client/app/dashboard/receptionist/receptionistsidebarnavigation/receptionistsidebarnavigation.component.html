@@ -34,6 +34,8 @@
       <i class="fa fa-clipboard"></i>
       <span class="title">Appointments</span>
       <span class="arrow open"></span>
+      <span class="label label-rouded label-menu
+        deepPink-bgcolor">{{(appointments | async)?.length}}</span>
 
     </a>
     <ul class="sub-menu">
@@ -76,13 +78,5 @@
   </li>
   <!-- Doctors Ends -->
 
-  <!-- Account {Profile} Goes Here -->
-  <li class="nav-item ">
-    <a href="#" class="nav-link nav-toggle">
-      <i class="fa fa-heartbeat"></i>
-      <span class="title">Account</span>
-    </a>
-  </li>
-  <!-- Account Ends-->
 
 </ul>

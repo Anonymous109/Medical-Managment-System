@@ -14,6 +14,7 @@ export class NurseSideBarNavigationComponent implements OnInit {
   
   public username:string;
   public patients:Observable<Array<any>>;
+  public beds:Observable<Array<any>>;
   patientsCounter:Observable<Number>;
 
   constructor(
@@ -27,6 +28,10 @@ export class NurseSideBarNavigationComponent implements OnInit {
     this.api.get('/patientsList').subscribe(data=>{
       //The interval is set to 1second , just to create some lag to indicate the data is fetched from Database
       this.patients = Observable.interval(100).map(i=>data);
+    });
+
+    this.api.get('/beds').subscribe(data => {
+      this.beds = Observable.interval(10).map(i => data);
     });
 
     const tokenFetched = {

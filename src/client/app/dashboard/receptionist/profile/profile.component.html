@@ -1,3 +1,77 @@
-<p>
-  profile works!
-</p>
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+    <app-dashboard-header></app-dashboard-header>
+    <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+    <div class="page-container">
+      <!-- start sidebar menu -->
+      <div class="sidebar-container">
+        <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+          <div id="remove-scroll">
+            <!-- Navigation SideBar Starts -->
+            <app-receptionistsidebarnavigation></app-receptionistsidebarnavigation>
+            <!-- Navigation SideBar Ends -->
+          </div>
+        </div>
+      </div>
+      <!-- end sidebar menu -->
+      <!-- start page content -->
+      <div class="page-content-wrapper">
+        <div class="page-content">
+          <div class="page-bar">
+            <div class="page-title-breadcrumb">
+              <div class="pull-left">
+                <div class="page-title">Profile</div>
+              </div>
+              <ol class="breadcrumb page-breadcrumb pull-right">
+                <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                    [routerLink]="['/receptionist/dash']">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                </li>
+                <li class="active">Profile</li>
+              </ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <!-- BEGIN PROFILE SIDEBAR -->
+              <div class="profile-sidebar">
+                <div class="card card-topline-aqua">
+                  <div class="card-body no-padding height-9">
+                    <div class="row">
+                      <div class="profile-userpic">
+                        <img src="./assets/dashboard/img/doc/doc6.png" class="img-responsive" alt="">
+                      </div>
+                    </div>
+                    <div class="profile-usertitle">
+                      <div class="profile-usertitle-name">{{userDetail.firstname}} {{userDetail.lastname}} </div>
+                      <div class="profile-usertitle-job"> Receptionist </div>
+                    </div>
+                    <!-- <ul class="list-group list-group-unbordered">
+                      <li class="list-group-item">
+                        <b>Followers</b> <a class="pull-right">1,200</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Following</b> <a class="pull-right">750</a>
+                      </li>
+                      <li class="list-group-item">
+                        <b>Friends</b> <a class="pull-right">11,172</a>
+                      </li>
+                    </ul> -->
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                      <button type="button" class="btn btn-circle red btn-sm">Change Profile Picture</button>
+                      <button type="button" class="btn btn-circle red btn-sm">Message</button>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                  </div>
+                </div>
+                
+              </div>
+              <!-- END BEGIN PROFILE SIDEBAR -->
+              <!-- BEGIN PROFILE CONTENT -->
+            </div>
+          </div>
+        </div>
+        <!-- end page content -->
+      </div>
+    </div>
+  </div>

@@ -112,6 +112,10 @@ import { PatientComponent as NurseDashPatientComponent } from './dashboard/nurse
 import { ProfileComponent as NurseDashProfileComponent } from './dashboard/nurse/profile/profile.component';
 import { ReportComponent as NurseDashReportComponent } from './dashboard/nurse/report/report.component';
 import { NurseSideBarNavigationComponent  } from './dashboard/nurse/nurse-side-bar-navigation/nurse-side-bar-navigation.component';
+import { AddBedComponent as NurseDashAddBedComponent} from './dashboard/nurse/bed/add-bed/add-bed.component';
+import { AllotmentComponent as NurseDashBedAllotmentComponent } from './dashboard/nurse/bed/allotment/allotment.component';
+import { AddAllotmentComponent as NurseDashAddAllotmentComponent  } from './dashboard/nurse/bed/add-allotment/add-allotment.component';
+
 
 // -------------------------- --------------------------Nurse Dash Component Ends ------------------ -------------------------- ---------//
 
@@ -141,7 +145,6 @@ import { ReceptionistsidebarnavigationComponent } from './dashboard/receptionist
 
 // -------------------------- --------------------------Receptionist Dash Component Ends ------------------ -------------------------- ---------//
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
-
 
 @NgModule({
   declarations: [
@@ -201,6 +204,9 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
     NurseDashBloodBankComponent,
     NurseDashComponent,
     NurseDashPatientComponent,
+    NurseDashAddBedComponent,
+    NurseDashBedAllotmentComponent,
+    NurseDashAddAllotmentComponent,
     NurseDashProfileComponent,
     NurseDashReportComponent,
     NurseSideBarNavigationComponent,

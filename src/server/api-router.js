@@ -139,7 +139,56 @@ function apiRouter(database) {
 
 
   /* ---------------------   Patients Section ------------------*/
+  
+  //Bed Types Fetch and Return  
+  router.get('/getBedTypes', (req,res)=>{
+    const bedTypeCollection = database.collection('bedTypes');
+    bedTypeCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Unable to fetch bedTypes, Try Again!"});
+      }
+      return res.json(result);
+    });
+  });
 
+  //Add Bed
+  router.post('/addBed', (req, res)=> {
+    const bedBody = req.body;
+
+    const bedCollection = database.collection('beds');
+    bedCollection.insertOne(bedBody, (err,result)=> {
+        if(err){
+          return res.json({error: "Unable to Add Bed, Try Again"});
+        }
+        return res.json({message: "Bed Successfully Added"});
+    })
+  })
+
+  //Get All Beds
+  router.get('/beds', (req, res)=> {
+    const bedCollection = database.collection('beds');
+    bedCollection.find({}).toArray((err,result)=> {
+      if(err){
+        return res.json({error: 'Unable to reterive all beds, Try Again'});
+      }
+      return res.json(result);
+    });
+  });
+
+  //Remove Bed
+  router.post('/removeBed', (req, res) => {
+      
+      const bedNumber = req.body.bedNumber;
+      const bedCollection = database.collection('beds');
+      
+      bedCollection.remove({
+        bedNumber : bedNumber
+      }, 1);
+      return res.json({message: "Bed has beed removed Successfully ! "});
+  });
+
+
+  //Appointment List
   router.get('/appointmentsList', (req,res)=> {
     const appointmentsCollection = database.collection('appointments');
     appointmentsCollection.find({}).toArray((err,result)=>{
@@ -173,7 +222,7 @@ function apiRouter(database) {
   router.post('/assignDoctor', (req, res) => {
 
     const patientInfo = req.body;
-    console.log(" pp " + patientInfo);
+    
 
     const patientToBeAssignedFirstName = patientInfo.patientFirstName;
     const patientToBeAssignedLastName = patientInfo.patientLastName;
@@ -246,8 +295,6 @@ function apiRouter(database) {
   });
 
   /* ---------------------   Patients Section Ends ------------------*/
-
-  
 
   //Lockscreen
   router.post('/lock', (req, res) => {
