@@ -140,6 +140,51 @@ function apiRouter(database) {
 
   /* ---------------------   Patients Section ------------------*/
   
+  //Fetch All available blood
+  router.get('/bloodList', (req,res)=>{
+    const bloodBankCollection = database.collection('bloodBank');
+    bloodBankCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Unable to reterive blood list, Try Again"});
+      }
+      return res.json(result);
+    });
+  });
+  
+  //Fetch All Blood Donors
+  router.get('/bloodDonors', (req,res)=>{
+    const bloodDonorCollection = database.collection('bloodDonors');
+    
+    bloodDonorCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Unable to reterive blood donors, Try Again"});
+      }
+      return res.json(result);
+    });
+  });
+  //Add blood donor
+  router.post('/addBloodDonor',(req,res)=>{
+    
+    const donorInfo = req.body;
+
+    const bloodDonorCollection = database.collection('bloodDonors');
+    const bloodBankCollection = database.collection('bloodBank');
+
+    bloodDonorCollection.insertOne(donorInfo, (err,result)=>{
+      if(err){
+        return res.json({error: "Unable to add blood donor , Try Again !"});
+      }
+      
+      bloodBankCollection.insertOne({"bloodType":donorInfo.selectedBloodGroup}, (err,result)=>{
+        if(err){
+          return res.json({error: "Error occured while inserting the blood type, Try Again"});
+        }
+      })
+      return res.json({message: "Donor" +  donorInfo.bloodDonorName + "donation info has been added Successfully"});
+    });
+  });
+
+
   //Bed Types Fetch and Return  
   router.get('/getBedTypes', (req,res)=>{
     const bedTypeCollection = database.collection('bedTypes');
@@ -181,6 +226,17 @@ function apiRouter(database) {
     bedCollection.find({status: "free"}).toArray((err, result)=> {
       if(err){
         return res.json({error: "Unable to reterive free beds, Try Again"});
+      }
+      return res.json(result);
+    });
+  });
+
+  //Get all reserved beds
+  router.get('/getReservedBeds', (req, res)=>{
+    const bedCollection = database.collection('beds');
+    bedCollection.find({status: "reserved"}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Unable to reterive reserved beds, Try again!"});
       }
       return res.json(result);
     });

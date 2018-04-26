@@ -26,8 +26,10 @@
                 </li>
                 <li>
                   <a class="parent-item"[routerLink]="['/nurse/bloodBank']">Blood Bank</a>&nbsp;
+                  <i class="fa
+                    fa-angle-right"></i>
                 </li>
-                
+                <li class="active">Blood Donors List</li>
               </ol>
             </div>
           </div>
@@ -35,7 +37,7 @@
             <div class="col-md-12 col-sm-12">
               <div class="card card-box">
                 <div class="card-head">
-                  <header>Blood Bank</header>
+                  <header>Blood Donors</header>
                   <div class="tools">
                     <a class="fa fa-repeat btn-color
                       box-refresh" href="javascript:;"></a>
@@ -61,13 +63,16 @@
                               <span></span>
                             </label>
                           </th>
+                          <th>Donor Name</th>
+                          <th>Age</th>
+                          <th>Sex</th>
                           <th>Blood Group</th>
-                          <th>Status</th>
+                          <th>Options</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="odd gradeX" *ngFor="let bloodBankDisplay
-                          of bloodBank | async;">
+                        <tr class="odd gradeX" *ngFor="let bloodDonorDisplay
+                          of bloodDonors | async;">
                           <td>
                             <label class="rt-chkbox
                               rt-chkbox-single
@@ -77,13 +82,13 @@
                               <span></span>
                             </label>
                           </td>
-                          <td> l </td>
+                          <td> {{bloodDonorDisplay.bloodDonorName}} </td>
                           <td>
-                            4
+                            {{bloodDonorDisplay.bloodDonorAge}}
                           </td>
-                          <td class="center"> m
+                          <td class="center"> {{bloodDonorDisplay.selectedSex}}
                           </td>
-                          <td>a+</td>
+                          <td>{{bloodDonorDisplay.selectedBloodGroup}}</td>
                           <td class="center">
                             <div class="btn-group">
                               <button class="btn

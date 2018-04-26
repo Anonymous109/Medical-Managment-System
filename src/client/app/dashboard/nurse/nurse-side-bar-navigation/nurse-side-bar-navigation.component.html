@@ -7,7 +7,7 @@
   <li class="sidebar-user-panel">
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="./assets/dashboard/img/user_profile_pic.png" class="img-circle
+        <img src="./assets/dashboard/img/profile/Nurse_Female.png" class="img-circle
           user-img-circle" alt="User Image" />
       </div>
       <div class="pull-left info" id="usernameNav">
@@ -56,13 +56,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/nurse/beds/allotment']" class="nav-link">
-          <span class="title">Bed Allotment</span>
+        <a class="nav-link" [routerLink]="['/nurse/beds']">
+          <span class="title">Manage Bed</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/nurse/beds']">
-          <span class="title">Manage Bed</span>
+        <a class="nav-link" [routerLink]="['/nurse/beds/allotment/add']">
+          <span class="title">Add Allotment</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/nurse/beds/allotment']" class="nav-link">
+          <span class="title">Bed Allotment</span>
         </a>
       </li>
     </ul>
@@ -76,21 +81,21 @@
       <span class="title">Blood Bank</span>
       <span class="arrow open"></span>
       <span class="label label-rouded label-menu
-        deepPink-bgcolor">4</span>
+        deepPink-bgcolor">{{(bloodBank | async)?.length}}</span>
     </a>
     <ul class="sub-menu">
       <li class="nav-item">
-        <a [routerLink]="['/receptionist/patients/add']" class="nav-link">
+        <a [routerLink]="['/nurse/bloodBank/addDonor']" class="nav-link">
           <span class="title">Add Blood Donor</span>
         </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/receptionist/patients']" class="nav-link">
+        <a [routerLink]="['/nurse/bloodBank/bloodDonors']" class="nav-link">
           <span class="title">Blood Donor</span>
         </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/receptionist/patients/add']" class="nav-link">
+        <a [routerLink]="['/nurse/bloodBank']" class="nav-link">
           <span class="title">Manage Blood Bank</span>
         </a>
       </li>

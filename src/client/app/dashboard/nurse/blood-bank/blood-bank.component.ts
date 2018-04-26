@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../../shared/api.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-blood-bank',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BloodBankComponent implements OnInit {
 
-  constructor() { }
+  bloodBank: Observable<Array<any>>;
+  
+  bloodStatus : any = {"A+":0, "A-":0,"B+":0, "B-":0,"O+":0,"O-":0,"AB":0};
+  constructor(private api:ApiService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
+  ) {
+    this.toastr.setRootViewContainerRef(vcr);
+   }
 
   ngOnInit() {
+    this.api.get('/bloodList').subscribe(data => {
+      this.bloodBank = Observable.interval(10).map(i => data);
+      this.organizeBloodTypes();
+    });
   }
 
+  organizeBloodTypes(){
+    this.bloodBank.forEach(element => {
+        console.log(element['bloodType']);
+    });
+  }
 }

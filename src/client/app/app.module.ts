@@ -115,6 +115,8 @@ import { NurseSideBarNavigationComponent  } from './dashboard/nurse/nurse-side-b
 import { AddBedComponent as NurseDashAddBedComponent} from './dashboard/nurse/bed/add-bed/add-bed.component';
 import { AllotmentComponent as NurseDashBedAllotmentComponent } from './dashboard/nurse/bed/allotment/allotment.component';
 import { AddAllotmentComponent as NurseDashAddAllotmentComponent  } from './dashboard/nurse/bed/add-allotment/add-allotment.component';
+import { AddBloodDonorComponent as NurseDashAddBloodDonorComponent } from './dashboard/nurse/blood-bank/add-blood-donor/add-blood-donor.component';
+import { BloodDonorsComponent as NurseDashBloodDonorsComponent  } from './dashboard/nurse/blood-bank/blood-donors/blood-donors.component';
 
 
 // -------------------------- --------------------------Nurse Dash Component Ends ------------------ -------------------------- ---------//
@@ -202,6 +204,8 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
     LaboratoristDashProfileComponent,
     NurseDashBedComponent,
     NurseDashBloodBankComponent,
+    NurseDashAddBloodDonorComponent,
+    NurseDashBloodDonorsComponent,
     NurseDashComponent,
     NurseDashPatientComponent,
     NurseDashAddBedComponent,

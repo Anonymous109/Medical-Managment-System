@@ -63,7 +63,8 @@ import { ReportComponent as NurseDashReportComponent } from './dashboard/nurse/r
 import { AddBedComponent as NurseDashAddBedComponent} from './dashboard/nurse/bed/add-bed/add-bed.component';
 import { AllotmentComponent as NurseDashBedAllotmentComponent } from './dashboard/nurse/bed/allotment/allotment.component';
 import { AddAllotmentComponent as NurseDashAddAllotmentComponent  } from './dashboard/nurse/bed/add-allotment/add-allotment.component';
-
+import { AddBloodDonorComponent as NurseDashAddBloodDonorComponent } from './dashboard/nurse/blood-bank/add-blood-donor/add-blood-donor.component';
+import { BloodDonorsComponent as NurseDashBloodDonorsComponent  } from './dashboard/nurse/blood-bank/blood-donors/blood-donors.component';
 
 
 const routes: Routes = [
@@ -237,6 +238,14 @@ const routes: Routes = [
   {
     path: "nurse/bloodBank",
     component: NurseDashBloodBankComponent
+  },
+  {
+    path: "nurse/bloodBank/addDonor",
+    component: NurseDashAddBloodDonorComponent
+  },
+  {
+    path: "nurse/bloodBank/bloodDonors",
+    component: NurseDashBloodDonorsComponent
   },
   {
     path: "nurse/profile",

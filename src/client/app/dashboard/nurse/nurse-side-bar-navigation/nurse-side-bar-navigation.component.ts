@@ -16,7 +16,8 @@ export class NurseSideBarNavigationComponent implements OnInit {
   public patients:Observable<Array<any>>;
   public beds:Observable<Array<any>>;
   patientsCounter:Observable<Number>;
-
+  bloodBank: Observable<Array<any>>;
+  
   constructor(
     private dataService : AdminDataFetcherService,
     private api: ApiService,
@@ -32,6 +33,11 @@ export class NurseSideBarNavigationComponent implements OnInit {
 
     this.api.get('/beds').subscribe(data => {
       this.beds = Observable.interval(10).map(i => data);
+    });
+
+    this.api.get('/bloodList').subscribe(data => {
+      this.bloodBank = Observable.interval(10).map(i => data);
+      //this.organizeBloodTypes();
     });
 
     const tokenFetched = {
