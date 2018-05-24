@@ -188,28 +188,23 @@ const routes: Routes = [
   },
   {
     path: "receptionist/dash",
-    component: ReceptionistDashComponent,
-    canActivate: [AuthGuard]
+    component: ReceptionistDashComponent
   },
   {
     path: "receptionist/patients",
-    component: ReceptionistDashPatientComponent,
-    canActivate: [AuthGuard]
+    component: ReceptionistDashPatientComponent
   },
   {
     path: "receptionist/patients/add",
-    component: ReceptionistDashAddPatientComponent,
-    canActivate: [AuthGuard]
+    component: ReceptionistDashAddPatientComponent
   },
   {
     path: "receptionist/appointments",
-    component: ReceptionistDashAppointmentComponent,
-    canActivate: [AuthGuard]
+    component: ReceptionistDashAppointmentComponent
   },
   {
     path: "receptionist/appointments/add",
-    component: ReceptionistDashAddAppointmentComponent,
-    canActivate: [AuthGuard]
+    component: ReceptionistDashAddAppointmentComponent
   },
   {
     path : "nurse/dash",

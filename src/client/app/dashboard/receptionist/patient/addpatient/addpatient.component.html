@@ -56,7 +56,7 @@
                 </ul>
               </div>
               <div class="card-body" id="bar-parent">
-                <form action="#" id="form_sample_1" class="form-horizontal" #patientAddForm="ngForm" (submit)="addPatient(patientAddForm,selectedCategory,bloodTypeCategory)">
+                <form action="#" id="form_sample_1" class="form-horizontal" #patientAddForm="ngForm" (submit)="addPatient(patientAddForm,selectedCategory)">
                   <div class="form-body form-group">
                     <div class="form-group row">
                       
@@ -139,7 +139,7 @@
                         <input name="age" type="number" placeholder="age" class="form-control
                                                   input-height" ngModel/> </div>
                     </div>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                       <label class="control-label
                                             col-md-3">Blood Group
                         <span class="required"> *
@@ -160,6 +160,18 @@
                         </select>
                         <ngx-flash-messages></ngx-flash-messages>
                       </div>
+                    </div> -->
+                    <div class="form-group row">
+                      <label class="control-label
+                                              col-md-3">Registration Fee.
+                        <span class="required"> *
+                        </span>
+                      </label>
+                      <div class="col-md-5">
+                        <input name="registrationFee" placeholder="100 Birr" [disabled]="true" class="form-control
+                                                  input-height" ngModel/>
+                                                  <ngx-flash-messages></ngx-flash-messages>
+                        </div>
                     </div>
                     <div class="form-actions">
                       <div class="row">

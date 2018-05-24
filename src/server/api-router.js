@@ -380,6 +380,20 @@ function apiRouter(database) {
 
   });
 
+  router.post('/addIntoInvoice', (req,res)=> {
+    const invoiceCollection = database.collection('invoices');
+    const bill = req.body;
+
+    invoiceCollection.insertOne(bill, (err,r)=>{
+      if(err){
+        return res.json({error: "Error Occured while adding Billing Details."});
+      }
+
+      const newRecord = r.ops[0];
+      return res.json({status: "Patient Billed Successfully"});
+    });
+  });
+
   /* ---------------------   Patients Section Ends ------------------*/
 
   //Lockscreen

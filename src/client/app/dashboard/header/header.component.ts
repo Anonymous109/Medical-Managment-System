@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../shared/api.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -61,6 +62,14 @@ export class HeaderComponent implements OnInit {
         this.userRole = data.role;
     });
   }
+
+  searchItem(form: NgForm)
+  {
+    const word = form.value;
+    console.log("--word " + word.search_query);
+    return;
+  }
+
 
   profile(){
     if (this.userRole == 'admin') {
