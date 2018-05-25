@@ -51,6 +51,7 @@ import { PatientComponent as ReceptionistDashPatientComponent } from './dashboar
 import { AppointmentComponent as ReceptionistDashAppointmentComponent } from './dashboard/receptionist/appointment/appointment.component';
 import { AddAppointmentComponent as ReceptionistDashAddAppointmentComponent } from './dashboard/receptionist/appointment/add-appointment/add-appointment.component';
 import { ProfileComponent  as ReceptionistDashProfileComponent } from './dashboard/receptionist/profile/profile.component';
+import { PatientRecordComponent as ReceptionistPatientRecordComponent} from './dashboard/receptionist/patient/patient-record/patient-record.component';
 
 
 // Nurse UI
@@ -197,6 +198,10 @@ const routes: Routes = [
   {
     path: "receptionist/patients/add",
     component: ReceptionistDashAddPatientComponent
+  },
+  {
+    path: "receptionist/patientsRecord/:patientId",
+    component: ReceptionistPatientRecordComponent
   },
   {
     path: "receptionist/appointments",

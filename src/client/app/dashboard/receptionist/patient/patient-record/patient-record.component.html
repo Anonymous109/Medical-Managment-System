@@ -1,0 +1,93 @@
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+  <app-dashboard-header></app-dashboard-header>
+  <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+  <div class="page-container">
+    <!-- start sidebar menu -->
+    <div class="sidebar-container">
+      <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+        <div id="remove-scroll">
+          <!-- Navigation SideBar Starts -->
+          <app-receptionistsidebarnavigation></app-receptionistsidebarnavigation>
+          <!-- Navigation SideBar Ends -->
+        </div>
+      </div>
+    </div>
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="page-bar">
+          <div class="page-title-breadcrumb">
+            <div class=" pull-left">
+              <div class="page-title">Patient Profile</div>
+            </div>
+            <ol class="breadcrumb page-breadcrumb pull-right">
+              <li>
+                <i class="fa fa-home"></i>&nbsp;
+                <a class="parent-item" href="index.html">Home</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a class="parent-item" href="">Patients</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li class="active">Patient Profile</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row" style="margin: 0 auto;">
+          <div class="col-md-6 col-xs-12">
+            <div class="white-box">
+              <div class=" cardbox patient-profile">
+                <img src="/profiles/patientPhotos/patient.jpg" class="img-responsive" alt="">
+              </div>
+              <div class="cardbox">
+                <div class="header">
+                  <h4 class="font-bold">ABOUT PATIENT</h4>
+                </div>
+                <div class="body">
+                  <div class="user-btm-box">
+                    <!-- .row -->
+                    <div class="row text-center m-t-10">
+                      <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r">
+                        <strong>Name</strong>
+                        <p>{{patientProfile.firstname}} {{patientProfile.lastname}}</p>
+                      </div>
+                      <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
+                        <strong>Gender</strong>
+                        <p>{{patientProfile.gender}}</p>
+                      </div>
+                    </div>
+                    <!-- /.row -->
+                    <hr>
+                    <!-- .row -->
+                    <div class="row text-center m-t-10">
+                      <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r">
+                        <strong>Email ID</strong>
+                        <p>{{patientProfile.email}}</p>
+                      </div>
+                      <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
+                        <strong>Phone</strong>
+                        <p>{{patientProfile.phone}}</p>
+                      </div>
+                    </div>
+                    <!-- /.row -->
+                    <hr>
+                    <!-- .row -->
+                    <div class="row text-center m-t-10">
+                      <div class="col-md-12">
+                        <strong>Checkup</strong>
+                        <p>
+                          <button type="button" class="btn btn-circle btn-primary" (click)="checkup()">Pay Registration Fee</button></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end page content -->
+    </div>
+  </div>
+</div>

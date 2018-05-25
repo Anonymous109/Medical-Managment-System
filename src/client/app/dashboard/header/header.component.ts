@@ -66,7 +66,14 @@ export class HeaderComponent implements OnInit {
   searchItem(form: NgForm)
   {
     const word = form.value;
-    console.log("--word " + word.search_query);
+    const payload = {
+      patientId: word.search_query
+    }
+
+    this.api.post('/getFromPatientRecord', payload).subscribe(data=>{
+        this.router.navigate(['receptionist/patientsRecord/'+payload.patientId]);
+    });
+
     return;
   }
 

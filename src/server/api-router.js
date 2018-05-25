@@ -49,9 +49,9 @@ function apiRouter(database) {
     const user = req.body;
 
     user.password = bcrypt.hashSync(user.password, 10);
-    
+
     const userCollection = database.collection('users');
-    
+
     userCollection.insertOne(user, (err, r) => {
       if (err) {
         return res.status(500).json({ error: 'Error Occured when inserting new Record' });
@@ -79,7 +79,7 @@ function apiRouter(database) {
   router.use(
     checkJwt({ secret: process.env.JWT_SECRET })
   );
-  
+
 
   router.use((err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
@@ -139,145 +139,145 @@ function apiRouter(database) {
 
 
   /* ---------------------   Patients Section ------------------*/
-  
+
   //Fetch All available blood
-  router.get('/bloodList', (req,res)=>{
+  router.get('/bloodList', (req, res) => {
     const bloodBankCollection = database.collection('bloodBank');
-    bloodBankCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Unable to reterive blood list, Try Again"});
+    bloodBankCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to reterive blood list, Try Again" });
       }
       return res.json(result);
     });
   });
-  
+
   //Fetch All Blood Donors
-  router.get('/bloodDonors', (req,res)=>{
+  router.get('/bloodDonors', (req, res) => {
     const bloodDonorCollection = database.collection('bloodDonors');
-    
-    bloodDonorCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Unable to reterive blood donors, Try Again"});
+
+    bloodDonorCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to reterive blood donors, Try Again" });
       }
       return res.json(result);
     });
   });
   //Add blood donor
-  router.post('/addBloodDonor',(req,res)=>{
-    
+  router.post('/addBloodDonor', (req, res) => {
+
     const donorInfo = req.body;
 
     const bloodDonorCollection = database.collection('bloodDonors');
     const bloodBankCollection = database.collection('bloodBank');
 
-    bloodDonorCollection.insertOne(donorInfo, (err,result)=>{
-      if(err){
-        return res.json({error: "Unable to add blood donor , Try Again !"});
+    bloodDonorCollection.insertOne(donorInfo, (err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to add blood donor , Try Again !" });
       }
-      
-      bloodBankCollection.insertOne({"bloodType":donorInfo.selectedBloodGroup}, (err,result)=>{
-        if(err){
-          return res.json({error: "Error occured while inserting the blood type, Try Again"});
+
+      bloodBankCollection.insertOne({ "bloodType": donorInfo.selectedBloodGroup }, (err, result) => {
+        if (err) {
+          return res.json({ error: "Error occured while inserting the blood type, Try Again" });
         }
       })
-      return res.json({message: "Donor" +  donorInfo.bloodDonorName + "donation info has been added Successfully"});
+      return res.json({ message: "Donor" + donorInfo.bloodDonorName + "donation info has been added Successfully" });
     });
   });
 
 
   //Bed Types Fetch and Return  
-  router.get('/getBedTypes', (req,res)=>{
+  router.get('/getBedTypes', (req, res) => {
     const bedTypeCollection = database.collection('bedTypes');
-    bedTypeCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Unable to fetch bedTypes, Try Again!"});
+    bedTypeCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to fetch bedTypes, Try Again!" });
       }
       return res.json(result);
     });
   });
 
   //Add Bed
-  router.post('/addBed', (req, res)=> {
+  router.post('/addBed', (req, res) => {
     const bedBody = req.body;
 
     const bedCollection = database.collection('beds');
-    bedCollection.insertOne(bedBody, (err,result)=> {
-        if(err){
-          return res.json({error: "Unable to Add Bed, Try Again"});
-        }
-        return res.json({message: "Bed Successfully Added"});
+    bedCollection.insertOne(bedBody, (err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to Add Bed, Try Again" });
+      }
+      return res.json({ message: "Bed Successfully Added" });
     })
   })
 
   //Get All Beds
-  router.get('/beds', (req, res)=> {
+  router.get('/beds', (req, res) => {
     const bedCollection = database.collection('beds');
-    bedCollection.find({}).toArray((err,result)=> {
-      if(err){
-        return res.json({error: 'Unable to reterive all beds, Try Again'});
+    bedCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: 'Unable to reterive all beds, Try Again' });
       }
       return res.json(result);
     });
   });
 
   //Get all free beds
-  router.get('/getFreeBeds', (req, res)=> {
+  router.get('/getFreeBeds', (req, res) => {
     const bedCollection = database.collection('beds');
-    bedCollection.find({status: "free"}).toArray((err, result)=> {
-      if(err){
-        return res.json({error: "Unable to reterive free beds, Try Again"});
+    bedCollection.find({ status: "free" }).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to reterive free beds, Try Again" });
       }
       return res.json(result);
     });
   });
 
   //Get all reserved beds
-  router.get('/getReservedBeds', (req, res)=>{
+  router.get('/getReservedBeds', (req, res) => {
     const bedCollection = database.collection('beds');
-    bedCollection.find({status: "reserved"}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Unable to reterive reserved beds, Try again!"});
+    bedCollection.find({ status: "reserved" }).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to reterive reserved beds, Try again!" });
       }
       return res.json(result);
     });
   });
 
   //Perform Bed Reserve for Patient
-  router.post('/reserveBed', (req, res)=> {
+  router.post('/reserveBed', (req, res) => {
     const reserveInfo = req.body;
     const bedCollection = database.collection('beds');
-    
-    bedCollection.remove({bedNumber: reserveInfo.bedNumber},function(err,removed){
-      if(!err && removed){
-        bedCollection.insert(reserveInfo, (err,result)=>{
-          if(err){
-            return res.json({error: "Unable to Reserve Bed , Try Again"});
+
+    bedCollection.remove({ bedNumber: reserveInfo.bedNumber }, function (err, removed) {
+      if (!err && removed) {
+        bedCollection.insert(reserveInfo, (err, result) => {
+          if (err) {
+            return res.json({ error: "Unable to Reserve Bed , Try Again" });
           }
-          return res.json({message: "Bed " + reserveInfo.bedNumber + " has been assigned for " + reserveInfo.patientFirstName + reserveInfo.patientLastName});
-      });
+          return res.json({ message: "Bed " + reserveInfo.bedNumber + " has been assigned for " + reserveInfo.patientFirstName + reserveInfo.patientLastName });
+        });
       }
     });
-    
+
     // bedCollection.update({"bedNumber":reserveInfo.bedNumber}, {$set: {}})
   });
 
   //Remove Bed
   router.post('/removeBed', (req, res) => {
-      
-      const bedNumber = req.body.bedNumber;
-      const bedCollection = database.collection('beds');
-      
-      bedCollection.remove({
-        bedNumber : bedNumber
-      }, 1);
-      return res.json({message: "Bed has beed removed Successfully ! "});
+
+    const bedNumber = req.body.bedNumber;
+    const bedCollection = database.collection('beds');
+
+    bedCollection.remove({
+      bedNumber: bedNumber
+    }, 1);
+    return res.json({ message: "Bed has beed removed Successfully ! " });
   });
 
 
   //Appointment List
-  router.get('/appointmentsList', (req,res)=> {
+  router.get('/appointmentsList', (req, res) => {
     const appointmentsCollection = database.collection('appointments');
-    appointmentsCollection.find({}).toArray((err,result)=>{
+    appointmentsCollection.find({}).toArray((err, result) => {
       if (err) {
         return res.json({ error: "Error: Unable to reterive Appointments, Try Again!" });
       }
@@ -289,7 +289,7 @@ function apiRouter(database) {
   router.post('/addAppointment', (req, res) => {
 
     const appointmentBody = req.body;
-    
+
     const patientFirstName = appointmentBody.patientFirstName;
     const patientLastName = appointmentBody.patientLastName;
     const doctorFirstName = appointmentBody.doctorFirstName;
@@ -308,7 +308,7 @@ function apiRouter(database) {
   router.post('/assignDoctor', (req, res) => {
 
     const patientInfo = req.body;
-    
+
 
     const patientToBeAssignedFirstName = patientInfo.patientFirstName;
     const patientToBeAssignedLastName = patientInfo.patientLastName;
@@ -377,20 +377,73 @@ function apiRouter(database) {
       });
     });
 
+  });
+
+  router.post('/addRevisitingPatient', (req, res) => {
+    const patientInfo = req.body;
+    const patientCollection = database.collection("patients");
+
+    patientCollection.findOne({ patientId: patientInfo.patientId }, (err, result) => {
+      //If patient is already in the patients list, return by displaying error {otherwise duplication}
+      if(result) {
+        return res.json({
+          error: 'Patient ' + patientInfo.firstname + " " + patientInfo.lastname + "has already paid for registration."
+        });
+      } else {
+        patientCollection.insertOne({
+          patientId: patientInfo.patientId, firstname: patientInfo.firstname,
+          lastname: patientInfo.lastname, email: patientInfo.email,
+          password: patientInfo.password, phone: patientInfo.phone,
+          gender: patientInfo.gender, age: patientInfo.age
+        }, (err, r) => {
+
+          if (err) {
+            return res.json({ error: 'Error Occured while adding patinet during Checkup Registration.' });
+          }
+
+          const newRecord = r.ops[0];
+
+          return res.json({ status: 'Patient successfully registered and pay for Checkup Again' });
+
+        });
+      }
+    })
 
   });
 
-  router.post('/addIntoInvoice', (req,res)=> {
+
+  //Handler for Patient that has been medicated before  , now he/she wants to be admitted again
+  router.post('/getFromPatientRecord', (req, res) => {
+
+    const info = req.body;
+    const patientOldRecordCollection = database.collection('patientsBigData');
+
+
+    patientOldRecordCollection.findOne({ patientId: info.patientId }, (err, result) => {
+      if (!result) {
+        return res.json({
+          error: 'Patient with id ' + info.patientId + " is not found.",
+          statusCode: 404
+        });
+      }
+
+      return res.json({
+        patientInfo: result
+      });
+    });
+  });
+
+  router.post('/addIntoInvoice', (req, res) => {
     const invoiceCollection = database.collection('invoices');
     const bill = req.body;
 
-    invoiceCollection.insertOne(bill, (err,r)=>{
-      if(err){
-        return res.json({error: "Error Occured while adding Billing Details."});
+    invoiceCollection.insertOne(bill, (err, r) => {
+      if (err) {
+        return res.json({ error: "Error Occured while adding Billing Details." });
       }
 
       const newRecord = r.ops[0];
-      return res.json({status: "Patient Billed Successfully"});
+      return res.json({ status: "Patient Billed Successfully" });
     });
   });
 

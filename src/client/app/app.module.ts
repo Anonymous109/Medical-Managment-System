@@ -144,6 +144,7 @@ import { PatientComponent as ReceptionistDashPatientComponent } from './dashboar
 import { AddpatientComponent as ReceptionistDashAddPatientComponent } from './dashboard/receptionist/patient/addpatient/addpatient.component';
 import { ProfileComponent as ReceptionistDashProfileComponent } from './dashboard/receptionist/profile/profile.component';
 import { ReceptionistsidebarnavigationComponent } from './dashboard/receptionist/receptionistsidebarnavigation/receptionistsidebarnavigation.component';
+import { PatientRecordComponent as ReceptionistPatientRecordComponent} from './dashboard/receptionist/patient/patient-record/patient-record.component';
 
 // -------------------------- --------------------------Receptionist Dash Component Ends ------------------ -------------------------- ---------//
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
@@ -230,7 +231,8 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
     LockscreenComponent,
     ReceptionistsidebarnavigationComponent,
     ReceptionistDashAddPatientComponent,
-    ReceptionistDashAddAppointmentComponent
+    ReceptionistDashAddAppointmentComponent,
+    ReceptionistPatientRecordComponent
     
   ],
   imports: [
