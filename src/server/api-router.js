@@ -180,7 +180,7 @@ function apiRouter(database) {
           return res.json({ error: "Error occured while inserting the blood type, Try Again" });
         }
       })
-      return res.json({ message: "Donor" + donorInfo.bloodDonorName + "donation info has been added Successfully" });
+      return res.json({ message: "Donor " + donorInfo.bloodDonorName + "donation info has been added Successfully" });
     });
   });
 

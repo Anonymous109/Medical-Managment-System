@@ -85,7 +85,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/receptionist/profile/'+ this.userLock]);
     } else if (this.userRole == 'nurse') {
       this.router.navigate(['/nurse/profile/' + this.userLock]);
-    }
+    } 
   }
 
   logOut(){

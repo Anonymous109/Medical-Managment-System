@@ -84,7 +84,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/receptionist/dash']);
         } else if (data.role == 'nurse') {
           this.router.navigate(['/nurse/dash']);
-        } else if(data.role == 'subscriber'){
+        }else if(data.role == 'doctor'){
+          this.router.navigate(['/doctor/dash']);
+        }else if(data.role == 'subscriber'){
           this.router.navigate(['/home']);
         }
 

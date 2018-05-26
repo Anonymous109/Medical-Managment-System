@@ -67,7 +67,7 @@
                           <th>Age</th>
                           <th>Sex</th>
                           <th>Blood Group</th>
-                          <th>Options</th>
+                          <th>Blood Donor Phone</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -82,33 +82,15 @@
                               <span></span>
                             </label>
                           </td>
-                          <td> {{bloodDonorDisplay.bloodDonorName}} </td>
-                          <td>
+                          <td class="center"> {{bloodDonorDisplay.bloodDonorName}} </td>
+                          <td class="center">
                             {{bloodDonorDisplay.bloodDonorAge}}
                           </td>
                           <td class="center"> {{bloodDonorDisplay.selectedSex}}
                           </td>
-                          <td>{{bloodDonorDisplay.selectedBloodGroup}}</td>
+                          <td class="center">{{bloodDonorDisplay.selectedBloodGroup}}</td>
                           <td class="center">
-                            <div class="btn-group">
-                              <button class="btn
-                                btn-xs btn-danger
-                                dropdown-toggle
-                                no-margin" type="button" data-toggle="dropdown"
-                                aria-expanded="false">
-                                Options
-                                <i class="fa
-                                  fa-angle-down"></i>
-                              </button>
-                              <ul class="dropdown-menu" role="menu">
-                                <li>
-                                  <a (click)="removeBed(bedsDisplay)">
-                                    <i class="fa fa-bed"></i>
-                                    Remove Bed
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
+                            {{bloodDonorDisplay.bloodDonorPhone}}
                           </td>
                         </tr>
   

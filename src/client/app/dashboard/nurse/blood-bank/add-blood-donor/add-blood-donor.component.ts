@@ -32,7 +32,22 @@ export class AddBloodDonorComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+
+
   addBloodDonor(){
+
+    if(!this.bloodDonorName || !this.bloodDonorEmail || !this.bloodDonorAddress || !this.bloodDonorPhone || !this.selectedSex || !this.selectedBloodGroup){
+      this.toastr.error("Please fill all fields", 'Message', { toastLife: 3000 });
+      return false;
+    }
+
+    if(this.bloodDonorAge <=0)
+    {
+      this.toastr.error('Blood Donor is not matured enough for Blood Donation !','Message', { toastLife: 3000 });
+      return false;
+    }
+
     const payload = {
       bloodDonorName: this.bloodDonorName,
       bloodDonorEmail:this.bloodDonorEmail,
@@ -48,7 +63,7 @@ export class AddBloodDonorComponent implements OnInit {
           this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
         }
         if(data.message){
-          this.toastr.success(data.message, 'Great !', { toastLife: 3000 });
+          this.toastr.success(data.message, 'Message !', { toastLife: 3000 });
         }
     })
   }
