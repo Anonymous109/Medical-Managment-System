@@ -199,14 +199,21 @@ function apiRouter(database) {
   //Add Bed
   router.post('/addBed', (req, res) => {
     const bedBody = req.body;
-
     const bedCollection = database.collection('beds');
-    bedCollection.insertOne(bedBody, (err, result) => {
-      if (err) {
-        return res.json({ error: "Unable to Add Bed, Try Again" });
-      }
-      return res.json({ message: "Bed Successfully Added" });
-    })
+
+    bedCollection.findOne({bedNumber:bedBody.bedNumber},(err,result)=>{
+        if(result){
+          return res.json({error: "Bed Number has assigned Bed , Try Other Numbers"});
+        }else{
+          bedCollection.insertOne(bedBody, (err, result) => {
+            if (err) {
+              return res.json({ error: "Unable to Add Bed, Try Again" });
+            }
+            return res.json({ message: "Bed Successfully Added" });
+          });
+        }
+    });
+
   })
 
   //Get All Beds
@@ -274,6 +281,23 @@ function apiRouter(database) {
   });
 
 
+  //Discharge Patient
+  router.post('/discharge',(req,res)=>{
+    const bedNumber = req.body.bedNumber;
+    const bedCollection = database.collection('beds');
+
+    
+    bedCollection.updateOne(
+      { bedNumber : bedNumber},
+      { $set: { "status" : "free"} });
+      bedCollection.findOne({bedNumber:bedNumber},(err,r)=>{
+        if(r){
+          const allocatedTime = r.allocatedTime;
+          return res.json({status: "Patient discharged , Bed Number " + bedNumber + " is Availble Now"});
+        }
+      }); 
+  });
+
   //Appointment List
   router.get('/appointmentsList', (req, res) => {
     const appointmentsCollection = database.collection('appointments');
@@ -297,18 +321,33 @@ function apiRouter(database) {
     const appointmentStatus = appointmentBody.status;
 
     const appointmentsCollection = database.collection('appointments');
-    appointmentsCollection.insertOne(appointmentBody, (err, result) => {
-      if (err) {
-        return res.json({ error: "Unable to Add Appointment, Try Later" });
-      }
-      return res.json({ message: "Appointment for " + patientFirstName + " " + patientLastName + " has been successfully added." })
-    });
+    
+    //checks if the patient has pending appointment , if he/she has one , show error
+    appointmentsCollection.findOne({patientFirstName : patientFirstName,
+                                    patientLastName : patientLastName,
+                                    status : appointmentStatus},(err, result)=>{
+
+          if(result)
+          {
+            return res.json({error: "Patient has pending Appointment!"});
+          }else{
+            appointmentsCollection.insertOne(appointmentBody, (err, result) => {
+              if (err) {
+                return res.json({ error: "Unable to Add Appointment, Try Later" });
+              }
+              return res.json({ message: "Appointment for " + patientFirstName + " " + patientLastName + " has been successfully added." })
+            });
+          }
+
+      })
+
   });
 
   router.post('/assignDoctor', (req, res) => {
 
     const patientInfo = req.body;
 
+    const patientsAssigned = database.collection('assignedPatients'); // Assigned Patients Collection
 
     const patientToBeAssignedFirstName = patientInfo.patientFirstName;
     const patientToBeAssignedLastName = patientInfo.patientLastName;
@@ -324,8 +363,6 @@ function apiRouter(database) {
       gender: patientToBeAssignedGender, age: patientToBeAssignedAge
     }, 1);
 
-    const patientsAssigned = database.collection('assignedPatients');
-
     patientsAssigned.insertOne(patientInfo, (err, result) => {
       if (err) {
         return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
@@ -335,6 +372,28 @@ function apiRouter(database) {
 
     });
   })
+
+  router.post('/getPatientId',(req,res)=>{
+    const patientCollection = database.collection('patients');
+    const patientInfo = req.body;
+    
+    patientCollection.findOne({firstname: patientInfo.firstname,lastname:patientInfo.lastname},(err,r)=>{
+      if(err){
+        return res.json({error: "Error Occured While Billing patient for Bed"});
+      }else{
+        const beds = database.collection('beds');
+        beds.findOne({patientFirstName: patientInfo.firstname, patientLastName: patientInfo.lastname},(err,r2)=>{
+          if(r2){
+            return res.json({result: r.patientId , allocatedTime: r2.allocatedTime});
+          }
+        })
+        //console.log( " ---- " + r.patientId);
+        
+      }
+    })
+
+  })
+
 
   router.get('/patientsList', (req, res) => {
 
@@ -387,7 +446,7 @@ function apiRouter(database) {
       //If patient is already in the patients list, return by displaying error {otherwise duplication}
       if(result) {
         return res.json({
-          error: 'Patient ' + patientInfo.firstname + " " + patientInfo.lastname + "has already paid for registration."
+          error: 'Patient ' + patientInfo.firstname + " " + patientInfo.lastname + " has already paid for registration."
         });
       } else {
         patientCollection.insertOne({

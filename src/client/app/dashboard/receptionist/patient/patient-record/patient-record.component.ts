@@ -40,7 +40,11 @@ export class PatientRecordComponent implements OnInit {
       patientId: patientId
     }
     this.api.post('/getFromPatientRecord', payload).subscribe(data=>{
+      if(data.error){
+        this.toastr.error( data.error, 'Message', {toastLife: 3000});
+      }
       this.patientProfile = data.patientInfo;
+
     });
   }
 

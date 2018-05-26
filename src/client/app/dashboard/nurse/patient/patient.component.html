@@ -40,7 +40,7 @@
                 <header>Patients List</header>
                 <div class="tools">
                   <a class="fa fa-repeat btn-color
-                    box-refresh" href="javascript:;"></a>
+                    box-refresh" (click)="refresh()" href="javascript:;"></a>
                   <a class="t-collapse btn-color fa
                     fa-chevron-down" href="javascript:;"></a>
                   <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
@@ -57,8 +57,7 @@
                           <label class="rt-chkbox
                             rt-chkbox-single
                             rt-chkbox-outline">
-                            <input type="checkbox" class="group-checkable"
-                              data-set="#sample_1
+                            <input type="checkbox" class="group-checkable" data-set="#sample_1
                               .checkboxes" />
                             <span></span>
                           </label>
@@ -77,18 +76,16 @@
                           <label class="rt-chkbox
                             rt-chkbox-single
                             rt-chkbox-outline">
-                            <input type="checkbox" class="checkboxes" value="1"
-                              />
+                            <input type="checkbox" class="checkboxes" value="1" />
                             <span></span>
                           </label>
                         </td>
-                        <td> {{patientDisplay.firstname}}
-                          {{patientDisplay.lastname}} </td>
+                        <td> {{patientDisplay.firstname}} {{patientDisplay.lastname}} </td>
                         <td>
                           <select class="form-control
                             input-height" name="department" #bloodTypeCategory [(ngModel)]="selectedValue">
-                            <option  value="">Select...</option>
-                            <option  *ngFor="let doctorsDisplay of doctors" [ngValue]="doctorsDisplay">{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
+                            <option value="">Select...</option>
+                            <option *ngFor="let doctorsDisplay of doctors" [ngValue]="doctorsDisplay">{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
                           </select>
                         </td>
                         <td class="center"> 12/05/2016
@@ -99,18 +96,12 @@
                             <button class="btn
                               btn-xs btn-info
                               dropdown-toggle
-                              no-margin" type="button" data-toggle="dropdown"
-                              aria-expanded="false">
+                              no-margin" type="button" data-toggle="dropdown" aria-expanded="false">
                               Options
                               <i class="fa
                                 fa-angle-down"></i>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                              <li>
-                                <a (click)="takeVitalSign()">
-                                  <i class="fa fa-plus"></i>
-                                  Take Vital Sign </a>
-                              </li>
                               <li>
                                 <a (click)="assignDoctor(patientDisplay)">
                                   <i class="fa fa-user"></i>

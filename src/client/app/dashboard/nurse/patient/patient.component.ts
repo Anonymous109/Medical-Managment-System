@@ -57,9 +57,9 @@ export class PatientComponent implements OnInit {
     this.doctorPatientDataFetcher();
   }
 
-  //Take Vital Sign 
-  takeVitalSign(){
-    
+  refresh()
+  {
+    this.doctorPatientDataFetcher();
   }
 
   //Assign Patient to Doctor

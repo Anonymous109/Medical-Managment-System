@@ -19,7 +19,7 @@
                 <!-- Search Input For Receptionist Only Starts-->
                 <form class="search-form-opened" *ngIf="userRole == 'receptionist'" #searchForm="ngForm" (submit)="searchItem(searchForm)">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Patients by  ..." name="search_query" ngModel>
+                        <input type="text" class="form-control" placeholder="Search Patient..." autocomplete="off" name="search_query" ngModel>
                     </div>
                 </form>
                 <!-- Search Input For Receptionist End -->

@@ -50,9 +50,21 @@ export class AddAppointmentComponent implements OnInit {
 
   addAppointment() {
 
-    if(!this.selectedDoctor || !this.selectedDoctor || !this.selectedPatient){
+    if (!this.selectedDoctor || !this.selectedDoctor || !this.selectedPatient) {
       this.flashMessagesService.show('Please, Fill all the required fields', {
-        classes: ['alert', 'alert-success'], // You can pass as many classes as you need
+        classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
+        timeout: 2000, // Default is 3000
+      });
+      return false;
+    }
+    const date = new Date();
+
+
+
+    if (this.parseDate(this.selectedDate).getTime() < date.getTime()) {
+
+      this.flashMessagesService.show("Please, Select Appointment Day after Today's Date", {
+        classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
         timeout: 2000, // Default is 3000
       });
       return false;
@@ -75,5 +87,11 @@ export class AddAppointmentComponent implements OnInit {
       }
 
     })
+  }
+
+  parseDate(input)
+  {
+    var parts = input.match(/(\d+)/g);
+    return new Date(parts[0],parts[1]-1, parts[2])
   }
 }

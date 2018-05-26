@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../../../../shared/api.service';
 
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { FlashMessagesService } from 'ngx-flash-messages';
+
 import {
   Injectable, ComponentRef, ApplicationRef, NgZone,
   ReflectiveInjector, ViewContainerRef, ComponentFactoryResolver,
@@ -23,7 +25,8 @@ export class AddBedComponent implements OnInit {
   bedTypes: Observable<Array<any>>;
   constructor(private api: ApiService,
               public toastr: ToastsManager,
-              vcr: ViewContainerRef
+              vcr: ViewContainerRef,
+              private flashMessagesService: FlashMessagesService
             ) {
               this.toastr.setRootViewContainerRef(vcr);
              }
@@ -35,6 +38,15 @@ export class AddBedComponent implements OnInit {
   }
 
   addBed(){
+
+      if(this.selectedBedNumber <= 0){
+        this.flashMessagesService.show('Please insert valid Bed Number', {
+          classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
+          timeout: 2000, // Default is 3000
+        });
+        return false;
+      }
+
       const payload = {
         bedNumber: this.selectedBedNumber,
         bedType: this.selectedBedType,

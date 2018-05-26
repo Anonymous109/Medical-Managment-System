@@ -40,7 +40,7 @@
                   <header>Allotment List</header>
                   <div class="tools">
                     <a class="fa fa-repeat btn-color
-                      box-refresh" href="javascript:;"></a>
+                      box-refresh" (click)="refresh()" href="javascript:;"></a>
                     <a class="t-collapse btn-color fa
                       fa-chevron-down" href="javascript:;"></a>
                     <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
@@ -67,7 +67,6 @@
                           <th>Bed Type</th>
                           <th>Patient</th>
                           <th>Allotment Time</th>
-                          <th>Discharge Time</th>
                           <th>Options</th>
                         </tr>
                       </thead>
@@ -90,7 +89,6 @@
                           <td class="center"> {{bedsDisplay.patientFirstName}} {{bedsDisplay.patientLastName}}
                           </td>
                           <td class="center"> {{bedsDisplay.allotmentTime}}</td>
-                          <td class="center"> {{bedsDisplay.dischargeTime}}</td>
                           <td class="center">
                             <div class="btn-group">
                               <button class="btn
@@ -104,7 +102,7 @@
                               </button>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                  <a (click)="removeBed(bedsDisplay)">
+                                  <a (click)="discharge(bedsDisplay)">
                                     <i class="fa fa-bed"></i>
                                     Discharge
                                   </a>
