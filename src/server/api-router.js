@@ -521,6 +521,18 @@ function apiRouter(database) {
     });
   });
 
+
+  router.get('/notice',(req,res)=>{
+    const noticeCollection = database.collection('noticeBoard');
+    noticeCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Error occured while reteriving Notifications"});
+      }
+      return res.json(result);
+    }); 
+  })
+
+
   return router;
 }
 

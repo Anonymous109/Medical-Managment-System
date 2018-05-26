@@ -3,6 +3,7 @@ import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
 import { ApiService } from '../../shared/api.service';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -13,6 +14,8 @@ export class HeaderComponent implements OnInit {
 
   public userLock:string;
   public userRole: string;
+  public noticeList:Observable<Array<any>>;
+  
 
   public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   public doughnutChartData:number[] = [200, 450, 100];
@@ -52,6 +55,9 @@ export class HeaderComponent implements OnInit {
   term:string = "jake";
   
   ngOnInit() {
+    
+    this.getRecentNotice();
+
     const tokenFetched = {
       "token" : this.auth.getToken()
     };
@@ -77,6 +83,13 @@ export class HeaderComponent implements OnInit {
     return;
   }
 
+  getRecentNotice()
+  {
+    this.api.get('/notice').subscribe(data=>{
+        //The interval is set to 1second , just to create some lag to indicate the data is fetched from Database
+        this.noticeList = Observable.interval(100).map(i=>data);
+      });
+  }
 
   profile(){
     if (this.userRole == 'admin') {

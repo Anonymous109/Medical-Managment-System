@@ -68,6 +68,23 @@ import { AddBloodDonorComponent as NurseDashAddBloodDonorComponent } from './das
 import { BloodDonorsComponent as NurseDashBloodDonorsComponent  } from './dashboard/nurse/blood-bank/blood-donors/blood-donors.component';
 
 
+/* -------------- Nurse Ends Here --------------------------------*/
+
+
+// Doctor UI 
+
+import { AppointmentComponent as DoctorDashAppointmentComponent } from './dashboard/doctor/appointment/appointment.component';
+import { BedComponent as DoctorDashBedComponent } from './dashboard/doctor/bed/bed.component';
+import { BloodBankComponent as DoctorDashBloodBankComponent } from './dashboard/doctor/blood-bank/blood-bank.component';
+import { DashboardComponent as DoctorDashComponent } from './dashboard/doctor/dashboard/dashboard.component';
+import { MessageComponent as DoctorDashMessageComponent } from './dashboard/doctor/message/message.component';
+import { PatientComponent as DoctorDashPatientComponent } from './dashboard/doctor/patient/patient.component';
+import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dashboard/doctor/prescription/prescription.component';
+import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
+import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
+
+
+
 const routes: Routes = [
   {
     path: '',
@@ -258,6 +275,10 @@ const routes: Routes = [
   {
     path: "nurse/profile",
     component: NurseDashProfileComponent
+  },
+  {
+    path: "doctor/dash",
+    component: DoctorDashComponent
   },
   {
     path: "admin/profile/:username",
