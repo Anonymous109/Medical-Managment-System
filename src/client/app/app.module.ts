@@ -148,6 +148,9 @@ import { PatientRecordComponent as ReceptionistPatientRecordComponent} from './d
 
 // -------------------------- --------------------------Receptionist Dash Component Ends ------------------ -------------------------- ---------//
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
+import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
+import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
+import { DetailComponent  as MessageDetailComponent} from './dashboard/messages/inbox/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -232,7 +235,10 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
     ReceptionistsidebarnavigationComponent,
     ReceptionistDashAddPatientComponent,
     ReceptionistDashAddAppointmentComponent,
-    ReceptionistPatientRecordComponent
+    ReceptionistPatientRecordComponent,
+    MessageInboxComponent,
+    MessageComposeComponent,
+    MessageDetailComponent
     
   ],
   imports: [

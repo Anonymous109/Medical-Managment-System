@@ -85,6 +85,13 @@ import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor
 
 
 
+// Message UI
+import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
+import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
+import { DetailComponent  as MessageDetailComponent} from './dashboard/messages/inbox/detail/detail.component';
+
+
+
 const routes: Routes = [
   {
     path: '',
@@ -279,6 +286,18 @@ const routes: Routes = [
   {
     path: "doctor/dash",
     component: DoctorDashComponent
+  },
+  {
+    path: "message/inbox",
+    component: MessageInboxComponent
+  },
+  {
+    path: "message/inbox/:username/:messageId",
+    component: MessageDetailComponent
+  },
+  {
+    path: "message/compose/:username",
+    component: MessageComposeComponent
   },
   {
     path: "admin/profile/:username",

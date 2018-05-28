@@ -1,0 +1,177 @@
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+  <app-dashboard-header></app-dashboard-header>
+  <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+  <div class="page-container">
+    <!-- start sidebar menu -->
+    <div class="sidebar-container">
+      <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+        <div id="remove-scroll">
+          <!-- Navigation SideBar Starts -->
+          <app-nurse-side-bar-navigation></app-nurse-side-bar-navigation>
+          <!-- Navigation SideBar Ends -->
+        </div>
+      </div>
+    </div>
+    <!-- end sidebar menu -->
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="page-bar">
+          <div class="page-title-breadcrumb">
+            <div class=" pull-left">
+              <div class="page-title">Inbox</div>
+            </div>
+            <ol class="breadcrumb page-breadcrumb pull-right">
+              <li>
+                <i class="fa fa-home"></i>&nbsp;
+                <a class="parent-item" href="#">Home</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a class="parent-item" href="">Messages</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li class="active">Inbox</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-topline-gray">
+              <div class="card-body no-padding height-9">
+                <div class="inbox">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="inbox-sidebar">
+                        <a href="#" data-title="Compose" class="btn red compose-btn btn-block">
+                          <i class="fa fa-edit"></i> Compose </a>
+                        <ul class="inbox-nav inbox-divider">
+                          <li class="active">
+                            <a href="">
+                              <i class="fa fa-inbox"></i> Inbox
+                              <span class="label mail-counter-style label-danger pull-right">2</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-envelope"></i> Sent Mail</a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-briefcase"></i> Important</a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class="fa fa-star"></i> Starred </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class=" fa fa-external-link"></i> Drafts
+                              <span class="label mail-counter-style label-info pull-right">30</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <i class=" fa fa-trash-o"></i> Trash</a>
+                          </li>
+                        </ul>
+
+
+                      </div>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="inbox-body">
+                        <div class="inbox-header">
+                          <div class="mail-option no-pad-left">
+                            <div class="btn-group group-padding">
+                              <a class="btn mini tooltips" href="#" data-toggle="dropdown" data-placement="top" data-original-title="Refresh">
+                                <i class=" fa fa-refresh fa-lg"></i>
+                              </a>
+                              <a class="btn mini tooltips" href="#" data-original-title="Archive">
+                                <i class=" fa fa-archive fa-lg"></i>
+                              </a>
+                              <a class="btn mini tooltips" href="#" data-original-title="Trash">
+                                <i class=" fa fa-trash-o fa-lg"></i>
+                              </a>
+                              <a class="btn mini tooltips" href="#" data-original-title="Folders">
+                                <i class=" fa fa-folder fa-lg"></i>
+                              </a>
+                              <a class="btn mini tooltips" href="#" data-original-title="Tag">
+                                <i class=" fa fa-tag fa-lg"></i>
+                              </a>
+                            </div>
+                            <div class="btn-group hidden-phone">
+                              <a class="btn mini blue-bgcolor" href="#" data-toggle="dropdown" aria-expanded="false"> More
+                                <i class="fa fa-angle-down downcolor"></i>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">
+                                    <i class="fa fa-pencil"></i> Mark as Read</a>
+                                </li>
+                                
+                                <li class="divider"></li>
+                                <li>
+                                  <a href="#">
+                                    <i class="fa fa-trash-o"></i> Delete</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="btn-group pull-right btn-prev-next">
+                              <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fa fa-chevron-left"></i>
+                              </button>
+                              <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fa fa-chevron-right"></i>
+                              </button>
+                            </div>
+                            <div class="todo-check pull-left m-l-20">
+                              <input type="checkbox" value="None" id="todo-check30">
+                              <label for="todo-check30"></label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="inbox-body no-pad table-responsive">
+                          <table class="table table-inbox table-hover">
+                            <tbody>
+                              <tr class="unread">
+                                <td class="inbox-small-cells">
+                                  <div class="todo-check pull-left">
+                                    <input type="checkbox" value="None" id="todo-check1">
+                                    <label for="todo-check1"></label>
+                                  </div>
+                                </td>
+                                <td class="inbox-small-cells">
+                                  <i class="fa fa-star inbox-started"></i>
+                                </td>
+                                <td>
+                                  <a href="#" class="avatar">
+                                    <img src="/profiles/Staff_Icons/Doctor_Male.png" alt="">
+                                  </a>
+                                </td>
+                                <td class="view-message  dont-show">Dr.Sirak</td>
+                                <td class="view-message ">
+                                  <a href="#">Send me the vital signs you took from Patient Abel.</a>
+                                </td>
+                                <td class="view-message  inbox-small-cells">
+                                  <i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="view-message  text-right">10:27 AM</td>
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page content -->
+  </div>
+</div>

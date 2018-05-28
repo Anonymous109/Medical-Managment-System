@@ -37,7 +37,7 @@
                 <div class="card-head">
                   <header>Blood Bank</header>
                   <div class="tools">
-                    <a class="fa fa-repeat btn-color
+                    <a (click)="updateBloodStore()" class="fa fa-repeat btn-color
                       box-refresh" href="javascript:;"></a>
                     <a class="t-collapse btn-color fa
                       fa-chevron-down" href="javascript:;"></a>
@@ -63,7 +63,7 @@
                           </th>
                           <th>Blood Group</th>
                           <th>Status</th>
-                          <th>Use Donated Blood/th>
+                          <th>Use Donated Blood</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -78,9 +78,9 @@
                               <span></span>
                             </label>
                           </td>
-                          <td class="center"> A+ </td>
+                          <td class="center"> {{bloodBankDisplay.bloodType}} </td>
                           <td class="center">
-                            4
+                            {{bloodBankDisplay.quantity}}
                           </td>
                           <td class="center">
                             <div class="btn-group">
@@ -95,33 +95,63 @@
                               </button>
                               <ul class="dropdown-menu" role="menu">
                                 <li>
-                                  <a (click)="useBloodInLitre(1)">
+                                  <a (click)="useBloodInLitre(1, bloodBankDisplay.bloodType)">
                                     <i class="fa fa-tint"></i>
                                     Take 1 Litre
                                   </a>
                                 </li>
                                 <li>
-                                  <a (click)="useBloodInLitre(2)">
+                                  <a (click)="useBloodInLitre(2, bloodBankDisplay.bloodType)">
                                     <i class="fa fa-tint"></i>
                                     Take 2 Litres
                                   </a>
                                 </li>
                                 <li>
-                                  <a (click)="useBloodInLitre(3)">
+                                  <a (click)="useBloodInLitre(3, bloodBankDisplay.bloodType)">
                                     <i class="fa fa-tint"></i>
                                     Take 3 Litres
                                   </a>
                                 </li>
                                 <li>
-                                  <a (click)="useBloodInLitre(3)">
+                                  <a (click)="useBloodInLitre(4, bloodBankDisplay.bloodType)">
                                     <i class="fa fa-tint"></i>
                                     Take 4 Litres
                                   </a>
                                 </li>
                                 <li>
-                                  <a (click)="useBloodInLitre(5)">
+                                  <a (click)="useBloodInLitre(5, bloodBankDisplay.bloodType)">
                                     <i class="fa fa-tint"></i>
-                                    Take 5 Litre5
+                                    Take 5 Litres
+                                  </a>
+                                </li>
+                                <li>
+                                  <a (click)="useBloodInLitre(6, bloodBankDisplay.bloodType)">
+                                    <i class="fa fa-tint"></i>
+                                    Take 6 Litres
+                                  </a>
+                                </li>
+                                <li>
+                                  <a (click)="useBloodInLitre(7, bloodBankDisplay.bloodType)">
+                                    <i class="fa fa-tint"></i>
+                                    Take 7 Litres
+                                  </a>
+                                </li>
+                                <li>
+                                  <a (click)="useBloodInLitre(8, bloodBankDisplay.bloodType)">
+                                    <i class="fa fa-tint"></i>
+                                    Take 8 Litres
+                                  </a>
+                                </li>
+                                <li>
+                                  <a (click)="useBloodInLitre(9, bloodBankDisplay.bloodType)">
+                                    <i class="fa fa-tint"></i>
+                                    Take 9 Litres
+                                  </a>
+                                </li>
+                                <li>
+                                  <a (click)="useBloodInLitre(10, bloodBankDisplay.bloodType)">
+                                    <i class="fa fa-tint"></i>
+                                    Take 10 Litres
                                   </a>
                                 </li>
                               </ul>

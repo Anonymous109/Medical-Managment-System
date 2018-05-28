@@ -175,13 +175,39 @@ function apiRouter(database) {
         return res.json({ error: "Unable to add blood donor , Try Again !" });
       }
 
-      bloodBankCollection.insertOne({ "bloodType": donorInfo.selectedBloodGroup }, (err, result) => {
-        if (err) {
-          return res.json({ error: "Error occured while inserting the blood type, Try Again" });
-        }
-      })
-      return res.json({ message: "Donor " + donorInfo.bloodDonorName + "donation info has been added Successfully" });
+      bloodBankCollection.findOneAndUpdate(
+              {"bloodType": donorInfo.selectedBloodGroup},
+              {$inc: {"quantity": 1}  } 
+      );
+
+      return res.json({ message: "Donor " + donorInfo.bloodDonorName + " donation info has been added Successfully" });
     });
+  });
+
+  // Use blood { Donated blood }
+  router.post("/useBlood", (req, res)=> {
+
+    const bloodBankCollection = database.collection("bloodBank");
+    const requestedBlood = req.body;
+
+    bloodBankCollection.find({bloodType: requestedBlood.bloodType}).toArray((err, result)=>{
+
+        //Check before using giving the blood { incase the requested blood it too much greater than the blood stored in stock}
+        if(result[0].quantity < requestedBlood.quantity){
+          return res.json({error: "Error , There is a shortage in Blood Store"});
+        }
+        bloodBankCollection.findOneAndUpdate(
+          {bloodType: requestedBlood.bloodType},
+          {$set : { quantity: result[0].quantity - requestedBlood.quantity}}
+        )
+        
+        if(err){
+          return res.json({error: "Error Occured while finding requested blood type , Try Again"});
+        }
+        return res.json({status : "Requested blood type is updated , You can use it now "});
+    
+      });
+
   });
 
 
