@@ -93,6 +93,7 @@ import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dash
 import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
 import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 import { DoctorSideBarNavigationComponent } from './dashboard/doctor/doctor-side-bar-navigation/doctor-side-bar-navigation.component';
+import { AddBedAllotmentComponent as DoctorDashAddBedAllotment} from './dashboard/doctor/bed/add-bed-allotment/add-bed-allotment.component';
 
 // -------------------------- --------------------------Doctor Dash Component Ends ------------------ -------------------------- ---------//
 
@@ -152,8 +153,7 @@ import { PatientRecordComponent as ReceptionistPatientRecordComponent} from './d
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
 import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
 import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
-import { DetailComponent  as MessageDetailComponent} from './dashboard/messages/inbox/detail/detail.component';
-
+import { DetailComponent } from './dashboard/messages/inbox/detail/detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -240,9 +240,10 @@ import { DetailComponent  as MessageDetailComponent} from './dashboard/messages/
     ReceptionistPatientRecordComponent,
     MessageInboxComponent,
     MessageComposeComponent,
-    MessageDetailComponent,
+    DetailComponent,
     DoctorSideBarNavigationComponent,
-    ApprovedAppointmentsComponent
+    ApprovedAppointmentsComponent,
+    DoctorDashAddBedAllotment
     
   ],
   imports: [

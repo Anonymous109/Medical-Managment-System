@@ -76,6 +76,7 @@ import { BloodDonorsComponent as NurseDashBloodDonorsComponent  } from './dashbo
 import { AppointmentComponent as DoctorDashAppointmentComponent } from './dashboard/doctor/appointment/appointment.component';
 import { ApprovedAppointmentsComponent } from './dashboard/doctor/appointment/approved-appointments/approved-appointments.component';
 import { BedComponent as DoctorDashBedComponent } from './dashboard/doctor/bed/bed.component';
+import { AddBedAllotmentComponent as DoctorDashAddBedAllotment} from './dashboard/doctor/bed/add-bed-allotment/add-bed-allotment.component';
 import { BloodBankComponent as DoctorDashBloodBankComponent } from './dashboard/doctor/blood-bank/blood-bank.component';
 import { DashboardComponent as DoctorDashComponent } from './dashboard/doctor/dashboard/dashboard.component';
 import { MessageComponent as DoctorDashMessageComponent } from './dashboard/doctor/message/message.component';
@@ -294,6 +295,18 @@ const routes: Routes = [
   },{
     path: "doctor/appointments/requested/:doctorUsername",
     component: DoctorDashAppointmentComponent
+  },
+  {
+    path : "doctor/beds/allotment",
+    component: DoctorDashBedComponent
+  },
+  {
+    path: "doctor/patientsAssigned/:doctorUsername",
+    component: DoctorDashPatientComponent
+  },
+  {
+    path: "doctor/beds/allotment/add",
+    component: DoctorDashAddBedAllotment
   },
   {
     path: "message/inbox",

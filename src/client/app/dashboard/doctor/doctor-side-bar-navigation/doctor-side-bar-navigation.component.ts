@@ -44,6 +44,7 @@ export class DoctorSideBarNavigationComponent implements OnInit {
     this.api.post('lock', tokenFetched).subscribe(data=> {
         this.username = data.user; 
     });
+    this.getPendingAppointments();
   }
 
   approvedAppointments()
@@ -55,4 +56,21 @@ export class DoctorSideBarNavigationComponent implements OnInit {
   {
     this.router.navigate(['/doctor/appointments/requested/'+this.username]);
   }
+
+  getPatients()
+  {
+    this.router.navigate(['/doctor/patientsAssigned/'+this.username]);
+  }
+  getPendingAppointments()
+  {
+    const payload = {
+      username : this.username
+    }
+    console.log(payload);
+    this.api.post('/getPendingAppointments', payload).subscribe(data=>{
+      this.appointments = Observable.interval(10).map(i => data);
+    });
+  }
+
+ 
 }

@@ -436,7 +436,8 @@ function apiRouter(database) {
       return res.json({status: "Appointment has been deleted successfully"});
     }
 
-  })
+  });
+
   // Assign Patient 
   router.post('/assignDoctor', (req, res) => {
 
@@ -450,14 +451,34 @@ function apiRouter(database) {
     const patientToBeAssignedAge = patientInfo.patientAge;
     const assignedDoctorFirstName = patientInfo.assignedDoctorFirstName;
     const assignedDoctorLastName = patientInfo.assignedDoctorLastName;
-
     const patientCollection = database.collection('patients');
 
-    patientCollection.remove({
-      firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName,
-      gender: patientToBeAssignedGender, age: patientToBeAssignedAge
-    }, 1);
-
+    const patientBigDataCollection = database.collection('patientsBigData');
+    const patientsCollection = database.collection('patients');
+    
+    
+    patientsCollection.findOne({
+      firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName},(err,result)=>{
+          if(err){
+            return res.json({error: "Error occured while admiting patient"});
+          }
+          const payload = {
+            patientId : result.patientId,
+            firstname : result.firstname,
+            lastname : result.lastname,
+            email : result.email,
+            password : result.password,
+            phone: result.phone,
+            gender : result.gender,
+            age : result.age
+          }
+          patientBigDataCollection.insertOne(payload, (err, r)=>{
+            if(err){
+              return res.json({error : "Error occured while admiting patient"});
+            }
+          })
+      });
+    patientCollection.findOneAndDelete({firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName});
     patientsAssigned.insertOne(patientInfo, (err, result) => {
       if (err) {
         return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
@@ -468,6 +489,47 @@ function apiRouter(database) {
     });
   })
 
+  // Get patients Assigned to Specific doctor requested
+  router.post('/assignedPatientsList', (req, res)=>{
+
+      const doctorAdmittingInfo = req.body;
+      const assignedPatientCollection = database.collection('assignedPatients');
+      const userCollection = database.collection('users');
+      
+      userCollection.findOne({"username": doctorAdmittingInfo.username},(err,result)=>{
+        if(err){
+          return res.json({error: "Unable to get Doctor detail info"});
+        }
+        const firstname = result.firstname;
+        const lastname = result.lastname;
+
+        assignedPatientCollection.find({'assignedDoctorFirstName': firstname, 'assignedDoctorLastName': lastname,
+                                        'status' : 'unadmitted'
+                                    }).toArray((err,result)=>{
+                                      
+          if(err){
+            return res.json({error: "Unable to get Doctor detail info"});
+          }
+          return res.json(result);
+        });
+          
+    });
+
+  });
+
+  // Admit Patient { By Doctor}
+  router.post('/admitPatient', (req, res)=>{
+
+    const admitInfo = req.body;
+    const admitPatientsCollection = database.collection('assignedPatients');
+    admitPatientsCollection.findOneAndUpdate(
+        {patientFirstName: admitInfo.patientFirstName,
+         patientLastName: admitInfo.patientLastName},
+        {$set : {status: "admitted"}});
+    return res.json({status: "Patient has been admitted successfully"});
+  });
+
+  //Get Patient Id
   router.post('/getPatientId',(req,res)=>{
     const patientCollection = database.collection('patients');
     const patientInfo = req.body;

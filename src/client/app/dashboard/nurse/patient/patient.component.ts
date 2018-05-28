@@ -72,14 +72,15 @@ export class PatientComponent implements OnInit {
     this.patientToBeAssignedLastName = patientDisplay.lastname;
     this.patientToBeAssignedGender = patientDisplay.gender;
     this.patientToBeAssignedAge = patientDisplay.age;
-
+    
     const payload = {
       patientFirstName: this.patientToBeAssignedFirstName,
       patientLastName: this.patientToBeAssignedLastName,
       patientAge: this.patientToBeAssignedAge,
       patientGender: this.patientToBeAssignedGender,
       assignedDoctorFirstName: this.assignedDoctorFirstName,
-      assignedDoctorLastName: this.assignedDoctorLastName
+      assignedDoctorLastName: this.assignedDoctorLastName,
+      status: "unadmitted"
     };
 
     this.api.post('/assignDoctor', payload).subscribe(data => {

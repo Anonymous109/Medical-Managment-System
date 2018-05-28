@@ -1,3 +1,126 @@
-<p>
-  patient works!
-</p>
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+    <app-dashboard-header></app-dashboard-header>
+    <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+    <div class="page-container">
+      <!-- start sidebar menu -->
+      <div class="sidebar-container">
+        <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+          <div id="remove-scroll">
+            <!-- Navigation SideBar Starts -->
+            <app-doctor-side-bar-navigation></app-doctor-side-bar-navigation>
+            <!-- Navigation SideBar Ends -->
+          </div>
+        </div>
+      </div>
+      <!-- end sidebar menu -->
+      <!-- start page content -->
+      <div class="page-content-wrapper">
+        <div class="page-content">
+          <div class="page-bar">
+            <div class="page-title-breadcrumb">
+              <div class="pull-left">
+                <div class="page-title">Patients List</div>
+              </div>
+              <ol class="breadcrumb page-breadcrumb pull-right">
+                <li>
+                  <i class="fa fa-home"></i>&nbsp;
+                  <a class="parent-item" href="">Home</a>&nbsp;
+                  <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                  <a class="parent-item" href="">Patients</a>&nbsp;
+                  <i class="fa
+                    fa-angle-right"></i>
+                </li>
+                <li class="active">Patient List</li>
+              </ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="tabbable-line">
+                <div class="tab-content">
+                  <div class="tab-pane active fontawesome-demo" id="tab1">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card card-red">
+                          <div class="card-head">
+                            <header>Patients</header>
+                            <div class="tools">
+                              <a class="fa fa-repeat btn-color box-refresh"
+                                href="javascript:;"></a>
+                              <a class="t-collapse btn-color fa fa-chevron-down"
+                                href="javascript:;"></a>
+                              <a class="t-close btn-color fa fa-times"
+                                href="javascript:;"></a>
+                            </div>
+                          </div>
+                          <div class="card-body">
+  
+                            <table class="table table-striped table-bordered
+                              table-hover table-checkable order-column
+                              valign-middle" id="example4">
+                              <thead>
+                                <tr>
+                                  <th></th>
+                                  <th> Name </th>
+                                  <th> Gender </th>
+                                  <th> Age</th>
+                                  <th> Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="odd gradeX" *ngFor="let patientDisplay
+                                  of patients | async">
+                                  <td class="patient-img">
+                                    <img
+                                      src="./assets/dashboard/img/patients/patient1.png"
+                                      alt=""> 
+                                  </td>
+                                  <td>{{patientDisplay.patientFirstName}}
+                                    {{patientDisplay.patientLastName}}</td>
+                                  <td class="center">{{patientDisplay.patientGender}}</td>
+                                  <td>
+                                    {{patientDisplay.patientAge}}
+                                  </td>
+                                  <td class="center">
+                                      <div class="btn-group">
+                                        <button class="btn
+                                          btn-xs btn-danger
+                                          dropdown-toggle
+                                          no-margin" type="button" data-toggle="dropdown"
+                                          aria-expanded="false">
+                                          Action
+                                          <i class="fa
+                                            fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                          <li>
+                                            <a (click)="admitPatient(patientDisplay.patientFirstName, patientDisplay.patientLastName)">
+                                              Admit
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </td>
+                                </tr>
+  
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <!-- end page content -->
+  </div>

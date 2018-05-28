@@ -78,7 +78,7 @@
 
   <!-- Patient Goes Here -->
   <li class="nav-item active">
-    <a [routerLink]="['/doctor/patients']" class="nav-link nav-toggle">
+    <a (click)="getPatients()" class="nav-link nav-toggle">
       <i class="fa fa-user"></i>
       <span class="title">Patients</span>
       <span class="selected"></span>
