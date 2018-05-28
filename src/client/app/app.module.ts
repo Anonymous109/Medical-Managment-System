@@ -83,6 +83,7 @@ import { SidebarnavigationComponent as AdminDashSideBarNavComponent } from './da
 // -------------------------- --------------------------Doctor Dash Component Starts ------------------ -------------------------- ---------//
 
 import { AppointmentComponent as DoctorDashAppointmentComponent } from './dashboard/doctor/appointment/appointment.component';
+import { ApprovedAppointmentsComponent } from './dashboard/doctor/appointment/approved-appointments/approved-appointments.component';
 import { BedComponent as DoctorDashBedComponent } from './dashboard/doctor/bed/bed.component';
 import { BloodBankComponent as DoctorDashBloodBankComponent } from './dashboard/doctor/blood-bank/blood-bank.component';
 import { DashboardComponent as DoctorDashComponent } from './dashboard/doctor/dashboard/dashboard.component';
@@ -91,6 +92,7 @@ import { PatientComponent as DoctorDashPatientComponent } from './dashboard/doct
 import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dashboard/doctor/prescription/prescription.component';
 import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
 import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
+import { DoctorSideBarNavigationComponent } from './dashboard/doctor/doctor-side-bar-navigation/doctor-side-bar-navigation.component';
 
 // -------------------------- --------------------------Doctor Dash Component Ends ------------------ -------------------------- ---------//
 
@@ -238,7 +240,9 @@ import { DetailComponent  as MessageDetailComponent} from './dashboard/messages/
     ReceptionistPatientRecordComponent,
     MessageInboxComponent,
     MessageComposeComponent,
-    MessageDetailComponent
+    MessageDetailComponent,
+    DoctorSideBarNavigationComponent,
+    ApprovedAppointmentsComponent
     
   ],
   imports: [

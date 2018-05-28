@@ -369,6 +369,75 @@ function apiRouter(database) {
 
   });
 
+  router.post('/getApprovedAppointments', (req,res)=>{
+
+    const appointmentBody = req.body;
+    const appointmentsCollection = database.collection('appointments');
+    const userCollection = database.collection('users');
+
+    //change user name into doctor firstname and lastname
+    userCollection.findOne({"username": appointmentBody.username},(err,result)=>{
+        if(err){
+          return res.json({error: "Unable to get Doctor detail info"});
+        }
+        const firstname = result.firstname;
+        const lastname = result.lastname;
+        appointmentsCollection.find({'doctorFirstName': firstname, 'doctorLastName': lastname, 'status': "approved"}).toArray((err,result)=>{
+            if(err){
+              return res.json()
+            }
+            return res.json(result);
+        });
+    })
+
+  });
+
+  //Get pending appointments
+  router.post('/getPendingAppointments', (req,res)=>{
+
+    const appointmentBody = req.body;
+    const appointmentsCollection = database.collection('appointments');
+    const userCollection = database.collection('users');
+
+    //change user name into doctor firstname and lastname
+    userCollection.findOne({"username": appointmentBody.username},(err,result)=>{
+        if(err){
+          return res.json({error: "Unable to get Doctor detail info"});
+        }
+        const firstname = result.firstname;
+        const lastname = result.lastname;
+        appointmentsCollection.find({'doctorFirstName': firstname, 'doctorLastName': lastname, 'status': "pending"}).toArray((err,result)=>{
+            if(err){
+              return res.json()
+            }
+            return res.json(result);
+        });
+    })
+
+  });
+
+  // Approve or Delete Appointment
+  router.post('/approveAppointment', (req, res)=>{
+    const appointmentInfo = req.body;
+    const appointmentsCollection = database.collection('appointments');
+
+    const action = appointmentInfo.action;
+    if(action == 'approve'){
+
+        appointmentsCollection.findOneAndUpdate(
+              {'patientFirstName': appointmentInfo.patientFirstName,
+               'patientLastName': appointmentInfo.patientLastName}
+              ,{$set : {'status': 'approved'}});
+        return res.json({status: "Appointment has been approved successfully"});
+    }else{
+      appointmentsCollection.findOneAndDelete(
+        {'patientFirstName': appointmentInfo.patientFirstName,
+         'patientLastName': appointmentInfo.patientLastName});
+      return res.json({status: "Appointment has been deleted successfully"});
+    }
+
+  })
+  // Assign Patient 
   router.post('/assignDoctor', (req, res) => {
 
     const patientInfo = req.body;

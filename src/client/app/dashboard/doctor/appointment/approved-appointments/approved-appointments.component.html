@@ -35,7 +35,7 @@
           <div class="col-md-12 col-sm-12">
             <div class="card card-box">
               <div class="card-head">
-                <header>Pending Appointments</header>
+                <header>Approved Appointments</header>
                 <div class="tools">
                   <a class="fa fa-repeat btn-color
                     box-refresh" href="javascript:;"></a>
@@ -63,12 +63,12 @@
                         </th>
                         <th>Date</th>
                         <th>Patient</th>
-                        <th>Appointment Action</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd gradeX" *ngFor="let pendingAppointmentsDisplay
-                        of pendingAppointments | async">
+                      <tr class="odd gradeX" *ngFor="let approvedAppointmentsDisplay
+                        of approvedAppointments | async">
                         <td>
                           <label class="rt-chkbox
                             rt-chkbox-single
@@ -78,35 +78,10 @@
                             <span></span>
                           </label>
                         </td>
-                        <td class="center"> {{pendingAppointmentsDisplay.appointmentDate}}</td>
+                        <td class="center"> {{approvedAppointmentsDisplay.appointmentDate}}</td>
                         <td class="center">
-                          {{pendingAppointmentsDisplay.patientFirstName}}  {{pendingAppointmentsDisplay.patientLastName}}
+                          {{approvedAppointmentsDisplay.patientFirstName}}  {{approvedAppointmentsDisplay.patientLastName}}
                         </td>
-                        <td class="center">
-                          <div class="btn-group">
-                            <button class="btn
-                              btn-xs btn-danger
-                              dropdown-toggle
-                              no-margin" type="button" data-toggle="dropdown"
-                              aria-expanded="false">
-                              Action
-                              <i class="fa
-                                fa-angle-down"></i>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                              <li>
-                                <a (click)="approveAppointment(pendingAppointmentsDisplay)">
-                                  Approve
-                                </a>
-                              </li>
-                              <li>
-                                  <a (click)="deleteAppointment(pendingAppointmentsDisplay)">
-                                    Delete 
-                                  </a>
-                                </li>
-                            </ul>
-                          </div>
-                        </td>  
                       </tr>
                     </tbody>
                   </table>

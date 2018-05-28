@@ -74,6 +74,7 @@ import { BloodDonorsComponent as NurseDashBloodDonorsComponent  } from './dashbo
 // Doctor UI 
 
 import { AppointmentComponent as DoctorDashAppointmentComponent } from './dashboard/doctor/appointment/appointment.component';
+import { ApprovedAppointmentsComponent } from './dashboard/doctor/appointment/approved-appointments/approved-appointments.component';
 import { BedComponent as DoctorDashBedComponent } from './dashboard/doctor/bed/bed.component';
 import { BloodBankComponent as DoctorDashBloodBankComponent } from './dashboard/doctor/blood-bank/blood-bank.component';
 import { DashboardComponent as DoctorDashComponent } from './dashboard/doctor/dashboard/dashboard.component';
@@ -286,6 +287,13 @@ const routes: Routes = [
   {
     path: "doctor/dash",
     component: DoctorDashComponent
+  },
+  {
+    path: "doctor/appointments/approved/:doctorUsername",
+    component: ApprovedAppointmentsComponent
+  },{
+    path: "doctor/appointments/requested/:doctorUsername",
+    component: DoctorDashAppointmentComponent
   },
   {
     path: "message/inbox",

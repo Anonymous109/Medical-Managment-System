@@ -12,7 +12,6 @@ export class BloodBankComponent implements OnInit {
 
   bloodBank: Observable<Array<any>>;
   
-  bloodStatus : any = {"A+":0, "A-":0,"B+":0, "B-":0,"O+":0,"O-":0,"AB":0};
   constructor(private api:ApiService,
     public toastr: ToastsManager,
     vcr: ViewContainerRef
