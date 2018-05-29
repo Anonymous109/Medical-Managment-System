@@ -160,7 +160,7 @@ function apiRouter(database) {
   router.post('/addDoctor', (req,res)=>{
     const doctorsCollection = database.collection('doctors');
     const doctorInfo = req.body;
-
+    const userCollection = database.collection('users');
     doctorsCollection.findOne({firstname: doctorInfo.firstname, lastname:doctorInfo.lastname,
                             department: doctorInfo.department, address: doctorInfo.address,
                             phone : doctorInfo.phone            
@@ -171,8 +171,19 @@ function apiRouter(database) {
           }
           if(result)
           {
-            return res.json({error: "Error Occured while trying to duplicate Department "});
+            return res.json({error: "Error Occured while trying to duplicate Nurse "});
           }else{
+
+            userCollection.insertOne({
+              firstname: doctorInfo.firstname, lastname: doctorInfo.lastname,
+              password: bcrypt.hashSync(doctorInfo.password, 10), role: 'doctor',
+              username: doctorInfo.username
+            }, (err, result) => {
+              if (err) {
+                return res.json({ error: "Error Occured while Adding Doctor" });
+              }
+            });
+
             doctorsCollection.insertOne(doctorInfo, (err,result)=>{
               if(err){
                 return res.json({error: "Error Occured while Adding Doctor"});
@@ -200,7 +211,64 @@ function apiRouter(database) {
     doctorCollection.findOneAndDelete({firstname: docInfo.firstname,lastname: docInfo.lastname,
                                         phone: docInfo.phone});
     return res.json({status: "Doctor has been Fired"});
+  });
+
+  router.post('/addNurse', (req,res)=>{
+    const nurseCollection = database.collection('nurses');
+    const nurseInfo = req.body;
+    const userCollection = database.collection('users');
+
+    nurseCollection.findOne({firstname: nurseInfo.firstname, lastname:nurseInfo.lastname,
+                            department: nurseInfo.department, address: nurseInfo.address,
+                            phone : nurseInfo.phone            
+                  },(err,result)=>{
+          
+          if(err){
+            return res.json({error: "Error Occured while Adding Nurse"});
+          }
+          if(result)
+          {
+            return res.json({error: "Error Occured while trying to duplicate Nurse "});
+          }else{
+            userCollection.insertOne({firstname: nurseInfo.firstname, lastname: nurseInfo.lastname,
+                                      password: bcrypt.hashSync(nurseInfo.password, 10),role: 'nurse',
+                                      username: nurseInfo.username
+                            },(err,result)=>{
+                  if(err){
+                    return res.json({error: "Error Occured while Adding Nurse"});
+                  }
+            });
+            nurseCollection.insertOne(nurseInfo, (err,result)=>{
+              if(err){
+                return res.json({error: "Error Occured while Adding Nurse"});
+              }
+              return res.json({status: "Nurse has been successfully added"});  
+            });
+          }
+    });
+
   })
+
+
+  router.get('/nurses',(req,res)=>{
+    const nurseCollection = database.collection('nurses');
+    nurseCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Error Occured while Reteriving Nurses"});
+      }
+      return res.json(result); 
+    });
+  });
+
+  router.post('/fireNurse', (req,res)=>{
+    const nurseCollection = database.collection('nurses');
+    const nurseInfo = req.body;
+    nurseCollection.findOneAndDelete({firstname: nurseInfo.firstname,lastname: nurseInfo.lastname,
+                                        phone: nurseInfo.phone});
+    return res.json({status: "Nurse has been Fired"});
+  });
+
+
 
   /* ADmin Section Ends */
 

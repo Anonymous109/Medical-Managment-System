@@ -22,7 +22,7 @@ export class AddDoctorComponent implements OnInit {
   gender : String;
   phone : String;
   address : String;
-  education : String;
+  username : String;
 
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private api: ApiService) {
@@ -46,7 +46,7 @@ export class AddDoctorComponent implements OnInit {
       gender: this.gender,
       phone : this.phone,
       address: this.address,
-      education: this.education
+      username: this.username
     }
 
     this.api.post('/addDoctor', payload).subscribe(data=>{
