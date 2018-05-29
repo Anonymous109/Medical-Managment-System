@@ -61,6 +61,19 @@ export class DoctorSideBarNavigationComponent implements OnInit {
   {
     this.router.navigate(['/doctor/patientsAssigned/'+this.username]);
   }
+
+  prescriptionList()
+  {
+    this.router.navigate(['/doctor/prescriptions/orderBy/'+this.username]);
+  }
+
+  addPrescription()
+  {
+    this.router.navigate(['/doctor/prescriptions/add/'+this.username]);
+  }
+
+
+
   getPendingAppointments()
   {
     const payload = {

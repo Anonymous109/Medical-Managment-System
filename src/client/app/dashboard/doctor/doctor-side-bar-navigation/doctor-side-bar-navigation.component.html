@@ -63,13 +63,8 @@
     </a>
     <ul class="sub-menu">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/doctor/presecription']">
+        <a class="nav-link" (click)="prescriptionList()">
           <span class="title">Presecription List</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/doctor/presecription/add']">
-          <span class="title">Add Presecription</span>
         </a>
       </li>
     </ul>

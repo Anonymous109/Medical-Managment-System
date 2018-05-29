@@ -522,6 +522,7 @@ function apiRouter(database) {
 
     const admitInfo = req.body;
     const admitPatientsCollection = database.collection('assignedPatients');
+    
     admitPatientsCollection.findOneAndUpdate(
         {patientFirstName: admitInfo.patientFirstName,
          patientLastName: admitInfo.patientLastName},
@@ -552,6 +553,64 @@ function apiRouter(database) {
   })
 
 
+  //Prescription Add
+  router.post('/addPrescription', (req,res)=>{
+
+      const prescriptionInfo = req.body;
+
+      const prescriptionCollection = database.collection('prescription');
+      const assignedPatients = database.collection('assignedPatients');
+      const patient = prescriptionInfo.patientFullName.split('_');
+
+      assignedPatients.findOne({patientFirstName: patient[0],
+                           patientLastName: patient[1]},(err,result)=>{
+
+              if(err){
+                return res.json({error: "Error Occurerd while adding prescription"});
+              }
+              const payload = {
+                 patientFirstName : result.patientFirstName,
+                 patientLastName : result.patientLastName,
+                 patientAge : result.patientAge,
+                 patientGender : result.patientGender,
+                 presciptionGivenBy : result.assignedDoctorFirstName + " " + result.assignedDoctorLastName,
+                 presciptionDetail : prescriptionInfo.prescriptionDetail
+              }
+              console.log(payload);
+              prescriptionCollection.insertOne(payload,(err,result)=>{
+                if(err){
+                  return res.json({error: "Error Occurerd while adding prescription"});
+                }
+                return res.json({status: "Prescription has been added Successfully"});
+              });
+          });
+
+  });
+
+
+  // Prescription List
+  router.post('/getPresciptionList', (req, res)=>{
+    const prescriptionInfo = req.body;
+    const prescriptionCollection = database.collection('prescription');
+    const userCollection = database.collection('users');
+    
+    userCollection.findOne({username: prescriptionInfo.username},(err,result)=>{
+      if(err){
+        return res.json({error: "Error Occured while fetching presciption list"});
+      }
+
+      const presciptionOrderDoctor = result.firstname + " " + result.lastname;
+      prescriptionCollection.find({presciptionGivenBy: presciptionOrderDoctor}).toArray((err,result)=>{
+        if(err){
+          return res.json({error: "Error Occured while fetching presciption list"});
+        }
+        
+        return res.json(result);
+      })
+    })
+  })
+
+  //Patient List
   router.get('/patientsList', (req, res) => {
 
     const patientCollection = database.collection('patients');

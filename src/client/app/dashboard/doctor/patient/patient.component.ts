@@ -17,7 +17,8 @@ export class PatientComponent implements OnInit {
   
   constructor(private api: ApiService, private auth: AuthService,private route: ActivatedRoute,
     public toastr: ToastsManager,
-    vcr: ViewContainerRef
+    vcr: ViewContainerRef,
+    private router: Router
 ) {
   this.toastr.setRootViewContainerRef(vcr);
  }
@@ -52,6 +53,15 @@ export class PatientComponent implements OnInit {
       }
       this.getAdmittedPatientsList();
     })
+  }
+
+  addPrescription(fName, sName)
+  {
+    const payload = {
+      username : this.route.snapshot.paramMap.get('doctorUsername')
+    }
+    this.router.navigate(['/doctor/prescriptions/add/'+ payload.username + "/" + fName + "_"+sName]);
+
   }
 
 }

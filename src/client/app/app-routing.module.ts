@@ -82,6 +82,7 @@ import { DashboardComponent as DoctorDashComponent } from './dashboard/doctor/da
 import { MessageComponent as DoctorDashMessageComponent } from './dashboard/doctor/message/message.component';
 import { PatientComponent as DoctorDashPatientComponent } from './dashboard/doctor/patient/patient.component';
 import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dashboard/doctor/prescription/prescription.component';
+import { AddPrescriptionComponent as DoctorDashAddPrescriptionComponent } from './dashboard/doctor/prescription/add-prescription/add-prescription.component';
 import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
 import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 
@@ -307,6 +308,14 @@ const routes: Routes = [
   {
     path: "doctor/beds/allotment/add",
     component: DoctorDashAddBedAllotment
+  },
+  {
+    path: "doctor/prescriptions/orderBy/:doctorUsername",
+    component: DoctorDashPrescriptionComponent
+  },
+  {
+    path: "doctor/prescriptions/add/:doctorUsername/:patientFullName",
+    component : DoctorDashAddPrescriptionComponent
   },
   {
     path: "message/inbox",
