@@ -4,6 +4,8 @@ import { Injectable, ComponentRef, ApplicationRef, NgZone,
 ReflectiveInjector, ViewContainerRef, ComponentFactoryResolver,
 } from '@angular/core';
 
+import { ApiService } from '../../../../shared/api.service';
+
 @Component({
   selector: 'app-add-doctor',
   templateUrl: './add-doctor.component.html',
@@ -11,7 +13,19 @@ ReflectiveInjector, ViewContainerRef, ComponentFactoryResolver,
 })
 export class AddDoctorComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  firstname: String;
+  lastname : String;
+  email : String;
+  password : String;
+  designation : String;
+  department : String;
+  gender : String;
+  phone : String;
+  address : String;
+  education : String;
+
+
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private api: ApiService) {
     this.toastr.setRootViewContainerRef(vcr);
   
  }
@@ -20,24 +34,27 @@ export class AddDoctorComponent implements OnInit {
   ngOnInit() {
   }
 
-  showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
-  }
+  addDoctor()
+  {
+    const payload = {
+      firstname : this.firstname,
+      lastname : this.lastname,
+      email : this.email,
+      password : this.password,
+      designation : this.designation,
+      department : this.department,
+      gender: this.gender,
+      phone : this.phone,
+      address: this.address,
+      education: this.education
+    }
 
-  showError() {
-    this.toastr.error('This is not good!', 'Oops!',{toastLife: 3000});
-  }
-
-  showWarning() {
-    this.toastr.warning('You are being warned.', 'Alert!');
-  }
-
-  showInfo() {
-    this.toastr.info('Just some information for you.');
-  }
-  
-  showCustom() {
-    this.toastr.custom('<span style="color: red">Message in red.</span>', null, {enableHTML: true});
-  }
-
+    this.api.post('/addDoctor', payload).subscribe(data=>{
+      if(data.error){
+        this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
+      }else{
+        this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
+      }
+    });
+  } 
 }

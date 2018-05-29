@@ -157,6 +157,51 @@ function apiRouter(database) {
   });
 
 
+  router.post('/addDoctor', (req,res)=>{
+    const doctorsCollection = database.collection('doctors');
+    const doctorInfo = req.body;
+
+    doctorsCollection.findOne({firstname: doctorInfo.firstname, lastname:doctorInfo.lastname,
+                            department: doctorInfo.department, address: doctorInfo.address,
+                            phone : doctorInfo.phone            
+                  },(err,result)=>{
+          
+          if(err){
+            return res.json({error: "Error Occured while Adding Doctor"});
+          }
+          if(result)
+          {
+            return res.json({error: "Error Occured while trying to duplicate Department "});
+          }else{
+            doctorsCollection.insertOne(doctorInfo, (err,result)=>{
+              if(err){
+                return res.json({error: "Error Occured while Adding Doctor"});
+              }
+              return res.json({status: "Doctor has been successfully added"});  
+            });
+          }
+    });
+
+  })
+
+  router.get('/doctors',(req,res)=>{
+    const doctorCollection = database.collection('doctors');
+    doctorCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Error Occured while Reteriving Doctors"});
+      }
+      return res.json(result); 
+    });
+  });
+
+  router.post('/fireDoctor', (req,res)=>{
+    const doctorCollection = database.collection('doctors');
+    const docInfo = req.body;
+    doctorCollection.findOneAndDelete({firstname: docInfo.firstname,lastname: docInfo.lastname,
+                                        phone: docInfo.phone});
+    return res.json({status: "Doctor has been Fired"});
+  })
+
   /* ADmin Section Ends */
 
   /* -------------------  Doctors Section -----------------------*/
