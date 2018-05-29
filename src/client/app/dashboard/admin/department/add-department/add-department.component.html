@@ -58,8 +58,6 @@
                                 </ul>
                             </div>
                             <div class="card-body" id="bar-parent">
-                                <form action="#" id="form_sample_1"
-                                    class="form-horizontal">
                                     <div class="form-body">
                                         <div class="form-group row">
                                             <label class="control-label
@@ -72,7 +70,7 @@
                                                     name="department_name"
                                                     data-required="1"
                                                     placeholder="enter department name" class="form-control
-                                                    input-height" /> </div>
+                                                    input-height" [(ngModel)]="departmentName"/> </div>
                                         </div>
                                         
                                         <div class="form-actions">
@@ -80,14 +78,13 @@
                                                 <div class="offset-md-3
                                                     col-md-9">
                                                     <button 
-                                                        class="btn btn-info" (click)="showSuccess()">Submit</button>
+                                                        class="btn btn-info" (click)="addDepartment()">Save</button>
                                                     <button type="button"
-                                                        class="btn btn-default" (click)="showWarning()">Cancel</button>
+                                                        class="btn btn-default" [routerLink]="['/admin/dash']">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>

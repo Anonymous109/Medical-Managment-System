@@ -3,7 +3,7 @@ import {
   Injectable,Component, OnInit, ComponentRef, ApplicationRef, NgZone,
   ReflectiveInjector, ViewContainerRef, ComponentFactoryResolver,
 } from '@angular/core';
-
+import { ApiService } from '../../../../shared/api.service';
 @Component({
   selector: 'app-add-department',
   templateUrl: './add-department.component.html',
@@ -11,33 +11,28 @@ import {
 })
 export class AddDepartmentComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  departmentName: String;
+
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private api :ApiService) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
-  showSuccess() {
-    this.toastr.success('You are awesome!', 'Success!');
-    console.log("Success");
-    
-  }
-
-  showError() {
-    this.toastr.error('This is not good!', 'Oops!');
-  }
-
-  showWarning() {
-    this.toastr.warning('You are being warned.', 'Alert!');
-  }
-
-  showInfo() {
-    this.toastr.info('Just some information for you.');
-  }
-  
-  showCustom() {
-    this.toastr.custom('<span style="color: red">Message in red.</span>', null, {enableHTML: true});
-  }
   
   ngOnInit() {
   }
 
+  addDepartment()
+  {
+    const payload = {
+        departmentName : this.departmentName
+    }
+
+    this.api.post('/addDepartment', payload).subscribe(data=>{
+      if(data.error){
+        this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
+      }else{
+        this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
+      }
+    })
+  }
 }

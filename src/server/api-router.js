@@ -122,6 +122,43 @@ function apiRouter(database) {
     });
   });
 
+  /* Admin Section */
+  router.post('/addDepartment',(req, res)=>{
+    const departmentName = req.body.departmentName;
+    const departmentCollection = database.collection('departments');
+
+    departmentCollection.findOne({departmentName : departmentName},(err,result)=>{
+      if(err){
+        return res.json({error: "Error Occured while adding Department"});
+      }
+      if(result)
+      {
+        return res.json({error: "Error Occured while trying to duplicate Department "});
+      }else{
+        departmentCollection.insertOne({departmentName: departmentName},(err,result)=>{
+          if(err)
+          {
+            return res.json({error: "Error Occured while adding Department"});
+          }
+          return res.json({status: "Department has been successfully added"});
+        });
+      }
+    });
+  });
+
+  router.get('/departments',(req,res)=>{
+    const departmentCollection = database.collection('departments');
+    departmentCollection.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Error Occured while reteriving Department"});
+      }
+      return res.json(result);
+    });
+  });
+
+
+  /* ADmin Section Ends */
+
   /* -------------------  Doctors Section -----------------------*/
 
   router.get('doctorsList', (req, res) => {
