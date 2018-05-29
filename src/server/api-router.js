@@ -692,6 +692,20 @@ function apiRouter(database) {
     })
   })
 
+  //Patient List { From Big Data }
+  router.get('/patients', (req, res) => {
+
+    const patientCollection = database.collection('patientsBigData');
+    //Get list of patients from the collection
+    patientCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error: Unable to reterive patients" });
+      }
+      return res.json(result);
+
+    });
+  })
+
   //Patient List
   router.get('/patientsList', (req, res) => {
 
