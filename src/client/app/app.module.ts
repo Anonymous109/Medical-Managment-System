@@ -78,6 +78,12 @@ import { AddReceptionistComponent as AdminDashAddReceptionistComponent } from '.
 import { ReceptionististDetailComponent as AdminDashReceptionistDetailComponent } from './dashboard/admin/receptionist/receptionistist-detail/receptionistist-detail.component';
 import { SidebarnavigationComponent as AdminDashSideBarNavComponent } from './dashboard/admin/sidebarnavigation/sidebarnavigation.component';
 
+import { PaymentHistoryComponent } from './dashboard/admin/monitor-hospital/payment-history/payment-history.component';
+import { BedAllotmentsComponent as AdminDashBedAllotmentsComponent} from './dashboard/admin/monitor-hospital/bed-allotments/bed-allotments.component';
+import { BloodDonorsComponent as AdminDashBloodDonorsComponent} from './dashboard/admin/monitor-hospital/blood-donors/blood-donors.component';
+import { BirthReportsComponent as AdminDashBirthReportsComponent} from './dashboard/admin/monitor-hospital/birth-reports/birth-reports.component';
+import { DeathReportsComponent as AdminDashDeathReportsComponent } from './dashboard/admin/monitor-hospital/death-reports/death-reports.component';
+
 // -------------------------- --------------------------Admin Dash  Component Ends ------------------ -------------------------- ---------//
 
 // -------------------------- --------------------------Doctor Dash Component Starts ------------------ -------------------------- ---------//
@@ -161,6 +167,7 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
 import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
 import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
 import { DetailComponent } from './dashboard/messages/inbox/detail/detail.component';
+
 
 @NgModule({
   declarations: [
@@ -258,7 +265,12 @@ import { DetailComponent } from './dashboard/messages/inbox/detail/detail.compon
     DoctorDashAddBirthReportComponent,
     DoctorDashBirthReportComponent,
     DoctorDashDeathReportComponent,
-    DoctorDashReportComponent
+    DoctorDashReportComponent,
+    PaymentHistoryComponent,
+    AdminDashBedAllotmentsComponent,
+    AdminDashBloodDonorsComponent,
+    AdminDashBirthReportsComponent,
+    AdminDashDeathReportsComponent
   ],
   imports: [
     BrowserModule,

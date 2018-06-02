@@ -7,7 +7,7 @@
       <div class="sidemenu-container navbar-collapse collapse fixed-menu">
         <div id="remove-scroll">
           <!-- Navigation SideBar Starts -->
-          <app-receptionistsidebarnavigation></app-receptionistsidebarnavigation>
+          <app-sidebarnavigation-admin></app-sidebarnavigation-admin>
           <!-- Navigation SideBar Ends -->
         </div>
       </div>
@@ -19,20 +19,20 @@
         <div class="page-bar">
           <div class="page-title-breadcrumb">
             <div class="pull-left">
-              <div class="page-title">Patients List</div>
+              <div class="page-title">Bed Allotments</div>
             </div>
             <ol class="breadcrumb page-breadcrumb pull-right">
               <li>
                 <i class="fa fa-home"></i>&nbsp;
-                <a class="parent-item" href="index.html">Home</a>&nbsp;
+                <a class="parent-item" href="">Home</a>&nbsp;
                 <i class="fa fa-angle-right"></i>
               </li>
               <li>
-                <a class="parent-item" href="">Patients</a>&nbsp;
+                <a class="parent-item" href="">Monitor Hospital</a>&nbsp;
                 <i class="fa
                   fa-angle-right"></i>
               </li>
-              <li class="active">Patient List</li>
+              <li class="active">Beds Allotments</li>
             </ol>
           </div>
         </div>
@@ -45,14 +45,11 @@
                     <div class="col-md-12">
                       <div class="card card-red">
                         <div class="card-head">
-                          <header></header>
+                          <header>Bed Allotments</header>
                           <div class="tools">
-                            <a class="fa fa-repeat btn-color box-refresh"
-                              href="javascript:;"></a>
-                            <a class="t-collapse btn-color fa fa-chevron-down"
-                              href="javascript:;"></a>
-                            <a class="t-close btn-color fa fa-times"
-                              href="javascript:;"></a>
+                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
                           </div>
                         </div>
                         <div class="card-body">
@@ -62,28 +59,23 @@
                             valign-middle" id="example4">
                             <thead>
                               <tr>
-                                <th> ID</th>
-                                <th> Name </th>
-                                <th> Gender </th>
-                                <th> Phone Number </th>
-                                <th> Age</th>
-                                
-                                
+                                <th></th>
+                                <th> Bed Number </th>
+                                <th> Patient </th>
+                                <th> Alloted On</th>
+
                               </tr>
                             </thead>
                             <tbody>
-                              <tr class="odd gradeX" *ngFor="let patientDisplay
-                                of patients | async">
-                                
-                                <td class="center">{{patientDisplay.patientId}}</td>
-                                <td class="center">{{patientDisplay.firstname}}
-                                  {{patientDisplay.lastname}}</td>
-                                <td class="center">{{patientDisplay.gender}}</td>
-                                <td class="center">{{patientDisplay.phone}}
-                                </td>
+                              <tr class="odd gradeX" *ngFor="let bedAllotmentsDisplay
+                                of bedAllotments | async">
+                                <th></th>
+                                <td class="center">{{bedAllotmentsDisplay.bedNumber}}</td>
+                                <td class="center">{{bedAllotmentsDisplay.patientFirstName}} {{bedAllotmentsDisplay.patientLastName}}</td>
                                 <td class="center">
-                                  {{patientDisplay.age}}
+                                  {{bedAllotmentsDisplay.allotmentTime}}
                                 </td>
+
                               </tr>
 
                             </tbody>

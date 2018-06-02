@@ -193,6 +193,18 @@ function apiRouter(database) {
 
   })
 
+  router.get('/getdisabledStatus', (req,res)=>{
+    const doctorCollection = database.collection('doctors');
+    const docInfo = req.body;
+
+    doctorCollection.findOne({username: docInfo.username}, (err,result)=>{
+      if(result){
+        return res.json({status:true});
+      }
+      return res.json()
+    })
+  })
+
   router.get('/doctors', (req, res) => {
     const doctorCollection = database.collection('doctors');
     doctorCollection.find({}).toArray((err, result) => {
@@ -207,13 +219,31 @@ function apiRouter(database) {
     const doctorCollection = database.collection('doctors');
     const userCollection = database.collection('users');
     const docInfo = req.body;
-    doctorCollection.findOneAndDelete({
+    const assignedPatientCollection = database.collection('assignedPatients');
+
+    doctorCollection.find({}).toArray((err,result)=>{
+      result.forEach(element => {
+        //console.log(element.firstname);
+          if(element.assignedDoctorFirstName != docInfo.firstname && element.assignedDoctorLastName != docInfo.lastname)
+          {
+            assignedPatientCollection.findOneAndUpdate( 
+              { "assignedDoctorFirstName": docInfo.firstname,
+                "assignedDoctorLastName": docInfo.lastname},  
+               { $set: { "assignedDoctorFirstName": element.firstname,
+               "assignedDoctorLastName": element.lastname} }
+            )
+          }
+      });
+    })
+
+
+    doctorCollection.findOneAndUpdate({
       firstname: docInfo.firstname, lastname: docInfo.lastname,
       phone: docInfo.phone
-    });
-    userCollection.findOneAndDelete({ firstname: docInfo.firstname, lastname: docInfo.lastname });
+    }, {$set: {"disabled": "true"}});
+    // userCollection.findOneAndDelete({ firstname: docInfo.firstname, lastname: docInfo.lastname });
 
-    return res.json({ status: "Doctor has been Fired" });
+    return res.json({ status: "Doctor has been disabled" });
   });
 
   router.post('/addNurse', (req, res) => {
@@ -1081,6 +1111,17 @@ function apiRouter(database) {
     });
 
   });
+
+  router.get('/paymentHistory', (req,res)=>{
+    const invoiceCollection = database.collection('invoices');
+    invoiceCollection.find({}).sort().toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Error occured while reteriving Payment History"})
+      }
+      return res.json(result);
+    });
+  });
+
 
   //Lockscreen
   router.post('/lock', (req, res) => {

@@ -43,6 +43,14 @@ import { AddPharmacistComponent as AdminDashAddPharmacistComponent } from './das
 import { PharmacististDetailComponent as AdminDashPharmacistDetailComponent } from './dashboard/admin/pharmacist/pharmacistist-detail/pharmacistist-detail.component';
 import { NoticeboardComponent } from './dashboard/admin/noticeboard/noticeboard.component';
 import { ProfileComponent as AdminDashProfileComponent } from './dashboard/admin/profile/profile.component';
+
+import { PaymentHistoryComponent } from './dashboard/admin/monitor-hospital/payment-history/payment-history.component';
+import { BedAllotmentsComponent as AdminDashBedAllotmentsComponent} from './dashboard/admin/monitor-hospital/bed-allotments/bed-allotments.component';
+import { BloodDonorsComponent as AdminDashBloodDonorsComponent} from './dashboard/admin/monitor-hospital/blood-donors/blood-donors.component';
+import { BirthReportsComponent as AdminDashBirthReportsComponent} from './dashboard/admin/monitor-hospital/birth-reports/birth-reports.component';
+import { DeathReportsComponent as AdminDashDeathReportsComponent } from './dashboard/admin/monitor-hospital/death-reports/death-reports.component';
+
+
 // Admin UI Ends
 
 //Receptionist UI
@@ -219,6 +227,26 @@ const routes: Routes = [
   {
     path: "pharmacists/:pharmacistName",
     component: AdminDashPharmacistDetailComponent
+  },
+  {
+    path : "payments",
+    component: PaymentHistoryComponent
+  },
+  {
+    path: "bedAllotments",
+    component: AdminDashBedAllotmentsComponent
+  },
+  {
+    path: "bloodDonors",
+    component: AdminDashBloodDonorsComponent
+  },
+  {
+    path : "birthReports",
+    component: AdminDashBirthReportsComponent
+  },
+  {
+    path : "deathReports",
+    component : AdminDashDeathReportsComponent
   },
   {
     path: "receptionist/dash",

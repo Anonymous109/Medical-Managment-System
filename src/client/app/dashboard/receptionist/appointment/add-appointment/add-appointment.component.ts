@@ -70,13 +70,19 @@ export class AddAppointmentComponent implements OnInit {
       return false;
     }
 
+    if ((this.parseDate(this.selectedDate).getDay() == 0))
+    {
+      this.toastr.error("Doctors are not unavailable on this Day , Try Again", 'Error !', { toastLife: 3000 });
+      return false;
+    }
+
     const payload = {
       patientFirstName: this.selectedPatient.firstname,
       patientLastName: this.selectedPatient.lastname,
       doctorFirstName: this.selectedDoctor.firstname,
       doctorLastName: this.selectedDoctor.lastname,
       appointmentDate: this.selectedDate,
-      status: "pending"
+      status: "approved"
     }
     this.api.post("/addAppointment", payload).subscribe(data => {
 

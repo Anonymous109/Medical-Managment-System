@@ -85,11 +85,31 @@ export class LoginComponent implements OnInit {
         } else if (data.role == 'nurse') {
           this.router.navigate(['/nurse/dash']);
         }else if(data.role == 'doctor'){
-          this.router.navigate(['/doctor/dash']);
+
+          this.checkDisabledStatus(this.userName, "doctor");
+          
         }else if(data.role == 'subscriber'){
           this.router.navigate(['/home']);
         }
 
       });
   }
+
+    checkDisabledStatus(username:String, role:String)
+    {
+      const payload = {
+        username: username,
+        role: role
+      }
+
+      this.api.post('/getdisabledStatus', payload).subscribe(data=>{
+        
+        if(data.status == true){
+          console.log("U r not allowed to enter");
+          return false;
+        }
+        this.router.navigate(['/doctor/dash']);
+      });
+    }
+
 }

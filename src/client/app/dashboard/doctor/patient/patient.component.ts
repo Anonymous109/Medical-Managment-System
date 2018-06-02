@@ -64,4 +64,5 @@ export class PatientComponent implements OnInit {
 
   }
 
+  
 }
