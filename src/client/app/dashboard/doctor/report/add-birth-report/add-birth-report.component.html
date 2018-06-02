@@ -1,3 +1,209 @@
-<p>
-  add-birth-report works!
-</p>
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+  <app-dashboard-header></app-dashboard-header>
+  <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+  <div class="page-container">
+    <!-- start sidebar menu -->
+    <div class="sidebar-container">
+      <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+        <div id="remove-scroll">
+          <!-- Navigation SideBar Starts -->
+          <app-doctor-side-bar-navigation></app-doctor-side-bar-navigation>
+          <!-- Navigation SideBar Ends -->
+        </div>
+      </div>
+    </div>
+    <!-- end sidebar menu -->
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="page-bar">
+          <div class="page-title-breadcrumb">
+            <div class="pull-left">
+              <div class="page-title">Add Birth Report</div>
+            </div>
+            <ol class="breadcrumb page-breadcrumb pull-right">
+              <li>
+                <i class="fa fa-home"></i>&nbsp;
+                <a class="parent-item" href="">Home</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a class="parent-item" [routerLink]="['/doctor/birthReports']">Birth Report</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li class="active">Add</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="card card-box">
+              <div class="card-head">
+                <header>Child Information</header>
+                <button id="panel-button" class="mdl-button mdl-js-button
+                                  mdl-button--icon pull-right" data-upgraded=",MaterialButton">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right
+                                  mdl-js-menu mdl-js-ripple-effect" data-mdl-for="panel-button">
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">assistant_photo</i>Action</li>
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">print</i>Another action
+                  </li>
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">favorite</i>Something else here</li>
+                </ul>
+              </div>
+              <div class="card-body" id="bar-parent">
+                <div class="form-body">
+                  <div class="form-group row">
+                    <label class="control-label
+                                              col-md-3">Child Name
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="childName" type="text" name="childName" data-required="1" placeholder="Enter the Child Full Name Here" class="form-control
+                                                  input-height" /> </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Gender
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <select [(ngModel)]="gender" class="form-control
+                            input-height" name="gender">
+                        <option value="">Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Date Of Birth
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="birthDate" type="date" name="birthDate" data-required="1" placeholder="Date of Birth"
+                        class="form-control
+                                                  input-height" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Birth Time (Hour : Minute)
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="birthTime" type="text" name="birthTime" data-required="1" placeholder="Enter exact time of Birth { 4 : 25pm }"
+                        class="form-control
+                                                  input-height" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Weight of Child at Birth (Kilogram)
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="weightOfChild" type="text" name="weightOfChild" data-required="1" placeholder="Enter Weight of Child"
+                        class="form-control
+                                                  input-height" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Length (inch)
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="length" type="text" name="length" data-required="1" placeholder="Enter length of Child at Birth"
+                        class="form-control
+                                                  input-height" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Width between Shoulders
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="widthBetweenShoulders" type="text" name="widthBetweenShoulders" data-required="1" placeholder="Enter width between Child Shoulders"
+                        class="form-control
+                                                  input-height" />
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label class="control-label
+                                            col-md-3">Full Name of Mother
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="motherFullName" type="text" name="motherFullName" data-required="1" placeholder="Enter Mother Full Name"
+                        class="form-control
+                                                input-height" /> </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="control-label
+                                            col-md-3">Full Name of Father
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="fatherFullName" type="text" name="fatherFullName" data-required="1" placeholder="Enter Father Full Name"
+                        class="form-control
+                                                input-height" /> </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label class="control-label
+                        col-md-3">Attending Doctor Name
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <input [(ngModel)]="attendingDoctor" type="text" name="attendingDoctor" data-required="1" placeholder="Enter Attedant Doctor Here"
+                        class="form-control
+                                                  input-height" />
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <div class="row">
+                      <div class="offset-md-3
+                                                  col-md-9">
+                        <button class="btn btn-info" (click)="addBirthReport()">Save</button>
+                        <button type="button" class="btn btn-default" [routerLink]="['/doctor/dash']">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page content -->
+  </div>
+</div>

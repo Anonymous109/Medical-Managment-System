@@ -1050,6 +1050,37 @@ function apiRouter(database) {
 
   });
 
+  router.get('/birthReports',(req , res)=>{
+    const birthReport = database.collection('birthReports');
+    birthReport.find({}).toArray((err,result)=>{
+      if(err){
+        return res.json({error: "Error occured while reteriving birth report"});
+      }
+      return res.json(result);
+    });
+  });
+
+  router.post('/addBirthReport', (req,res)=>{
+    const childInfo = req.body;
+    const birthReport = database.collection('birthReports');
+
+    birthReport.findOne({childName : childInfo.childName}, (err,result)=>{
+      if(err){
+        return res.json({error: "Error occured while adding birth report"});
+      }
+      if(result){
+        return res.json({error: "Child birth report has already been added"});
+      }
+
+      birthReport.insertOne(childInfo , (err,result)=>{
+        if (err) {
+          return res.json({ error: "Error occured while adding birth report"});
+        }
+        return res.json({ status: "Child Birth Report has been added Successfully" });
+      });
+    });
+
+  });
 
   //Lockscreen
   router.post('/lock', (req, res) => {

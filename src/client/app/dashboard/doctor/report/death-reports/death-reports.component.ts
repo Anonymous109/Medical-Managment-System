@@ -85,7 +85,7 @@ export class DeathReportsComponent implements OnInit {
       }
          
         };
-    pdfMake.createPdf(dd).download();
+    pdfMake.createPdf(dd).open();
     console.log(deathReportsDisplay.patientID);
   }
 
