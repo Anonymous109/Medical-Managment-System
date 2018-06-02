@@ -32,7 +32,8 @@ import { NurseComponent as AdminDashNurseComponent } from './dashboard/admin/nur
 import { AddNurseComponent as AdminDashAddNurseComponent } from './dashboard/admin/nurse/add-nurse/add-nurse.component';
 import { NurseDetailComponent as AdminDashNurseDetailComponent } from './dashboard/admin/nurse/nurse-detail/nurse-detail.component';
 import { ReceptionistComponent as AdminDashReceptionistComponent } from './dashboard/admin/receptionist/receptionist.component';
-import { AddReceptionistComponent as AdminDashAddReceptionistComponent } from './dashboard/admin/receptionist/add-receptionist/add-receptionist.component';
+// import { AddReceptionistComponent as AdminDashAddReceptionistComponent } from './dashboard/admin/receptionist/add-receptionist/add-receptionist.component';
+import { AddReceptionistComponent } from './dashboard/admin/receptionist/add-receptionist/add-receptionist.component';
 import { ReceptionististDetailComponent as AdminDashReceptionistDetailComponent } from './dashboard/admin/receptionist/receptionistist-detail/receptionistist-detail.component';
 import { LaboratoristComponent as AdminDashLabratoristComponent } from './dashboard/admin/laboratorist/laboratorist.component';
 import { AddLaboratoristComponent as AdminDashAddLaboratoristComponent } from './dashboard/admin/laboratorist/add-laboratorist/add-laboratorist.component';
@@ -84,8 +85,13 @@ import { PatientComponent as DoctorDashPatientComponent } from './dashboard/doct
 import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dashboard/doctor/prescription/prescription.component';
 import { AddPrescriptionComponent as DoctorDashAddPrescriptionComponent } from './dashboard/doctor/prescription/add-prescription/add-prescription.component';
 import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
-import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 
+import { AddOperationReportComponent as DoctorDashAddOperationReportComponent } from './dashboard/doctor/report/add-operation-report/add-operation-report.component';
+import { AddDeathReportComponent  as DoctorDashAddDeathReportComponent} from './dashboard/doctor/report/add-death-report/add-death-report.component';
+import { AddBirthReportComponent as DoctorDashAddBirthReportComponent} from './dashboard/doctor/report/add-birth-report/add-birth-report.component';
+import { BirthReportsComponent as DoctorDashBirthReportComponent} from './dashboard/doctor/report/birth-reports/birth-reports.component';
+import { DeathReportsComponent as DoctorDashDeathReportComponent} from './dashboard/doctor/report/death-reports/death-reports.component';
+import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 
 
 // Message UI
@@ -178,18 +184,18 @@ const routes: Routes = [
     path: "nurses/:nurseName",
     component: AdminDashNurseDetailComponent
   },
-  {
-    path: "receptionists",
-    component: AdminDashReceptionistComponent
-  },
-  {
-    path: "receptionists/:receptionistName",
-    component: AdminDashReceptionistDetailComponent
-  },
-  {
-    path: "receptionists/add",
-    component: AdminDashAddReceptionistComponent
-  },
+  // {
+  //   path: "receptionists",
+  //   component: AdminDashReceptionistComponent
+  // },
+  // {
+  //   path: "receptionists/:receptionistName",
+  //   component: AdminDashReceptionistDetailComponent
+  // },
+  // {
+  //   path: "receptionists/add",
+  //   component: AddReceptionistComponent
+  // },
   {
     path: "laboratorists",
     component: AdminDashLabratoristComponent
@@ -316,6 +322,30 @@ const routes: Routes = [
   {
     path: "doctor/prescriptions/add/:doctorUsername/:patientFullName",
     component : DoctorDashAddPrescriptionComponent
+  },
+  {
+    path: "doctor/operationReports",
+    component: DoctorDashReportComponent
+  },
+  {
+    path: "doctor/operationReports/add",
+    component: DoctorDashAddOperationReportComponent
+  },
+  {
+    path: "doctor/deathReports",
+    component: DoctorDashDeathReportComponent
+  },
+  { 
+    path : "doctor/deathReports/add",
+    component: DoctorDashAddDeathReportComponent
+  },
+  {
+    path: "doctor/birthReports",
+    component: DoctorDashBirthReportComponent
+  },
+  {
+    path: "doctor/birthReports/add",
+    component: DoctorDashAddBirthReportComponent
   },
   {
     path: "message/inbox",

@@ -123,152 +123,229 @@ function apiRouter(database) {
   });
 
   /* Admin Section */
-  router.post('/addDepartment',(req, res)=>{
+  router.post('/addDepartment', (req, res) => {
     const departmentName = req.body.departmentName;
     const departmentCollection = database.collection('departments');
 
-    departmentCollection.findOne({departmentName : departmentName},(err,result)=>{
-      if(err){
-        return res.json({error: "Error Occured while adding Department"});
+    departmentCollection.findOne({ departmentName: departmentName }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured while adding Department" });
       }
-      if(result)
-      {
-        return res.json({error: "Error Occured while trying to duplicate Department "});
-      }else{
-        departmentCollection.insertOne({departmentName: departmentName},(err,result)=>{
-          if(err)
-          {
-            return res.json({error: "Error Occured while adding Department"});
+      if (result) {
+        return res.json({ error: "Error Occured while trying to duplicate Department " });
+      } else {
+        departmentCollection.insertOne({ departmentName: departmentName }, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while adding Department" });
           }
-          return res.json({status: "Department has been successfully added"});
+          return res.json({ status: "Department has been successfully added" });
         });
       }
     });
   });
 
-  router.get('/departments',(req,res)=>{
+  router.get('/departments', (req, res) => {
     const departmentCollection = database.collection('departments');
-    departmentCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Error Occured while reteriving Department"});
+    departmentCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured while reteriving Department" });
       }
       return res.json(result);
     });
   });
 
 
-  router.post('/addDoctor', (req,res)=>{
+  router.post('/addDoctor', (req, res) => {
     const doctorsCollection = database.collection('doctors');
     const doctorInfo = req.body;
     const userCollection = database.collection('users');
-    doctorsCollection.findOne({firstname: doctorInfo.firstname, lastname:doctorInfo.lastname,
-                            department: doctorInfo.department, address: doctorInfo.address,
-                            phone : doctorInfo.phone            
-                  },(err,result)=>{
-          
-          if(err){
-            return res.json({error: "Error Occured while Adding Doctor"});
-          }
-          if(result)
-          {
-            return res.json({error: "Error Occured while trying to duplicate Nurse "});
-          }else{
+    doctorsCollection.findOne({
+      firstname: doctorInfo.firstname, lastname: doctorInfo.lastname,
+      department: doctorInfo.department, address: doctorInfo.address,
+      phone: doctorInfo.phone
+    }, (err, result) => {
 
-            userCollection.insertOne({
-              firstname: doctorInfo.firstname, lastname: doctorInfo.lastname,
-              password: bcrypt.hashSync(doctorInfo.password, 10), role: 'doctor',
-              username: doctorInfo.username
-            }, (err, result) => {
-              if (err) {
-                return res.json({ error: "Error Occured while Adding Doctor" });
-              }
-            });
+      if (err) {
+        return res.json({ error: "Error Occured while Adding Doctor" });
+      }
+      if (result) {
+        return res.json({ error: "Error Occured while trying to duplicate Nurse " });
+      } else {
 
-            doctorsCollection.insertOne(doctorInfo, (err,result)=>{
-              if(err){
-                return res.json({error: "Error Occured while Adding Doctor"});
-              }
-              return res.json({status: "Doctor has been successfully added"});  
-            });
+        userCollection.insertOne({
+          firstname: doctorInfo.firstname, lastname: doctorInfo.lastname,
+          password: bcrypt.hashSync(doctorInfo.password, 10), role: 'doctor',
+          username: doctorInfo.username
+        }, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while Adding Doctor" });
           }
+        });
+
+        doctorsCollection.insertOne(doctorInfo, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while Adding Doctor" });
+          }
+          return res.json({ status: "Doctor has been successfully added" });
+        });
+      }
     });
 
   })
 
-  router.get('/doctors',(req,res)=>{
+  router.get('/doctors', (req, res) => {
     const doctorCollection = database.collection('doctors');
-    doctorCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Error Occured while Reteriving Doctors"});
+    doctorCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured while Reteriving Doctors" });
       }
-      return res.json(result); 
+      return res.json(result);
     });
   });
 
-  router.post('/fireDoctor', (req,res)=>{
+  router.post('/fireDoctor', (req, res) => {
     const doctorCollection = database.collection('doctors');
+    const userCollection = database.collection('users');
     const docInfo = req.body;
-    doctorCollection.findOneAndDelete({firstname: docInfo.firstname,lastname: docInfo.lastname,
-                                        phone: docInfo.phone});
-    return res.json({status: "Doctor has been Fired"});
+    doctorCollection.findOneAndDelete({
+      firstname: docInfo.firstname, lastname: docInfo.lastname,
+      phone: docInfo.phone
+    });
+    userCollection.findOneAndDelete({ firstname: docInfo.firstname, lastname: docInfo.lastname });
+
+    return res.json({ status: "Doctor has been Fired" });
   });
 
-  router.post('/addNurse', (req,res)=>{
+  router.post('/addNurse', (req, res) => {
     const nurseCollection = database.collection('nurses');
     const nurseInfo = req.body;
     const userCollection = database.collection('users');
 
-    nurseCollection.findOne({firstname: nurseInfo.firstname, lastname:nurseInfo.lastname,
-                            department: nurseInfo.department, address: nurseInfo.address,
-                            phone : nurseInfo.phone            
-                  },(err,result)=>{
-          
-          if(err){
-            return res.json({error: "Error Occured while Adding Nurse"});
+    nurseCollection.findOne({
+      firstname: nurseInfo.firstname, lastname: nurseInfo.lastname,
+      department: nurseInfo.department, address: nurseInfo.address,
+      phone: nurseInfo.phone
+    }, (err, result) => {
+
+      if (err) {
+        return res.json({ error: "Error Occured while Adding Nurse" });
+      }
+      if (result) {
+        return res.json({ error: "Error Occured while trying to duplicate Nurse " });
+      } else {
+        userCollection.insertOne({
+          firstname: nurseInfo.firstname, lastname: nurseInfo.lastname,
+          password: bcrypt.hashSync(nurseInfo.password, 10), role: 'nurse',
+          username: nurseInfo.username
+        }, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while Adding Nurse" });
           }
-          if(result)
-          {
-            return res.json({error: "Error Occured while trying to duplicate Nurse "});
-          }else{
-            userCollection.insertOne({firstname: nurseInfo.firstname, lastname: nurseInfo.lastname,
-                                      password: bcrypt.hashSync(nurseInfo.password, 10),role: 'nurse',
-                                      username: nurseInfo.username
-                            },(err,result)=>{
-                  if(err){
-                    return res.json({error: "Error Occured while Adding Nurse"});
-                  }
-            });
-            nurseCollection.insertOne(nurseInfo, (err,result)=>{
-              if(err){
-                return res.json({error: "Error Occured while Adding Nurse"});
-              }
-              return res.json({status: "Nurse has been successfully added"});  
-            });
+        });
+        nurseCollection.insertOne(nurseInfo, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while Adding Nurse" });
           }
+          return res.json({ status: "Nurse has been successfully added" });
+        });
+      }
     });
 
   })
 
 
-  router.get('/nurses',(req,res)=>{
+  router.get('/nurses', (req, res) => {
     const nurseCollection = database.collection('nurses');
-    nurseCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Error Occured while Reteriving Nurses"});
+    nurseCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured while Reteriving Nurses" });
       }
-      return res.json(result); 
+      return res.json(result);
     });
   });
 
-  router.post('/fireNurse', (req,res)=>{
+  router.post('/fireNurse', (req, res) => {
     const nurseCollection = database.collection('nurses');
     const nurseInfo = req.body;
-    nurseCollection.findOneAndDelete({firstname: nurseInfo.firstname,lastname: nurseInfo.lastname,
-                                        phone: nurseInfo.phone});
-    return res.json({status: "Nurse has been Fired"});
+    const userCollection = database.collection('users');
+    nurseCollection.findOneAndDelete({
+      firstname: nurseInfo.firstname, lastname: nurseInfo.lastname,
+      phone: nurseInfo.phone
+    });
+    userCollection.findOneAndDelete({ firstname: receptionistInfo.firstname, lastname: receptionistInfo.lastname });
+
+    return res.json({ status: "Nurse has been Fired" });
   });
 
+  router.post('/addReceptionist', (req, res) => {
+    const receptionistCollection = database.collection('receptionist');
+    const receptionistInfo = req.body;
+    const userCollection = database.collection('users');
+    receptionistCollection.findOne({
+      firstname: receptionistInfo.firstname, lastname: receptionistInfo.lastname,
+      address: receptionistInfo.address, phone: receptionistInfo.phone
+    }, (err, result) => {
 
+      if (err) {
+        return res.json({ error: "Error Occured while Adding Receptionist" });
+      }
+      if (result) {
+        return res.json({ error: "Error Occured while trying to duplicate Receptionist " });
+      } else {
+
+        userCollection.insertOne({
+          firstname: receptionistInfo.firstname, lastname: receptionistInfo.lastname,
+          password: bcrypt.hashSync(receptionistInfo.password, 10), role: 'receptionist',
+          username: receptionistInfo.username
+        }, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while Adding Receptionist" });
+          }
+        });
+
+        receptionistCollection.insertOne(receptionistInfo, (err, result) => {
+          if (err) {
+            return res.json({ error: "Error Occured while Adding Receptionist" });
+          }
+          return res.json({ status: "Receptionist has been successfully added" });
+        });
+      }
+    });
+
+  })
+
+  router.get('/receptionist', (req, res) => {
+    const receptionistCollection = database.collection('receptionist');
+    receptionistCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured while Reteriving Receptionist" });
+      }
+      return res.json(result);
+    });
+  });
+
+  router.post('/fireReceptionist', (req, res) => {
+    const receptionistCollection = database.collection('receptionist');
+    const receptionistInfo = req.body;
+    const userCollection = database.collection('users');
+    receptionistCollection.findOneAndDelete({
+      firstname: receptionistInfo.firstname, lastname: receptionistInfo.lastname,
+      phone: receptionistInfo.phone
+    });
+    userCollection.findOneAndDelete({ firstname: receptionistInfo.firstname, lastname: receptionistInfo.lastname });
+    return res.json({ status: "Receptionist has been Fired" });
+  });
+
+  router.post('/addGuestAppointment', (req, res) => {
+    const guestCollectgion = database.collection('guestAppointment');
+    const appointmentInfo = req.body;
+    guestCollectgion.insertOne(appointmentInfo, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured While Adding Appointment , Try Again" });
+      }
+      return res.json(result);
+    })
+  });
 
   /* ADmin Section Ends */
 
@@ -326,8 +403,8 @@ function apiRouter(database) {
       }
 
       bloodBankCollection.findOneAndUpdate(
-              {"bloodType": donorInfo.selectedBloodGroup},
-              {$inc: {"quantity": 1}  } 
+        { "bloodType": donorInfo.selectedBloodGroup },
+        { $inc: { "quantity": 1 } }
       );
 
       return res.json({ message: "Donor " + donorInfo.bloodDonorName + " donation info has been added Successfully" });
@@ -335,28 +412,28 @@ function apiRouter(database) {
   });
 
   // Use blood { Donated blood }
-  router.post("/useBlood", (req, res)=> {
+  router.post("/useBlood", (req, res) => {
 
     const bloodBankCollection = database.collection("bloodBank");
     const requestedBlood = req.body;
 
-    bloodBankCollection.find({bloodType: requestedBlood.bloodType}).toArray((err, result)=>{
+    bloodBankCollection.find({ bloodType: requestedBlood.bloodType }).toArray((err, result) => {
 
-        //Check before using giving the blood { incase the requested blood it too much greater than the blood stored in stock}
-        if(result[0].quantity < requestedBlood.quantity){
-          return res.json({error: "Error , There is a shortage in Blood Store"});
-        }
-        bloodBankCollection.findOneAndUpdate(
-          {bloodType: requestedBlood.bloodType},
-          {$set : { quantity: result[0].quantity - requestedBlood.quantity}}
-        )
-        
-        if(err){
-          return res.json({error: "Error Occured while finding requested blood type , Try Again"});
-        }
-        return res.json({status : "Requested blood type is updated , You can use it now "});
-    
-      });
+      //Check before using giving the blood { incase the requested blood it too much greater than the blood stored in stock}
+      if (result[0].quantity < requestedBlood.quantity) {
+        return res.json({ error: "Error , There is a shortage in Blood Store" });
+      }
+      bloodBankCollection.findOneAndUpdate(
+        { bloodType: requestedBlood.bloodType },
+        { $set: { quantity: result[0].quantity - requestedBlood.quantity } }
+      )
+
+      if (err) {
+        return res.json({ error: "Error Occured while finding requested blood type , Try Again" });
+      }
+      return res.json({ status: "Requested blood type is updated , You can use it now " });
+
+    });
 
   });
 
@@ -377,17 +454,17 @@ function apiRouter(database) {
     const bedBody = req.body;
     const bedCollection = database.collection('beds');
 
-    bedCollection.findOne({bedNumber:bedBody.bedNumber},(err,result)=>{
-        if(result){
-          return res.json({error: "Bed Number has assigned Bed , Try Other Numbers"});
-        }else{
-          bedCollection.insertOne(bedBody, (err, result) => {
-            if (err) {
-              return res.json({ error: "Unable to Add Bed, Try Again" });
-            }
-            return res.json({ message: "Bed Successfully Added" });
-          });
-        }
+    bedCollection.findOne({ bedNumber: bedBody.bedNumber }, (err, result) => {
+      if (result) {
+        return res.json({ error: "Bed Number has assigned Bed , Try Other Numbers" });
+      } else {
+        bedCollection.insertOne(bedBody, (err, result) => {
+          if (err) {
+            return res.json({ error: "Unable to Add Bed, Try Again" });
+          }
+          return res.json({ message: "Bed Successfully Added" });
+        });
+      }
     });
 
   })
@@ -458,20 +535,20 @@ function apiRouter(database) {
 
 
   //Discharge Patient
-  router.post('/discharge',(req,res)=>{
+  router.post('/discharge', (req, res) => {
     const bedNumber = req.body.bedNumber;
     const bedCollection = database.collection('beds');
 
-    
+
     bedCollection.updateOne(
-      { bedNumber : bedNumber},
-      { $set: { "status" : "free"} });
-      bedCollection.findOne({bedNumber:bedNumber},(err,r)=>{
-        if(r){
-          const allocatedTime = r.allocatedTime;
-          return res.json({status: "Patient discharged , Bed Number " + bedNumber + " is Availble Now"});
-        }
-      }); 
+      { bedNumber: bedNumber },
+      { $set: { "status": "free" } });
+    bedCollection.findOne({ bedNumber: bedNumber }, (err, r) => {
+      if (r) {
+        const allocatedTime = r.allocatedTime;
+        return res.json({ status: "Patient discharged , Bed Number " + bedNumber + " is Availble Now" });
+      }
+    });
   });
 
   //Appointment List
@@ -497,93 +574,98 @@ function apiRouter(database) {
     const appointmentStatus = appointmentBody.status;
 
     const appointmentsCollection = database.collection('appointments');
-    
+
     //checks if the patient has pending appointment , if he/she has one , show error
-    appointmentsCollection.findOne({patientFirstName : patientFirstName,
-                                    patientLastName : patientLastName,
-                                    status : appointmentStatus},(err, result)=>{
+    appointmentsCollection.findOne({
+      patientFirstName: patientFirstName,
+      patientLastName: patientLastName,
+      status: appointmentStatus
+    }, (err, result) => {
 
-          if(result)
-          {
-            return res.json({error: "Patient has pending Appointment!"});
-          }else{
-            appointmentsCollection.insertOne(appointmentBody, (err, result) => {
-              if (err) {
-                return res.json({ error: "Unable to Add Appointment, Try Later" });
-              }
-              return res.json({ message: "Appointment for " + patientFirstName + " " + patientLastName + " has been successfully added." })
-            });
+      if (result) {
+        return res.json({ error: "Patient has pending Appointment!" });
+      } else {
+        appointmentsCollection.insertOne(appointmentBody, (err, result) => {
+          if (err) {
+            return res.json({ error: "Unable to Add Appointment, Try Later" });
           }
+          return res.json({ message: "Appointment for " + patientFirstName + " " + patientLastName + " has been successfully added." })
+        });
+      }
 
-      })
+    })
 
   });
 
-  router.post('/getApprovedAppointments', (req,res)=>{
+  router.post('/getApprovedAppointments', (req, res) => {
 
     const appointmentBody = req.body;
     const appointmentsCollection = database.collection('appointments');
     const userCollection = database.collection('users');
 
     //change user name into doctor firstname and lastname
-    userCollection.findOne({"username": appointmentBody.username},(err,result)=>{
-        if(err){
-          return res.json({error: "Unable to get Doctor detail info"});
+    userCollection.findOne({ "username": appointmentBody.username }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to get Doctor detail info" });
+      }
+      const firstname = result.firstname;
+      const lastname = result.lastname;
+      appointmentsCollection.find({ 'doctorFirstName': firstname, 'doctorLastName': lastname, 'status': "approved" }).toArray((err, result) => {
+        if (err) {
+          return res.json()
         }
-        const firstname = result.firstname;
-        const lastname = result.lastname;
-        appointmentsCollection.find({'doctorFirstName': firstname, 'doctorLastName': lastname, 'status': "approved"}).toArray((err,result)=>{
-            if(err){
-              return res.json()
-            }
-            return res.json(result);
-        });
+        return res.json(result);
+      });
     })
 
   });
 
   //Get pending appointments
-  router.post('/getPendingAppointments', (req,res)=>{
+  router.post('/getPendingAppointments', (req, res) => {
 
     const appointmentBody = req.body;
     const appointmentsCollection = database.collection('appointments');
     const userCollection = database.collection('users');
 
     //change user name into doctor firstname and lastname
-    userCollection.findOne({"username": appointmentBody.username},(err,result)=>{
-        if(err){
-          return res.json({error: "Unable to get Doctor detail info"});
+    userCollection.findOne({ "username": appointmentBody.username }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to get Doctor detail info" });
+      }
+      const firstname = result.firstname;
+      const lastname = result.lastname;
+      appointmentsCollection.find({ 'doctorFirstName': firstname, 'doctorLastName': lastname, 'status': "pending" }).toArray((err, result) => {
+        if (err) {
+          return res.json()
         }
-        const firstname = result.firstname;
-        const lastname = result.lastname;
-        appointmentsCollection.find({'doctorFirstName': firstname, 'doctorLastName': lastname, 'status': "pending"}).toArray((err,result)=>{
-            if(err){
-              return res.json()
-            }
-            return res.json(result);
-        });
+        return res.json(result);
+      });
     })
 
   });
 
   // Approve or Delete Appointment
-  router.post('/approveAppointment', (req, res)=>{
+  router.post('/approveAppointment', (req, res) => {
     const appointmentInfo = req.body;
     const appointmentsCollection = database.collection('appointments');
 
     const action = appointmentInfo.action;
-    if(action == 'approve'){
+    if (action == 'approve') {
 
-        appointmentsCollection.findOneAndUpdate(
-              {'patientFirstName': appointmentInfo.patientFirstName,
-               'patientLastName': appointmentInfo.patientLastName}
-              ,{$set : {'status': 'approved'}});
-        return res.json({status: "Appointment has been approved successfully"});
-    }else{
+      appointmentsCollection.findOneAndUpdate(
+        {
+          'patientFirstName': appointmentInfo.patientFirstName,
+          'patientLastName': appointmentInfo.patientLastName
+        }
+        , { $set: { 'status': 'approved' } });
+      return res.json({ status: "Appointment has been approved successfully" });
+    } else {
       appointmentsCollection.findOneAndDelete(
-        {'patientFirstName': appointmentInfo.patientFirstName,
-         'patientLastName': appointmentInfo.patientLastName});
-      return res.json({status: "Appointment has been deleted successfully"});
+        {
+          'patientFirstName': appointmentInfo.patientFirstName,
+          'patientLastName': appointmentInfo.patientLastName
+        });
+      return res.json({ status: "Appointment has been deleted successfully" });
     }
 
   });
@@ -605,30 +687,31 @@ function apiRouter(database) {
 
     const patientBigDataCollection = database.collection('patientsBigData');
     const patientsCollection = database.collection('patients');
-    
-    
+
+
     patientsCollection.findOne({
-      firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName},(err,result)=>{
-          if(err){
-            return res.json({error: "Error occured while admiting patient"});
-          }
-          const payload = {
-            patientId : result.patientId,
-            firstname : result.firstname,
-            lastname : result.lastname,
-            email : result.email,
-            password : result.password,
-            phone: result.phone,
-            gender : result.gender,
-            age : result.age
-          }
-          patientBigDataCollection.insertOne(payload, (err, r)=>{
-            if(err){
-              return res.json({error : "Error occured while admiting patient"});
-            }
-          })
-      });
-    patientCollection.findOneAndDelete({firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName});
+      firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName
+    }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error occured while admiting patient" });
+      }
+      const payload = {
+        patientId: result.patientId,
+        firstname: result.firstname,
+        lastname: result.lastname,
+        email: result.email,
+        password: result.password,
+        phone: result.phone,
+        gender: result.gender,
+        age: result.age
+      }
+      patientBigDataCollection.insertOne(payload, (err, r) => {
+        if (err) {
+          return res.json({ error: "Error occured while admiting patient" });
+        }
+      })
+    });
+    patientCollection.findOneAndDelete({ firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName });
     patientsAssigned.insertOne(patientInfo, (err, result) => {
       if (err) {
         return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
@@ -640,63 +723,66 @@ function apiRouter(database) {
   })
 
   // Get patients Assigned to Specific doctor requested
-  router.post('/assignedPatientsList', (req, res)=>{
+  router.post('/assignedPatientsList', (req, res) => {
 
-      const doctorAdmittingInfo = req.body;
-      const assignedPatientCollection = database.collection('assignedPatients');
-      const userCollection = database.collection('users');
-      
-      userCollection.findOne({"username": doctorAdmittingInfo.username},(err,result)=>{
-        if(err){
-          return res.json({error: "Unable to get Doctor detail info"});
+    const doctorAdmittingInfo = req.body;
+    const assignedPatientCollection = database.collection('assignedPatients');
+    const userCollection = database.collection('users');
+
+    userCollection.findOne({ "username": doctorAdmittingInfo.username }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Unable to get Doctor detail info" });
+      }
+      const firstname = result.firstname;
+      const lastname = result.lastname;
+
+      assignedPatientCollection.find({
+        'assignedDoctorFirstName': firstname, 'assignedDoctorLastName': lastname,
+        'status': 'unadmitted'
+      }).toArray((err, result) => {
+
+        if (err) {
+          return res.json({ error: "Unable to get Doctor detail info" });
         }
-        const firstname = result.firstname;
-        const lastname = result.lastname;
+        return res.json(result);
+      });
 
-        assignedPatientCollection.find({'assignedDoctorFirstName': firstname, 'assignedDoctorLastName': lastname,
-                                        'status' : 'unadmitted'
-                                    }).toArray((err,result)=>{
-                                      
-          if(err){
-            return res.json({error: "Unable to get Doctor detail info"});
-          }
-          return res.json(result);
-        });
-          
     });
 
   });
 
   // Admit Patient { By Doctor}
-  router.post('/admitPatient', (req, res)=>{
+  router.post('/admitPatient', (req, res) => {
 
     const admitInfo = req.body;
     const admitPatientsCollection = database.collection('assignedPatients');
-    
+
     admitPatientsCollection.findOneAndUpdate(
-        {patientFirstName: admitInfo.patientFirstName,
-         patientLastName: admitInfo.patientLastName},
-        {$set : {status: "admitted"}});
-    return res.json({status: "Patient has been admitted successfully"});
+      {
+        patientFirstName: admitInfo.patientFirstName,
+        patientLastName: admitInfo.patientLastName
+      },
+      { $set: { status: "admitted" } });
+    return res.json({ status: "Patient has been admitted successfully" });
   });
 
   //Get Patient Id
-  router.post('/getPatientId',(req,res)=>{
+  router.post('/getPatientId', (req, res) => {
     const patientCollection = database.collection('patients');
     const patientInfo = req.body;
-    
-    patientCollection.findOne({firstname: patientInfo.firstname,lastname:patientInfo.lastname},(err,r)=>{
-      if(err){
-        return res.json({error: "Error Occured While Billing patient for Bed"});
-      }else{
+
+    patientCollection.findOne({ firstname: patientInfo.firstname, lastname: patientInfo.lastname }, (err, r) => {
+      if (err) {
+        return res.json({ error: "Error Occured While Billing patient for Bed" });
+      } else {
         const beds = database.collection('beds');
-        beds.findOne({patientFirstName: patientInfo.firstname, patientLastName: patientInfo.lastname},(err,r2)=>{
-          if(r2){
-            return res.json({result: r.patientId , allocatedTime: r2.allocatedTime});
+        beds.findOne({ patientFirstName: patientInfo.firstname, patientLastName: patientInfo.lastname }, (err, r2) => {
+          if (r2) {
+            return res.json({ result: r.patientId, allocatedTime: r2.allocatedTime });
           }
         })
         //console.log( " ---- " + r.patientId);
-        
+
       }
     })
 
@@ -704,57 +790,59 @@ function apiRouter(database) {
 
 
   //Prescription Add
-  router.post('/addPrescription', (req,res)=>{
+  router.post('/addPrescription', (req, res) => {
 
-      const prescriptionInfo = req.body;
+    const prescriptionInfo = req.body;
 
-      const prescriptionCollection = database.collection('prescription');
-      const assignedPatients = database.collection('assignedPatients');
-      const patient = prescriptionInfo.patientFullName.split('_');
+    const prescriptionCollection = database.collection('prescription');
+    const assignedPatients = database.collection('assignedPatients');
+    const patient = prescriptionInfo.patientFullName.split('_');
 
-      assignedPatients.findOne({patientFirstName: patient[0],
-                           patientLastName: patient[1]},(err,result)=>{
+    assignedPatients.findOne({
+      patientFirstName: patient[0],
+      patientLastName: patient[1]
+    }, (err, result) => {
 
-              if(err){
-                return res.json({error: "Error Occurerd while adding prescription"});
-              }
-              const payload = {
-                 patientFirstName : result.patientFirstName,
-                 patientLastName : result.patientLastName,
-                 patientAge : result.patientAge,
-                 patientGender : result.patientGender,
-                 presciptionGivenBy : result.assignedDoctorFirstName + " " + result.assignedDoctorLastName,
-                 presciptionDetail : prescriptionInfo.prescriptionDetail
-              }
-              console.log(payload);
-              prescriptionCollection.insertOne(payload,(err,result)=>{
-                if(err){
-                  return res.json({error: "Error Occurerd while adding prescription"});
-                }
-                return res.json({status: "Prescription has been added Successfully"});
-              });
-          });
+      if (err) {
+        return res.json({ error: "Error Occurerd while adding prescription" });
+      }
+      const payload = {
+        patientFirstName: result.patientFirstName,
+        patientLastName: result.patientLastName,
+        patientAge: result.patientAge,
+        patientGender: result.patientGender,
+        presciptionGivenBy: result.assignedDoctorFirstName + " " + result.assignedDoctorLastName,
+        presciptionDetail: prescriptionInfo.prescriptionDetail
+      }
+      console.log(payload);
+      prescriptionCollection.insertOne(payload, (err, result) => {
+        if (err) {
+          return res.json({ error: "Error Occurerd while adding prescription" });
+        }
+        return res.json({ status: "Prescription has been added Successfully" });
+      });
+    });
 
   });
 
 
   // Prescription List
-  router.post('/getPresciptionList', (req, res)=>{
+  router.post('/getPresciptionList', (req, res) => {
     const prescriptionInfo = req.body;
     const prescriptionCollection = database.collection('prescription');
     const userCollection = database.collection('users');
-    
-    userCollection.findOne({username: prescriptionInfo.username},(err,result)=>{
-      if(err){
-        return res.json({error: "Error Occured while fetching presciption list"});
+
+    userCollection.findOne({ username: prescriptionInfo.username }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error Occured while fetching presciption list" });
       }
 
       const presciptionOrderDoctor = result.firstname + " " + result.lastname;
-      prescriptionCollection.find({presciptionGivenBy: presciptionOrderDoctor}).toArray((err,result)=>{
-        if(err){
-          return res.json({error: "Error Occured while fetching presciption list"});
+      prescriptionCollection.find({ presciptionGivenBy: presciptionOrderDoctor }).toArray((err, result) => {
+        if (err) {
+          return res.json({ error: "Error Occured while fetching presciption list" });
         }
-        
+
         return res.json(result);
       })
     })
@@ -824,7 +912,7 @@ function apiRouter(database) {
 
     patientCollection.findOne({ patientId: patientInfo.patientId }, (err, result) => {
       //If patient is already in the patients list, return by displaying error {otherwise duplication}
-      if(result) {
+      if (result) {
         return res.json({
           error: 'Patient ' + patientInfo.firstname + " " + patientInfo.lastname + " has already paid for registration."
         });
@@ -888,6 +976,81 @@ function apiRouter(database) {
 
   /* ---------------------   Patients Section Ends ------------------*/
 
+  router.post('/patientUserDetail', (req,res)=>{
+    
+    const patientDetail = req.body;
+    const patientCollection = database.collection('patientsBigData');
+
+    patientCollection.findOne({patientId: patientDetail.id}, (err,result)=>{
+      if(err){
+        return res.json({error: "ERror while reteriving patient detail"});
+      }
+      return res.json(result);
+    });
+
+  });
+
+  router.get('/deathReports', (req,res)=>{
+    const deathReport = database.collection('deathReport');
+    deathReport.find({}).toArray((err,result)=>{
+      if (err) {
+        return res.json({ error: "Error occured while reteriving death reports" });
+      }
+      return res.json(result);
+    });
+  });
+
+  router.post('/addDeathReport', (req, res) => {
+
+    const deathInfo = req.body;
+    const patientCollection = database.collection('patientsBigData');
+    const deathReport = database.collection('deathReport');
+
+    patientCollection.findOne({ patientId: deathInfo.patientID }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error occured while adding death report" });
+      }
+
+      if (!result) {
+        return res.json({ error: "Patient with the ID " + deathInfo.patientID + " is not found" });
+      }
+
+      deathReport.findOne({ patientId: deathInfo.patientID }, (err, result) => {
+        if (err) {
+          return res.json({ error: "Error occured while adding death report" });
+        }
+        if(!result)
+        {
+          return res.json({error: "Patinet Death Report has already been  added "});
+        }else{
+          deathReport.insertOne(deathInfo, (err, result) => {
+            if (err) {
+              return res.json({ error: "Error occured while adding death report" });
+            }
+            return res.json({ status: "Patient death report has been added Successfully" });
+          })
+        }
+      })
+    });
+
+  });
+
+
+  router.post('/patientUserDetail', (req,res)=>{
+    const userInfo = req.body;
+    const id = userInfo.id;
+    const patientCollection = database.collection('patientsBigData');
+
+    patientCollection.findOne({patientId: id}, (err,result)=>{
+      if(err){
+        return res.json({error: "Error occured while reterving User Detail Data"});
+      }
+      return res.json(result);
+    });
+
+  });
+
+
   //Lockscreen
   router.post('/lock', (req, res) => {
 
@@ -902,14 +1065,14 @@ function apiRouter(database) {
   });
 
 
-  router.get('/notice',(req,res)=>{
+  router.get('/notice', (req, res) => {
     const noticeCollection = database.collection('noticeBoard');
-    noticeCollection.find({}).toArray((err,result)=>{
-      if(err){
-        return res.json({error: "Error occured while reteriving Notifications"});
+    noticeCollection.find({}).toArray((err, result) => {
+      if (err) {
+        return res.json({ error: "Error occured while reteriving Notifications" });
       }
       return res.json(result);
-    }); 
+    });
   })
 
 

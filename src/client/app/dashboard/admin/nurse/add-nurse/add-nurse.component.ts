@@ -15,7 +15,7 @@ export class AddNurseComponent implements OnInit {
 
   firstname: String;
   lastname : String;
-  email : String;
+  // email : String;
   password : String;
   designation : String;
   department : String;
@@ -39,7 +39,7 @@ export class AddNurseComponent implements OnInit {
     const payload = {
       firstname : this.firstname,
       lastname : this.lastname,
-      email : this.email,
+      // email : this.email,
       password : this.password,
       designation : this.designation,
       department : this.department,

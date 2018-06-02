@@ -31,7 +31,7 @@ export class AddPrescriptionComponent implements OnInit {
   {
       if(this.prescriptionDetail.length <= 5)
       {
-        this.flashMessagesService.show('Please , descripte the prescription very well', {
+        this.flashMessagesService.show('Please , describe the prescription very well', {
           classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
           timeout: 2000, // Default is 3000
         });

@@ -92,9 +92,15 @@ import { PatientComponent as DoctorDashPatientComponent } from './dashboard/doct
 import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dashboard/doctor/prescription/prescription.component';
 import { AddPrescriptionComponent as DoctorDashAddPrescriptionComponent } from './dashboard/doctor/prescription/add-prescription/add-prescription.component';
 import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
-import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 import { DoctorSideBarNavigationComponent } from './dashboard/doctor/doctor-side-bar-navigation/doctor-side-bar-navigation.component';
 import { AddBedAllotmentComponent as DoctorDashAddBedAllotment} from './dashboard/doctor/bed/add-bed-allotment/add-bed-allotment.component';
+
+import { AddOperationReportComponent as DoctorDashAddOperationReportComponent } from './dashboard/doctor/report/add-operation-report/add-operation-report.component';
+import { AddDeathReportComponent  as DoctorDashAddDeathReportComponent} from './dashboard/doctor/report/add-death-report/add-death-report.component';
+import { AddBirthReportComponent as DoctorDashAddBirthReportComponent} from './dashboard/doctor/report/add-birth-report/add-birth-report.component';
+import { BirthReportsComponent as DoctorDashBirthReportComponent} from './dashboard/doctor/report/birth-reports/birth-reports.component';
+import { DeathReportsComponent as DoctorDashDeathReportComponent} from './dashboard/doctor/report/death-reports/death-reports.component';
+import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 
 // -------------------------- --------------------------Doctor Dash Component Ends ------------------ -------------------------- ---------//
 
@@ -246,7 +252,13 @@ import { DetailComponent } from './dashboard/messages/inbox/detail/detail.compon
     DoctorSideBarNavigationComponent,
     ApprovedAppointmentsComponent,
     DoctorDashAddBedAllotment,
-    DoctorDashAddPrescriptionComponent
+    DoctorDashAddPrescriptionComponent,
+    DoctorDashAddOperationReportComponent,
+    DoctorDashAddDeathReportComponent,
+    DoctorDashAddBirthReportComponent,
+    DoctorDashBirthReportComponent,
+    DoctorDashDeathReportComponent,
+    DoctorDashReportComponent
   ],
   imports: [
     BrowserModule,

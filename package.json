@@ -53,6 +53,7 @@
     "ngx-flash-messages": "^1.0.4",
     "npm": "^5.8.0",
     "npm-run-all": "^4.0.2",
+    "pdfmake": "^0.1.36",
     "rxjs": "^5.5.8",
     "zone.js": "^0.8.4"
   },
