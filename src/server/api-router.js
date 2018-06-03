@@ -998,7 +998,7 @@ function apiRouter(database) {
     const patientDetail = req.body;
     const patientCollection = database.collection('patientsBigData');
 
-    patientCollection.findOne({patientId: patientDetail.id}, (err,result)=>{
+    patientCollection.findOne({patientId: patientDetail.patientId}, (err,result)=>{
       if(err){
         return res.json({error: "ERror while reteriving patient detail"});
       }

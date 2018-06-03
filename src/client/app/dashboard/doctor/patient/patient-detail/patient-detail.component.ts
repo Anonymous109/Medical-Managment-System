@@ -16,14 +16,17 @@ export class PatientDetailComponent implements OnInit {
   phone: String;
   gender: String;
   age: String;
-
-
+  heartBeat : String = "45";
+  bloodPressure : String;
+  sugar : String;
+  hemoglobin : String;
+  
   constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
     this.patientId = this.route.snapshot.paramMap.get('patientId');
     console.log("*** " + this.patientId);
-    //this.getPatientInfo();
+    this.getPatientInfo();
   }
 
 
@@ -37,12 +40,12 @@ export class PatientDetailComponent implements OnInit {
           if(data.error){
             console.log(data.error);
           }else{
-            this.firstName = data.firstName;
-            this.lastName = data.lastName;
+            this.firstName = data.firstname;
+            this.lastName = data.lastname;
             this.phone = data.phone;
             this.age = data.age;
             this.gender = data.gender;
-            this.vitalSign = data.vitalSign
+            this.vitalSign = data.vitalSign;
           }
       });
   }
