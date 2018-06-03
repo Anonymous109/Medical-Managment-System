@@ -39,7 +39,7 @@ export class TakeVitalSignComponent implements OnInit {
       if(data.error){
         this.toastr.error(data.error, 'Message !', { toastLife: 3000 });
       }
-      if(data.message){
+      if(data.status){
         this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
       }
 

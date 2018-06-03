@@ -79,12 +79,12 @@ export class PatientComponent implements OnInit {
   }
 
   doctorPatientDataFetcher() {
-    this.api.get('/patientsList').subscribe(data => {
+    this.api.get('/patientsToBeAssigned').subscribe(data => {
       //The interval is set to 1second , just to create some lag to indicate the data is fetched from Database
       this.patients = Observable.interval(100).map(i => data);
     });
 
-    this.api.get('/doctorsList').subscribe(data => {
+    this.api.get('/doctorsFreeFromDisable').subscribe(data => {
       this.doctors = data;
     });
   }

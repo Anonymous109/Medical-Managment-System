@@ -56,7 +56,7 @@
                 </ul>
               </div>
               <div class="card-body" id="bar-parent">
-                <form action="#" id="form_sample_1" class="form-horizontal" #patientAddForm="ngForm" (submit)="addPatient(patientAddForm,selectedCategory)">
+                <form action="#" id="form_sample_1" class="form-horizontal" #patientAddForm="ngForm">
                   <div class="form-body form-group">
                     <div class="form-group row">
                       
@@ -153,7 +153,7 @@
                       <div class="row">
                         <div class="offset-md-3
                                                   col-md-9">
-                          <button type="submit" class="btn btn-info">Submit</button>
+                          <button (click)="addPatient(patientAddForm,selectedCategory)" class="btn btn-info">Submit</button>
                           <button type="button" class="btn btn-warning" [routerLink]="['/receptionist/patients']">Cancel</button>
                         </div>
                       </div>

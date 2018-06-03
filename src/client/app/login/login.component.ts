@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
           });
         }
 
+        console.log(data.role + "    role");
         this.auth.setToken(data.token);
         if (data.role == 'admin') {
           this.router.navigate(['/admin/dash']);

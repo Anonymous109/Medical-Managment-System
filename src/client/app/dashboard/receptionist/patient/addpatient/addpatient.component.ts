@@ -31,12 +31,6 @@ export class AddpatientComponent implements OnInit {
           timeout: 3000, // Default is 3000
         });
         return false;
-      }else if((inputFields.email).search('@') == -1){
-        this.flashMessagesService.show("Email input error, Please Try Again!", {
-          classes: ['alert', 'alert-danger'], // You can pass as many classes as you need
-          timeout: 3000, // Default is 3000
-        });
-        return false;
       }
 
       //For Searching Purpose , we need to generate a random sequence for identifying a specific Patient
@@ -45,14 +39,14 @@ export class AddpatientComponent implements OnInit {
         patientId : patientId,
         firstname: inputFields.firstname,
         lastname : inputFields.lastname,
-        email: inputFields.email,
         password: inputFields.password,
         phone: inputFields.phone,
         gender: inputFields2,
-        age: inputFields.age
+        age: inputFields.age,
+        doctorAssignStatus: "false"
       };
       
-      console.log(payload);
+      
       this.api.post('/addPatient', payload).subscribe(data => {
 
           if(data.error){
@@ -96,7 +90,6 @@ export class AddpatientComponent implements OnInit {
           
           }
 
-          
         
       });
       

@@ -33,7 +33,7 @@ function apiRouter(database) {
           username: result.username,
           role: result.role
         };
-
+        
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '12h' });
 
         return res.json({
@@ -116,7 +116,16 @@ function apiRouter(database) {
     doctorsCollection.find({}).toArray((err, docs) => {
       return res.json(docs);
     })
-  })
+  });
+
+  //Fetch and Send Doctors List
+  router.get('/doctorsFreeFromDisable', (req, res) => {
+    const doctorsCollection = database.collection('doctors');
+
+    doctorsCollection.find({disabled: "false"}).toArray((err, docs) => {
+      return res.json(docs);
+    })
+  });
 
   router.post('/contacts', (req, res) => {
     const user = req.body;
@@ -714,40 +723,17 @@ function apiRouter(database) {
     const patientToBeAssignedAge = patientInfo.patientAge;
     const assignedDoctorFirstName = patientInfo.assignedDoctorFirstName;
     const assignedDoctorLastName = patientInfo.assignedDoctorLastName;
-    const patientCollection = database.collection('patients');
+    
 
     const patientBigDataCollection = database.collection('patientsBigData');
-    const patientsCollection = database.collection('patients');
+    
 
-
-    patientsCollection.findOne({
-      firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName
-    }, (err, result) => {
-      if (err) {
-        return res.json({ error: "Error occured while admiting patient" });
-      }
-      const payload = {
-        patientId: result.patientId,
-        firstname: result.firstname,
-        lastname: result.lastname,
-        email: result.email,
-        password: result.password,
-        phone: result.phone,
-        gender: result.gender,
-        age: result.age
-      }
-      patientBigDataCollection.insertOne(payload, (err, r) => {
-        if (err) {
-          return res.json({ error: "Error occured while admiting patient" });
-        }
-      })
-    });
-    patientCollection.findOneAndDelete({ firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName });
     patientsAssigned.insertOne(patientInfo, (err, result) => {
       if (err) {
         return res.json({ error: "Error: Unable to Add Into Assigned PatientsList" });
       }
-
+      patientBigDataCollection.findOneAndUpdate({firstname: patientToBeAssignedFirstName, lastname: patientToBeAssignedLastName},
+                                                {$set: {"doctorAssignStatus":"true"}});
       return res.json({ message: "Patient " + patientToBeAssignedFirstName + " " + patientToBeAssignedLastName + " has been Assigned to Dr. " + assignedDoctorFirstName });
 
     });
@@ -845,7 +831,7 @@ function apiRouter(database) {
         presciptionGivenBy: result.assignedDoctorFirstName + " " + result.assignedDoctorLastName,
         presciptionDetail: prescriptionInfo.prescriptionDetail
       }
-      console.log(payload);
+      
       prescriptionCollection.insertOne(payload, (err, result) => {
         if (err) {
           return res.json({ error: "Error Occurerd while adding prescription" });
@@ -910,8 +896,8 @@ function apiRouter(database) {
   //Patient Add
   router.post('/addPatient', (req, res) => {
     const info = req.body;
-    const patientCollection = database.collection('patients');
-
+    const patientCollection = database.collection('patientsBigData');
+    
     //Check whether the patient is found or not
     patientCollection.findOne({
       firstname: info.firstname, lastname: info.lastname,
@@ -929,7 +915,7 @@ function apiRouter(database) {
         }
 
         const newRecord = r.ops[0];
-
+        patientCollection.findOneAndUpdate({firstname: info.firstname, lastname: info.lastname},{$set: {"doctorAssignStatus": "false"}});
         return res.json({ status: 'Patient successfully inserted' });
 
       });
@@ -1154,13 +1140,34 @@ function apiRouter(database) {
     });
   });
 
+  router.post('/requestVitalSign', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    const patientInfo = req.body;
+    patientCollection.find({firstname: patientInfo.firstname, lastname: patientInfo.lastname}, (err, result)=>{
+      if(result){
+          patientCollection.findOneAndUpdate({firstname: patientInfo.firstname, lastname: patientInfo.lastname}, {$set: {vitalStatus: "notTaken"}});
+      }
+    });
+    return res.json({status: "Vital Sign Requested"});
+  });
+
+  router.get('/patientsToBeAssigned', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    patientCollection.find({doctorAssignStatus: "false"}).toArray((err,result)=>{
+        if(err){
+          return res.json({error: "error Occured while reteriving Patients without Doctor Assigned"});
+        }
+        return res.json(result);
+    });
+  });
+
   //Lockscreen
   router.post('/lock', (req, res) => {
 
     const tokenFetched = req.body.token;
     var decoded = jwt.verify(tokenFetched, process.env.JWT_SECRET);
 
-    res.json({
+    return res.json({
       message: "Account Lock Successs",
       user: decoded.username,
       role: decoded.role
