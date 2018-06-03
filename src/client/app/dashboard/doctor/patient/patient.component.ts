@@ -14,7 +14,8 @@ import { ToastsManager } from 'ng2-toastr';
 export class PatientComponent implements OnInit {
 
   patients: Observable<Array<any>>;
-  
+  patientId : String;
+
   constructor(private api: ApiService, private auth: AuthService,private route: ActivatedRoute,
     public toastr: ToastsManager,
     vcr: ViewContainerRef,
@@ -78,5 +79,24 @@ export class PatientComponent implements OnInit {
         this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
       }
     })
+  }
+
+  getPatientDetail(fName , sName)
+  {
+    const payload = {
+      firstname: fName,
+      lastname : sName
+    }
+
+    this.api.post('/getPatientInfoDetail', payload).subscribe(data=>{
+      if(data.error){
+        console.log(data.error);
+      }else{
+          this.patientId = data.patientId;
+          this.router.navigate(['/doctor/patientDetail/'+ data.patientId ]);
+      }
+
+    })
+    
   }
 }

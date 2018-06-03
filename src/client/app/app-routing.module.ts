@@ -102,6 +102,7 @@ import { BirthReportsComponent as DoctorDashBirthReportComponent} from './dashbo
 import { DeathReportsComponent as DoctorDashDeathReportComponent} from './dashboard/doctor/report/death-reports/death-reports.component';
 import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 
+import { PatientDetailComponent as DoctorDashPatientDetailComponent} from './dashboard/doctor/patient/patient-detail/patient-detail.component';
 
 // Message UI
 import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
@@ -379,6 +380,10 @@ const routes: Routes = [
   {
     path: "doctor/birthReports/add",
     component: DoctorDashAddBirthReportComponent
+  },
+  {
+    path: "doctor/patientDetail/:patientId",
+    component: DoctorDashPatientDetailComponent
   },
   {
     path: "message/inbox",

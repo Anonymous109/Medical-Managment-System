@@ -108,6 +108,8 @@ import { BirthReportsComponent as DoctorDashBirthReportComponent} from './dashbo
 import { DeathReportsComponent as DoctorDashDeathReportComponent} from './dashboard/doctor/report/death-reports/death-reports.component';
 import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor/report/report.component';
 
+import { PatientDetailComponent as DoctorDashPatientDetailComponent} from './dashboard/doctor/patient/patient-detail/patient-detail.component';
+
 // -------------------------- --------------------------Doctor Dash Component Ends ------------------ -------------------------- ---------//
 
 // -------------------------- --------------------------Laboratorist Dash Component Starts ------------------ -------------------------- ---------//
@@ -168,6 +170,7 @@ import { LockscreenComponent } from './lockscreen/lockscreen.component';
 import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
 import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
 import { DetailComponent } from './dashboard/messages/inbox/detail/detail.component';
+
 
 
 @NgModule({
@@ -272,7 +275,8 @@ import { DetailComponent } from './dashboard/messages/inbox/detail/detail.compon
     AdminDashBloodDonorsComponent,
     AdminDashBirthReportsComponent,
     AdminDashDeathReportsComponent,
-    TakeVitalSignComponent
+    TakeVitalSignComponent,
+    DoctorDashPatientDetailComponent
   ],
   imports: [
     BrowserModule,

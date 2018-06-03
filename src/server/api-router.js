@@ -1161,6 +1161,19 @@ function apiRouter(database) {
     });
   });
 
+  router.post('/getPatientInfoDetail', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    const info = req.body;
+
+    patientCollection.findOne({firstname: info.firstname, lastname: info.lastname},(err,result)=>{
+      if(err){
+        return res.json({error: "Error Occured while reteriving getting patient Detail"});
+      }
+      //console.log(result.patientId);
+      return res.json(result);
+    });
+  });
+
   //Lockscreen
   router.post('/lock', (req, res) => {
 

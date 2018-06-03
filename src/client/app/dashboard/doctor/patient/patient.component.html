@@ -72,7 +72,7 @@
                                 <td class="patient-img">
                                   <img src="./assets/dashboard/img/patients/patient1.png" alt="">
                                 </td>
-                                <td class="center">{{patientDisplay.patientFirstName}} {{patientDisplay.patientLastName}}
+                                <td (click)="getPatientDetail(patientDisplay.patientFirstName, patientDisplay.patientLastName)" class="center">{{patientDisplay.patientFirstName}} {{patientDisplay.patientLastName}}
                                 </td>
                                 <td class="center">{{patientDisplay.patientGender}}</td>
                                 <td>
