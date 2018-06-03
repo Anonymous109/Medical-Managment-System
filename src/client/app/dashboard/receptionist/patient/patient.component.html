@@ -62,27 +62,54 @@
                             valign-middle" id="example4">
                             <thead>
                               <tr>
-                                <th> ID</th>
+                                <th></th>
                                 <th> Name </th>
-                                <th> Gender </th>
+                                <th> ID</th>
                                 <th> Phone Number </th>
                                 <th> Age</th>
-                                
-                                
+                                <th> Assign Doctor</th>
+                                <th> Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr class="odd gradeX" *ngFor="let patientDisplay
                                 of patients | async">
+                                <td></td>
                                 
-                                <td class="center">{{patientDisplay.patientId}}</td>
                                 <td class="center">{{patientDisplay.firstname}}
                                   {{patientDisplay.lastname}}</td>
-                                <td class="center">{{patientDisplay.gender}}</td>
+                                <td class="center">{{patientDisplay.patientId}}</td>
                                 <td class="center">{{patientDisplay.phone}}
                                 </td>
                                 <td class="center">
                                   {{patientDisplay.age}}
+                                </td>
+                                <td>
+                                  <select class="form-control
+                                    input-height" name="department" #bloodTypeCategory [(ngModel)]="selectedValue">
+                                    <option value="">Select...</option>
+                                    <option *ngFor="let doctorsDisplay of doctors" [ngValue]="doctorsDisplay">{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
+                                  </select>
+                                </td>
+                                <td class="center">
+                                  <div class="btn-group">
+                                    <button class="btn
+                                      btn-xs btn-info
+                                      dropdown-toggle
+                                      no-margin" type="button" data-toggle="dropdown" aria-expanded="false">
+                                      Options
+                                      <i class="fa
+                                        fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                      <li>
+                                        <a (click)="assignDoctor(patientDisplay)">
+                                          <i class="fa fa-user"></i>
+                                          Assign Doctor
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
                                 </td>
                               </tr>
 

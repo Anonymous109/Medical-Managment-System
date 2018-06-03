@@ -63,9 +63,9 @@
                           </label>
                         </th>
                         <th>Patient Name</th>
-                        <th>Assigned Doctor</th>
-                        <th>Date</th>
-                        <th>Time</th>
+                        <!-- <th>Assigned Doctor</th> -->
+                        <!-- <th>Date</th>
+                        <th>Time</th> -->
                         <th>Options </th>
                       </tr>
                     </thead>
@@ -81,16 +81,16 @@
                           </label>
                         </td>
                         <td> {{patientDisplay.firstname}} {{patientDisplay.lastname}} </td>
-                        <td>
+                        <!-- <td>
                           <select class="form-control
                             input-height" name="department" #bloodTypeCategory [(ngModel)]="selectedValue">
                             <option value="">Select...</option>
                             <option *ngFor="let doctorsDisplay of doctors" [ngValue]="doctorsDisplay">{{doctorsDisplay.firstname}} {{doctorsDisplay.lastName }}</option>
                           </select>
+                        </td> -->
+                        <!-- <td class="center"> 12/05/2016
                         </td>
-                        <td class="center"> 12/05/2016
-                        </td>
-                        <td class="center"> 10:55 </td>
+                        <td class="center"> 10:55 </td> -->
                         <td class="center">
                           <div class="btn-group">
                             <button class="btn
@@ -103,9 +103,9 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                               <li>
-                                <a (click)="assignDoctor(patientDisplay)">
+                                <a (click)="takeVitalSign(patientDisplay)">
                                   <i class="fa fa-user"></i>
-                                  Assign Doctor
+                                  Take Vital Sign
                                 </a>
                               </li>
                             </ul>

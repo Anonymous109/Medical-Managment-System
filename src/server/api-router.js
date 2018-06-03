@@ -71,7 +71,19 @@ function apiRouter(database) {
         token: token
       });
     });
-  })
+  });
+
+  router.post('/getdisabledStatus', (req,res)=>{
+    const doctorCollection = database.collection('doctors');
+    const docInfo = req.body;
+    doctorCollection.findOne({username: docInfo.username, disabled: "true"}, (err,result)=>{
+      if(result){
+        return res.json({status:true});
+      }
+      return res.json({status:false});
+    })
+  });
+
   /* --------------------- Security Part Ends --------------------------- */
 
   /* Other Api Urls goes through the Token Authentication */
@@ -193,18 +205,7 @@ function apiRouter(database) {
 
   })
 
-  router.get('/getdisabledStatus', (req,res)=>{
-    const doctorCollection = database.collection('doctors');
-    const docInfo = req.body;
-
-    doctorCollection.findOne({username: docInfo.username}, (err,result)=>{
-      if(result){
-        return res.json({status:true});
-      }
-      return res.json()
-    })
-  })
-
+  
   router.get('/doctors', (req, res) => {
     const doctorCollection = database.collection('doctors');
     doctorCollection.find({}).toArray((err, result) => {
@@ -895,7 +896,7 @@ function apiRouter(database) {
   //Patient List
   router.get('/patientsList', (req, res) => {
 
-    const patientCollection = database.collection('patients');
+    const patientCollection = database.collection('patientsBigData');
     //Get list of patients from the collection
     patientCollection.find({}).toArray((err, result) => {
       if (err) {
@@ -1122,6 +1123,36 @@ function apiRouter(database) {
     });
   });
 
+  router.post('/takeVitalSign', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    const patientInfo = req.body;
+
+    patientCollection.find({firstname: patientInfo.firstname, lastname: patientInfo.lastname}, (err,result)=>{
+      if(err)
+      {
+        return res.json({error: "Error occured while taking vital Sign"});
+      }
+      
+      if(result)
+      {
+        patientCollection.findOneAndUpdate({firstname: patientInfo.firstname, lastname: patientInfo.lastname},
+              {$set: {"vitalSign": patientInfo.vitalSign, "vitalStatus": "taken"}});
+        
+      }
+      return res.json({status: "Patient Vital Sign Added"});
+    })
+  });
+
+  router.get('/patientRequestingTakeVitalSign', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    patientCollection.find({vitalStatus: "notTaken"}).toArray((err, result)=>{
+      if(err)
+      {
+        return res.json({error: "Error Occured While Reteriving Patients Requesting Vital Sign"});
+      }
+      return res.json(result);
+    });
+  });
 
   //Lockscreen
   router.post('/lock', (req, res) => {

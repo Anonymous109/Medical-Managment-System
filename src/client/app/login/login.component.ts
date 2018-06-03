@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/nurse/dash']);
         }else if(data.role == 'doctor'){
 
-          this.checkDisabledStatus(this.userName, "doctor");
+          this.checkDisabledStatus(values.username, "doctor");
           
         }else if(data.role == 'subscriber'){
           this.router.navigate(['/home']);
@@ -103,8 +103,9 @@ export class LoginComponent implements OnInit {
       }
 
       this.api.post('/getdisabledStatus', payload).subscribe(data=>{
-        
+
         if(data.status == true){
+          this.toastr.error("Sorry , You are not allowed to enter for the moment", 'Error !', { toastLife: 4000 });
           console.log("U r not allowed to enter");
           return false;
         }

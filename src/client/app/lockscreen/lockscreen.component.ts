@@ -55,8 +55,9 @@ export class LockscreenComponent implements OnInit {
           this.router.navigate(['/receptionist/dash']);
         } else if(data.role == 'nurse') {
           this.router.navigate(['/nurse/dash']);
+        } else if(data.role == 'doctor'){
+          this.router.navigate(['/doctor/dash']);
         }
-
       });
 
   }

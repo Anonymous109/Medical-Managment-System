@@ -75,6 +75,7 @@ import { AllotmentComponent as NurseDashBedAllotmentComponent } from './dashboar
 import { AddAllotmentComponent as NurseDashAddAllotmentComponent  } from './dashboard/nurse/bed/add-allotment/add-allotment.component';
 import { AddBloodDonorComponent as NurseDashAddBloodDonorComponent } from './dashboard/nurse/blood-bank/add-blood-donor/add-blood-donor.component';
 import { BloodDonorsComponent as NurseDashBloodDonorsComponent  } from './dashboard/nurse/blood-bank/blood-donors/blood-donors.component';
+import { TakeVitalSignComponent } from './dashboard/nurse/take-vital-sign/take-vital-sign.component';
 
 
 /* -------------- Nurse Ends Here --------------------------------*/
@@ -319,6 +320,10 @@ const routes: Routes = [
   {
     path: "nurse/profile",
     component: NurseDashProfileComponent
+  },
+  {
+    path : "nurse/takeVitalSign/:firstname/:lastname",
+    component: TakeVitalSignComponent
   },
   {
     path: "doctor/dash",

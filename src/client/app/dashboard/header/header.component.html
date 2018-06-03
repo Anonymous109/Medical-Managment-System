@@ -17,7 +17,7 @@
             </li>
         </ul>
         <!-- Search Input For Receptionist Only Starts-->
-        <form class="search-form-opened"  #searchForm="ngForm" (submit)="searchItem(searchForm)">
+        <form class="search-form-opened" #searchForm="ngForm" (submit)="searchItem(searchForm)">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search Patient..." autocomplete="off" name="search_query" ngModel>
             </div>
@@ -33,15 +33,15 @@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <!-- start language menu -->
-                <li class="dropdown language-switch">
+                <!-- <li class="dropdown language-switch">
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <img src="./assets/dashboard/img/flags/gb.png" class="position-left" alt=""> English
 
                     </a>
-                </li>
+                </li> -->
                 <!-- end language menu -->
                 <!-- start notification dropdown -->
-                <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                <!-- <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="fa fa-bell-o"></i>
                         <span class="badge headerBadgeColor1">{{(noticeList | async)?.length}} </span>
@@ -70,49 +70,46 @@
                                 </li>
 
                             </ul>
-                            <!-- <div class="dropdown-menu-footer">
-                                        <a href="javascript:void(0)"> All
-                                            notifications </a>
-                                    </div> -->
+                            
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <!-- end notification dropdown -->
                 <!-- start message dropdown -->
-                <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+                <!-- <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                     <a href="javascript:;" [routerLink]="['/message/inbox']" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="fa fa-envelope-o"></i>
 
                     </a>
-                </li>
-                 
-            <!-- end message dropdown -->
-            <!-- start manage user dropdown -->
-            <li class="dropdown dropdown-user">
-                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <img alt="" class="./assets/dashboard/img-circle" src="./assets/dashboard/img/user_profile_pic.png" />
-                    <span class="username username-hide-on-mobile">
-                        {{userLock}} </span>
-                    <i class="fa fa-angle-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-default">
-                    <!-- <li>
+                </li> -->
+
+                <!-- end message dropdown -->
+                <!-- start manage user dropdown -->
+                <li class="dropdown dropdown-user">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img alt="" class="./assets/dashboard/img-circle" src="./assets/dashboard/img/user_profile_pic.png" />
+                        <span class="username username-hide-on-mobile">
+                            {{userLock}} </span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <!-- <li>
                                     <a (click)="profile()">
                                         <i class="fa fa-user"></i> Profile </a>
                                 </li>
                                 <li class="divider"> </li> -->
-                    <li>
-                        <a (click)="lock()">
-                            <i class="fa fa-lock"></i> Lock
-                        </a>
-                    </li>
-                    <li>
-                        <a (click)="logOut()">
-                            <i class="fa fa-power-off"></i>Log Out </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- end manage user dropdown -->
+                        <li>
+                            <a (click)="lock()">
+                                <i class="fa fa-lock"></i> Lock
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)="logOut()">
+                                <i class="fa fa-power-off"></i>Log Out </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- end manage user dropdown -->
 
             </ul>
         </div>

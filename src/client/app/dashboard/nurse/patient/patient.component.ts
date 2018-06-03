@@ -11,7 +11,7 @@ import {
   Injectable, ComponentRef, ApplicationRef, NgZone,
   ReflectiveInjector, ViewContainerRef, ComponentFactoryResolver,
 } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient',
@@ -24,7 +24,7 @@ export class PatientComponent implements OnInit {
   constructor(private dataService: AdminDataFetcherService,
     private api: ApiService,
     public toastr: ToastsManager,
-    vcr: ViewContainerRef
+    vcr: ViewContainerRef, private router: Router
   ) {
     this.toastr.setRootViewContainerRef(vcr);
   }
@@ -42,13 +42,9 @@ export class PatientComponent implements OnInit {
   selectedValue: any;
 
   doctorPatientDataFetcher() {
-    this.api.get('/patientsList').subscribe(data => {
+    this.api.get('/patientRequestingTakeVitalSign').subscribe(data => {
       //The interval is set to 1second , just to create some lag to indicate the data is fetched from Database
       this.patients = Observable.interval(10).map(i => data);
-    });
-
-    this.api.get('/doctorsList').subscribe(data => {
-      this.doctors = data;
     });
   }
 
@@ -57,41 +53,14 @@ export class PatientComponent implements OnInit {
     this.doctorPatientDataFetcher();
   }
 
-  refresh()
-  {
+  refresh() {
     this.doctorPatientDataFetcher();
   }
 
   //Assign Patient to Doctor
-  assignDoctor(patientDisplay: Patient) {
+  takeVitalSign(patientDisplay: Patient) {
 
-
-    this.assignedDoctorFirstName = this.selectedValue.firstname;
-    this.assignedDoctorLastName = this.selectedValue.lastname;
-    this.patientToBeAssignedFirstName = patientDisplay.firstname;
-    this.patientToBeAssignedLastName = patientDisplay.lastname;
-    this.patientToBeAssignedGender = patientDisplay.gender;
-    this.patientToBeAssignedAge = patientDisplay.age;
-    
-    const payload = {
-      patientFirstName: this.patientToBeAssignedFirstName,
-      patientLastName: this.patientToBeAssignedLastName,
-      patientAge: this.patientToBeAssignedAge,
-      patientGender: this.patientToBeAssignedGender,
-      assignedDoctorFirstName: this.assignedDoctorFirstName,
-      assignedDoctorLastName: this.assignedDoctorLastName,
-      status: "unadmitted"
-    };
-
-    this.api.post('/assignDoctor', payload).subscribe(data => {
-      if(data.error){
-        this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
-      }
-      if (data.message) {
-        this.toastr.success(data.message, 'Great !', { toastLife: 3000 });
-      }
-      this.doctorPatientDataFetcher();
-    });
+    this.router.navigate(['/nurse/takeVitalSign/' + patientDisplay.firstname + "/" + patientDisplay.lastname]);
 
   }
 }
