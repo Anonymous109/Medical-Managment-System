@@ -37,14 +37,15 @@ export class PatientRecordComponent implements OnInit {
   ngOnInit() {
     let patientId = this.route.snapshot.paramMap.get('patientId');
     const payload = {
-      patientId: patientId
+      patientId : patientId
     }
-    this.api.post('/getFromPatientRecord', payload).subscribe(data=>{
-      if(data.error){
-        this.toastr.error( data.error, 'Message', {toastLife: 3000});
-      }
-      this.patientProfile = data.patientInfo;
 
+    this.api.post('/patientUserDetail' ,payload).subscribe(data=>{
+      if(data.error){
+          return;
+      }
+      this.patientProfile = data;
+      console.log(this.patientProfile);
     });
   }
 
@@ -55,25 +56,36 @@ export class PatientRecordComponent implements OnInit {
 
   addPatient()
   {
-    this.api.post('/addRevisitingPatient', this.patientProfile).subscribe(data => {
+    let patientId = this.route.snapshot.paramMap.get('patientId');
+    const payload = {
+      patientId : patientId
+    }
+
+    this.api.post('/addRevisitingPatient', payload).subscribe(data => {
       if(data.error){
         this.toastr.error( data.error, 'Message', {toastLife: 4000});
         return false;
       }
-      this.toastr.success(data.status,'Message', {toastLife: 4000});
-      this.payRegistraionFee();
+      if(data.status)
+      {
+        this.toastr.success(data.status,'Message', {toastLife: 4000});
+        this.payRegistraionFee();
+      }
+     
     });
     return;
   }
 
   payRegistraionFee()
   {
+    let patientId = this.route.snapshot.paramMap.get('patientId');
+
     const paymentPayload = {
-      patientId : this.patientProfile.patientId,
+      patientId : patientId,
       paymentReason : "Revist for Checkup",
       paymentOn: this.date.toDateString(),
       amount : 100,
-      status : "unpaid" 
+      status : "paid" 
     } 
     this.api.post('/addIntoInvoice',paymentPayload).subscribe(data2=>{
       if(data2.error){

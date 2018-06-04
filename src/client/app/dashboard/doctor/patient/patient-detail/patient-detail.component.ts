@@ -16,11 +16,10 @@ export class PatientDetailComponent implements OnInit {
   phone: String;
   gender: String;
   age: String;
-  heartBeat : String = "45";
-  bloodPressure : String;
-  sugar : String;
+  bloodPressureSystolic : Number;
+  bloodPressureDiastolic : Number;
   hemoglobin : String;
-  
+
   constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
@@ -46,6 +45,9 @@ export class PatientDetailComponent implements OnInit {
             this.age = data.age;
             this.gender = data.gender;
             this.vitalSign = data.vitalSign;
+            this.bloodPressureSystolic = data.bloodPressureSystolic;
+            this.bloodPressureDiastolic = data.bloodPressureDiastolic;
+            this.hemoglobin = data.hemoglobin;
           }
       });
   }

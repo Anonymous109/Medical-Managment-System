@@ -76,9 +76,16 @@ export class HeaderComponent implements OnInit {
       patientId: word.search_query
     }
 
-    this.api.post('/getFromPatientRecord', payload).subscribe(data=>{
+    if(this.userRole == 'receptionist')
+    {
+      this.api.post('/getFromPatientRecord', payload).subscribe(data=>{
         this.router.navigate(['receptionist/patientsRecord/'+payload.patientId]);
-    });
+      });
+    } else if(this.userRole == 'doctor')
+    {
+      this.router.navigate(['/doctor/patientDetail/'+ payload.patientId ]);
+    }
+    
 
     return;
   }

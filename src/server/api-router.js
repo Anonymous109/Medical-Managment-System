@@ -773,13 +773,19 @@ function apiRouter(database) {
 
     const admitInfo = req.body;
     const admitPatientsCollection = database.collection('assignedPatients');
+    const patientBigDataCollection = database.collection('patientsBigData');
 
+    const admitDate = new Date();
     admitPatientsCollection.findOneAndUpdate(
       {
         patientFirstName: admitInfo.patientFirstName,
-        patientLastName: admitInfo.patientLastName
+        patientLastName: admitInfo.patientLastName,
+        status : "unadmitted"
       },
-      { $set: { status: "admitted" } });
+      { $set: { status: "admitted", admitDate : admitDate.toLocaleDateString() } });
+    patientBigDataCollection.findOneAndUpdate({firstname : admitInfo.patientFirstName, lastname: admitInfo.patientLastName},
+          {$set: {doctorAssignStatus: "false"}});
+    
     return res.json({ status: "Patient has been admitted successfully" });
   });
 
@@ -925,31 +931,28 @@ function apiRouter(database) {
 
   router.post('/addRevisitingPatient', (req, res) => {
     const patientInfo = req.body;
-    const patientCollection = database.collection("patients");
+    const patientCollection = database.collection("patientsBigData");
+    const assignedPatients = database.collection('assignedPatients');
 
     patientCollection.findOne({ patientId: patientInfo.patientId }, (err, result) => {
       //If patient is already in the patients list, return by displaying error {otherwise duplication}
+      //console.log(result);
       if (result) {
-        return res.json({
-          error: 'Patient ' + patientInfo.firstname + " " + patientInfo.lastname + " has already paid for registration."
-        });
-      } else {
-        patientCollection.insertOne({
-          patientId: patientInfo.patientId, firstname: patientInfo.firstname,
-          lastname: patientInfo.lastname, email: patientInfo.email,
-          password: patientInfo.password, phone: patientInfo.phone,
-          gender: patientInfo.gender, age: patientInfo.age
-        }, (err, r) => {
-
-          if (err) {
-            return res.json({ error: 'Error Occured while adding patinet during Checkup Registration.' });
+        assignedPatients.findOne({patientFirstName: result.firstname, patientLastName: result.lastname, status: "admitted"},(err2,res)=>{
+          if(err2){
+            return res.json({error: "Error occured while billing Revisiting Patient"});
           }
-
-          const newRecord = r.ops[0];
-
-          return res.json({ status: 'Patient successfully registered and pay for Checkup Again' });
-
-        });
+          
+          
+          if(!res){
+            return res.json({error: "Patient has already paid"});
+          }else{
+            return res.json({status:'Patient successfully registered and pay for Checkup Again' });
+          }
+        })
+        
+      }else {
+        return res.json({error: "Patient didn't admit before in Afra-Care, Register First"});
       }
     })
 
@@ -1113,7 +1116,7 @@ function apiRouter(database) {
     const patientCollection = database.collection('patientsBigData');
     const patientInfo = req.body;
 
-    patientCollection.find({firstname: patientInfo.firstname, lastname: patientInfo.lastname}, (err,result)=>{
+    patientCollection.find({patientId: patientInfo.patientId}, (err,result)=>{
       if(err)
       {
         return res.json({error: "Error occured while taking vital Sign"});
@@ -1121,8 +1124,10 @@ function apiRouter(database) {
       
       if(result)
       {
-        patientCollection.findOneAndUpdate({firstname: patientInfo.firstname, lastname: patientInfo.lastname},
-              {$set: {"vitalSign": patientInfo.vitalSign, "vitalStatus": "taken"}});
+        patientCollection.findOneAndUpdate({patientId: patientInfo.patientId},
+              {$set: {"vitalSign": patientInfo.vitalSign, "vitalStatus": "taken",
+               "bloodPressureSystolic": patientInfo.bloodPressureSystolic, "bloodPressureDiastolic": patientInfo.bloodPressureDiastolic,
+               "hemoglobin": patientInfo.hemoglobin}});
         
       }
       return res.json({status: "Patient Vital Sign Added"});

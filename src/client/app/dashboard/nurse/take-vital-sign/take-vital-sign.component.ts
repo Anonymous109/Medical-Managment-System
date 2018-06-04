@@ -10,9 +10,12 @@ import { ToastsManager } from 'ng2-toastr';
 })
 export class TakeVitalSignComponent implements OnInit {
 
-  patientFirstName : String;
-  patientLastName : String;
+  patientId : String;
   vitalSign : String;
+  bloodPressureSystolic : Number;
+  bloodPressureDiastolic : Number;
+  hemoglobin : Number;
+
 
   constructor(private route: ActivatedRoute, private api: ApiService,
     public toastr: ToastsManager,
@@ -23,16 +26,17 @@ export class TakeVitalSignComponent implements OnInit {
    }
    
   ngOnInit() {
-    this.patientFirstName = this.route.snapshot.paramMap.get('firstname');
-    this.patientLastName = this.route.snapshot.paramMap.get('lastname');
+    this.patientId = this.route.snapshot.paramMap.get('patientId');
   }
 
   takeVitalSign()
   {
     const payload = {
-      firstname : this.patientFirstName,
-      lastname : this.patientLastName,
-      vitalSign : this.vitalSign
+      patientId : this.patientId,
+      vitalSign : this.vitalSign,
+      bloodPressureSystolic : this.bloodPressureSystolic,
+      bloodPressureDiastolic: this.bloodPressureDiastolic,
+      hemoglobin: this.hemoglobin
     }
 
     this.api.post('/takeVitalSign', payload).subscribe(data=>{

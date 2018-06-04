@@ -96,7 +96,7 @@ export class PatientComponent implements OnInit {
           this.router.navigate(['/doctor/patientDetail/'+ data.patientId ]);
       }
 
-    })
+    });
     
   }
 }

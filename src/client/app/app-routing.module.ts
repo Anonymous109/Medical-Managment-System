@@ -323,7 +323,7 @@ const routes: Routes = [
     component: NurseDashProfileComponent
   },
   {
-    path : "nurse/takeVitalSign/:firstname/:lastname",
+    path : "nurse/takeVitalSign/:patientId",
     component: TakeVitalSignComponent
   },
   {

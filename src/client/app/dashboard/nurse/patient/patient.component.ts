@@ -60,7 +60,20 @@ export class PatientComponent implements OnInit {
   //Assign Patient to Doctor
   takeVitalSign(patientDisplay: Patient) {
 
-    this.router.navigate(['/nurse/takeVitalSign/' + patientDisplay.firstname + "/" + patientDisplay.lastname]);
+    const payload = {
+      firstname : patientDisplay.firstname,
+      lastname : patientDisplay.lastname
+    }
+
+    this.api.post('/getPatientInfoDetail', payload).subscribe(data=>{
+      if(data.error){
+        console.log(data.error);
+      }else{
+        this.router.navigate(['/nurse/takeVitalSign/' + data.patientId]);
+      }
+
+    });
+    
 
   }
 }
