@@ -1,6 +1,4 @@
-<ul class="sidemenu page-header-fixed"
-  data-keep-expanded="false" data-auto-scroll="true"
-  data-slide-speed="200" style="padding-top: 20px">
+<ul class="sidemenu page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
   <li class="sidebar-toggler-wrapper hide">
     <div class="sidebar-toggler">
       <span></span>
@@ -9,18 +7,15 @@
   <li class="sidebar-user-panel">
     <div class="user-panel">
       <div class="pull-left image">
-        <img
-          src="./assets/dashboard/img/user_profile_pic.png"
-          class="img-circle
-          user-img-circle" alt="User Image"
-          />
+        <img src="./assets/dashboard/img/user_profile_pic.png" class="img-circle
+          user-img-circle" alt="User Image" />
       </div>
       <div class="pull-left info">
-        <p> Dr.Abel Tilahun</p>
-        <a href="#">
+        <p> {{username}}</p>
+        <!-- <a href="#">
           <i class="fa fa-circle user-online"></i>
           <span class="txtOnline"> Online</span>
-        </a>
+        </a> -->
       </div>
     </div>
   </li>
@@ -35,11 +30,11 @@
 
   <!-- Departments Goes Here -->
   <li class="nav-item active">
-    <a class="nav-link" >
+    <a class="nav-link">
       <i class="fa fa-sitemap"></i>
       <span class="title">Departments</span>
       <span class="arrow open"></span>
-
+      <span class="label label-rouded label-menu deepPink-bgcolor"> {{(departments | async)?.length}}</span>
     </a>
     <ul class="sub-menu">
       <li class="nav-item">
@@ -47,8 +42,8 @@
           <span class="title">Add Department</span>
         </a>
       </li>
-      <li class="nav-item"> 
-        <a [routerLink]="['/departments']"  class="nav-link">
+      <li class="nav-item">
+        <a [routerLink]="['/departments']" class="nav-link">
           <span class="title">View Departments</span>
         </a>
       </li>
@@ -64,7 +59,7 @@
       <span class="title">Doctor</span>
       <span class="arrow open"></span>
       <span class="label label-rouded label-menu
-        deepPink-bgcolor">3</span>
+        deepPink-bgcolor">{{(doctors | async)?.length}}</span>
     </a>
     <ul class="sub-menu">
       <li class="nav-item">
@@ -86,7 +81,7 @@
     <a [routerLink]="['/patients']" class="nav-link nav-toggle">
       <i class="fa fa-user"></i>
       <span class="title">Patients</span>
-      <span class="selected"></span>
+      <span class="label lebel-rounded label-menu deepPink-bgcolor">{{(patients | async)?.length}}</span>
     </a>
   </li>
   <!-- Patient Ends -->
@@ -98,7 +93,7 @@
       <span class="title">Nurse</span>
       <span class="arrow open"></span>
       <span class="label label-rouded label-menu
-        deepPink-bgcolor">3</span>
+        deepPink-bgcolor">{{(nurses | async)?.length}}</span>
     </a>
     <ul class="sub-menu">
       <li class="nav-item">
@@ -196,16 +191,19 @@
       <li class="nav-item">
         <a [routerLink]="['/payments']" class="nav-link">
           <span class="title">Payment History</span>
+          <span class="label lebel-rounded label-menu deepPink-bgcolor">{{(patients | async)?.length}}</span>
         </a>
       </li>
       <li class="nav-item">
         <a [routerLink]="['/bedAllotments']" class="nav-link">
           <span class="title">Bed Allotment</span>
+          <span class="label label-rouded label-menu deepPink-bgcolor"> {{(bedAllotments | async)?.length}}</span>
         </a>
       </li>
       <li class="nav-item">
         <a [routerLink]="['/bloodDonors']" class="nav-link">
           <span class="title">Blood Donor</span>
+          <span class="label label-rouded label-menu deepPink-bgcolor"> {{(bloodDonors | async)?.length}}</span>
         </a>
       </li>
       <!-- <li class="nav-item">
@@ -221,11 +219,13 @@
       <li class="nav-item">
         <a [routerLink]="['/birthReports']" class="nav-link">
           <span class="title">Birth Report</span>
+          <span class="label label-rouded label-menu deepPink-bgcolor"> {{(birthReports | async)?.length}}</span>
         </a>
       </li>
       <li class="nav-item">
         <a [routerLink]="['/deathReports']" class="nav-link">
           <span class="title">Death Report</span>
+          <span class="label label-rouded label-menu deepPink-bgcolor"> {{(deathReports | async)?.length}}</span>
         </a>
       </li>
     </ul>

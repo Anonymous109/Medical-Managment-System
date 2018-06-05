@@ -37,13 +37,13 @@
 					<div class="col-md-12">
 						<div class="tabbable-line">
 							<div class="tab-pane" id="tab2">
-								<div class="row" *ngFor="let departmentsDisplay
-								of departments | async">
-									<div class="col-md-4">
+								<div class="row" >
+									<div class="col-md-4" *ngFor="let departmentsDisplay
+									of departments | async">
 										<div class="card card-box">
 											<div class="card-body no-padding ">
 												<div class="doctor-profile">
-													<img src="./assets/dashboard/img/doc/doc10.jpg" class="doctor-pic" alt="">
+													<img src="/profiles/departments.jpg" class="doctor-pic" alt="">
 													<div class="profile-usertitle">
 														<div class="doctor-name">{{departmentsDisplay.departmentName}} </div>
 
