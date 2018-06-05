@@ -152,47 +152,58 @@ const routes: Routes = [
   },
   {
     path : 'admin/dash',
-    component: AdminDashComponent
+    component: AdminDashDepartmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'departments',
-    component: AdminDashDepartmentComponent
+    component: AdminDashDepartmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "departments/add",
-    component: AdminDashAddDepartmentComponent
+    component: AdminDashAddDepartmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctors",
-    component: AdminDashDoctorComponent
+    component: AdminDashDoctorComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctors/add",
-    component: AdminDashAddDoctorComponent
+    component: AdminDashAddDoctorComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctors/:doctorName",
-    component: AdminDashDoctorDetailComponent
+    component: AdminDashDoctorDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "patients",
-    component: AdminDashPatientComponent
+    component: AdminDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "patients/:patientName",
-    component: AdminDashPatientDetailComponent
+    component: AdminDashPatientDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "nurses",
-    component: AdminDashNurseComponent
+    component: AdminDashNurseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurses/add",
-    component: AdminDashAddNurseComponent
+    component: AdminDashAddNurseComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurses/:nurseName",
-    component: AdminDashNurseDetailComponent
+    component: AdminDashNurseDetailComponent,
+    canActivate: [AuthGuard]
   },
   // {
   //   path: "receptionists",
@@ -208,206 +219,257 @@ const routes: Routes = [
   // },
   {
     path: "laboratorists",
-    component: AdminDashLabratoristComponent
+    component: AdminDashLabratoristComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "laboratorists/add",
-    component: AdminDashAddLaboratoristComponent
+    component: AdminDashAddLaboratoristComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "laboratorists/:laboratoristsName",
-    component: AdminDashLaboratoristDetail
+    component: AdminDashLaboratoristDetail,
+    canActivate: [AuthGuard]
   },
   {
     path : "pharmacists",
-    component: AdminDashPharmacistComponent
+    component: AdminDashPharmacistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "pharmacists/add",
-    component: AdminDashAddPharmacistComponent
+    component: AdminDashAddPharmacistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "pharmacists/:pharmacistName",
-    component: AdminDashPharmacistDetailComponent
+    component: AdminDashPharmacistDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "payments",
-    component: PaymentHistoryComponent
+    component: PaymentHistoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "bedAllotments",
-    component: AdminDashBedAllotmentsComponent
+    component: AdminDashBedAllotmentsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "bloodDonors",
-    component: AdminDashBloodDonorsComponent
+    component: AdminDashBloodDonorsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "birthReports",
-    component: AdminDashBirthReportsComponent
+    component: AdminDashBirthReportsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "deathReports",
-    component : AdminDashDeathReportsComponent
+    component : AdminDashDeathReportsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/dash",
-    component: ReceptionistDashComponent
+    component: ReceptionistDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/patients",
-    component: ReceptionistDashPatientComponent
+    component: ReceptionistDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/patients/add",
-    component: ReceptionistDashAddPatientComponent
+    component: ReceptionistDashAddPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/patientsRecord/:patientId",
-    component: ReceptionistPatientRecordComponent
+    component: ReceptionistPatientRecordComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/appointments",
-    component: ReceptionistDashAppointmentComponent
+    component: ReceptionistDashAppointmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/appointments/add",
-    component: ReceptionistDashAddAppointmentComponent
+    component: ReceptionistDashAddAppointmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "nurse/dash",
-    component: NurseDashComponent
+    component: NurseDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/patients",
-    component: NurseDashPatientComponent
+    component: NurseDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/beds",
-    component: NurseDashBedComponent
+    component: NurseDashBedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/beds/add",
-    component: NurseDashAddBedComponent
+    component: NurseDashAddBedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/beds/allotment",
-    component: NurseDashBedAllotmentComponent
+    component: NurseDashBedAllotmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/beds/allotment/add",
-    component: NurseDashAddAllotmentComponent
+    component: NurseDashAddAllotmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/bloodBank",
-    component: NurseDashBloodBankComponent
+    component: NurseDashBloodBankComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/bloodBank/addDonor",
-    component: NurseDashAddBloodDonorComponent
+    component: NurseDashAddBloodDonorComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/bloodBank/bloodDonors",
-    component: NurseDashBloodDonorsComponent
+    component: NurseDashBloodDonorsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/profile",
-    component: NurseDashProfileComponent
+    component: NurseDashProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/report",
-    component: NurseDashReportComponent
+    component: NurseDashReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/profile",
-    component: NurseDashProfileComponent
+    component: NurseDashProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "nurse/takeVitalSign/:patientId",
-    component: TakeVitalSignComponent
+    component: TakeVitalSignComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/dash",
-    component: DoctorDashComponent
+    component: DoctorDashBedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/appointments/approved/:doctorUsername",
-    component: ApprovedAppointmentsComponent
+    component: ApprovedAppointmentsComponent,
+    canActivate: [AuthGuard]
   },{
     path: "doctor/appointments/requested/:doctorUsername",
-    component: DoctorDashAppointmentComponent
+    component: DoctorDashAppointmentComponent,
+    canActivate: [AuthGuard]
   },
   {
     path : "doctor/beds/allotment",
-    component: DoctorDashBedComponent
+    component: DoctorDashBedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/patientsAssigned/:doctorUsername",
-    component: DoctorDashPatientComponent
+    component: DoctorDashPatientComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/beds/allotment/add",
-    component: DoctorDashAddBedAllotment
+    component: DoctorDashAddBedAllotment,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/prescriptions/orderBy/:doctorUsername",
-    component: DoctorDashPrescriptionComponent
+    component: DoctorDashPrescriptionComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/prescriptions/add/:doctorUsername/:patientFullName",
-    component : DoctorDashAddPrescriptionComponent
+    component : DoctorDashAddPrescriptionComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/operationReports",
-    component: DoctorDashReportComponent
+    component: DoctorDashReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/operationReports/add",
-    component: DoctorDashAddOperationReportComponent
+    component: DoctorDashAddOperationReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/deathReports",
-    component: DoctorDashDeathReportComponent
+    component: DoctorDashDeathReportComponent,
+    canActivate: [AuthGuard]
   },
   { 
     path : "doctor/deathReports/add",
-    component: DoctorDashAddDeathReportComponent
+    component: DoctorDashAddDeathReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/birthReports",
-    component: DoctorDashBirthReportComponent
+    component: DoctorDashBirthReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/birthReports/add",
-    component: DoctorDashAddBirthReportComponent
+    component: DoctorDashAddBirthReportComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "doctor/patientDetail/:patientId",
-    component: DoctorDashPatientDetailComponent
+    component: DoctorDashPatientDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "message/inbox",
-    component: MessageInboxComponent
+    component: MessageInboxComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "message/inbox/:username/:messageId",
-    component: MessageDetailComponent
+    component: MessageDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "message/compose/:username",
-    component: MessageComposeComponent
+    component: MessageComposeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "admin/profile/:username",
-    component: AdminDashProfileComponent
+    component: AdminDashProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "receptionist/profile/:username",
-    component: ReceptionistDashProfileComponent
+    component: ReceptionistDashProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "nurse/profile/:username",
-    component: NurseDashProfileComponent
+    component: NurseDashProfileComponent,
+    canActivate: [AuthGuard]
   }, 
   {
     path: 'lock/:user',

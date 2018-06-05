@@ -934,27 +934,68 @@ function apiRouter(database) {
     const patientCollection = database.collection("patientsBigData");
     const assignedPatients = database.collection('assignedPatients');
 
-    patientCollection.findOne({ patientId: patientInfo.patientId }, (err, result) => {
-      //If patient is already in the patients list, return by displaying error {otherwise duplication}
-      //console.log(result);
-      if (result) {
-        assignedPatients.findOne({patientFirstName: result.firstname, patientLastName: result.lastname, status: "admitted"},(err2,res)=>{
-          if(err2){
-            return res.json({error: "Error occured while billing Revisiting Patient"});
-          }
+    // patientCollection.find({ patientId: patientInfo.patientId }).toArray((err, result) => {
+    //   //If patient is already in the patients list, return by displaying error {otherwise duplication}
+    //   //console.log(result);
+    //   if (result) {
+    //     assignedPatients.findOne({patientFirstName: result[0].firstname, patientLastName: result[0].lastname, status: "admitted"},(err2,res)=>{
+    //       if(err2){
+    //         return res.json({error: "Error occured while billing Revisiting Patient"});
+    //       }
           
           
-          if(!res){
-            return res.json({error: "Patient has already paid"});
-          }else{
-            return res.json({status:'Patient successfully registered and pay for Checkup Again' });
-          }
-        })
+    //       if(!res){
+    //         return res.json({error: "Patient has already paid"});
+    //       }else{
+    //         return res.json({status:'Patient successfully registered and pay for Checkup Again' });
+    //       }
+    //     })
         
-      }else {
-        return res.json({error: "Patient didn't admit before in Afra-Care, Register First"});
+    //   }else {
+    //     return res.json({error: "Patient didn't admit before in Afra-Care, Register First"});
+    //   }
+    // });
+    var pFirstName;
+    var pLastName;
+    patientCollection.find({patientId: patientInfo.patientId}).toArray((err,result)=>{
+      if(err)
+      {
+        return res.json({error: "Error occured while fetching return Patient"});
       }
-    })
+      if(!result)
+      {
+        return res.json({error : "Patient isn't found in Afra-Care Record List, Register First"});
+      }
+      if(result){
+        pFirstName = result[0].firstname;
+        pLastName = result[0].lastname;
+      }
+    });
+
+    assignedPatients.findOne({patientFirstName : pFirstName , patientLastName : pLastName, status : "unadmitted"},(err,result)=>{
+      if(err)
+      {
+        return res.json({error : "Error Occured while fetching patient previous admit info"});
+      }
+
+      if(result){
+        return res.json({error: "Patient has already paid"});
+      }
+    });
+
+    assignedPatients.findOne({patientFirstName : pFirstName , patientLastName : pLastName, status : "admitted"},(err,result)=>{
+      if(err)
+      {
+        return res.json({error : "Error Occured while fetching patient previous admit info"});
+      }
+      if(!result)
+      {
+        return res.json({error: "Patient didn't admit Before after Registeration , Admit first before Checkup"});
+      }
+      if(result){
+        return res.json({status:'Patient successfully registered and pay for Checkup Again' });
+      }
+    });
 
   });
 
