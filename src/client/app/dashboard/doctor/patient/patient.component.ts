@@ -78,7 +78,24 @@ export class PatientComponent implements OnInit {
       }else{
         this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
       }
-    })
+    });
+  }
+
+  requestLabratoryResult(fName , sName)
+  {
+    const payload = {
+      firstname: fName,
+      lastname : sName
+    }
+
+    this.api.post('requestLabResult', payload).subscribe(data=>{
+      if(data.error){
+        this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
+      }else{
+        this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
+      }
+    });
+
   }
 
   getPatientDetail(fName , sName)

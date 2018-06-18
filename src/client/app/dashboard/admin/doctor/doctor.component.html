@@ -66,12 +66,17 @@
                                                     <div>
                                                         <p>
                                                             <i class="fa fa-phone"></i>
-                                                            <a> {{doctorsDisplay.phone}}</a>
+                                                            <a> {{doctorsDisplay.phone}} </a>
                                                         </p>
                                                     </div>
-                                                    <div class="profile-userbuttons">
-                                                        <a (click)="fire(doctorsDisplay)" class="btn btn-circle deepPink-bgcolor btn-sm">Disable</a>
+                                                    <div class="profile-userbuttons" *ngIf="doctorsDisplay.disabled==='true';else other"> 
+                                                        <a (click)="enable(doctorsDisplay)" class="btn btn-circle deepPink-bgcolor btn-sm">Enable</a>
                                                     </div>
+                                                    <ng-template #other> 
+                                                        <div class="profile-userbuttons" > 
+                                                            <a (click)="fire(doctorsDisplay)" class="btn btn-circle deepPink-bgcolor btn-sm">Disable</a>
+                                                        </div>
+                                                    </ng-template>
                                                 </div>
                                             </div>
                                         </div>

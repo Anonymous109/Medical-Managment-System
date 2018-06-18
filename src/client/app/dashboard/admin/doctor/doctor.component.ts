@@ -29,6 +29,8 @@ export class DoctorComponent implements OnInit {
       })
   }
 
+
+
   fire(doctorInfo)
   {
     const payload = {
@@ -48,4 +50,25 @@ export class DoctorComponent implements OnInit {
     })
 
   }
+
+  enable(doctorInfo)
+  {
+    const payload = {
+      firstname : doctorInfo.firstname,
+      lastname : doctorInfo.lastname,
+      phone : doctorInfo.phone
+    }
+
+    
+    this.api.post('/enableDoctor', payload).subscribe(data=>{
+      if(data.error){
+        this.toastr.error(data.error, 'Error !', { toastLife: 3000 });
+      }else{
+        this.toastr.success(data.status, 'Message !', { toastLife: 3000 });
+        
+      }
+    })
+
+  }
+
 }

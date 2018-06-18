@@ -246,6 +246,8 @@ function apiRouter(database) {
       });
     })
 
+    
+
 
     doctorCollection.findOneAndUpdate({
       firstname: docInfo.firstname, lastname: docInfo.lastname,
@@ -254,6 +256,21 @@ function apiRouter(database) {
     // userCollection.findOneAndDelete({ firstname: docInfo.firstname, lastname: docInfo.lastname });
 
     return res.json({ status: "Doctor has been disabled" });
+  });
+
+  router.post('/enableDoctor', (req, res) => {
+    const doctorCollection = database.collection('doctors');
+    const userCollection = database.collection('users');
+    const docInfo = req.body;
+    const assignedPatientCollection = database.collection('assignedPatients');
+
+    doctorCollection.findOneAndUpdate({
+      firstname: docInfo.firstname, lastname: docInfo.lastname,
+      phone: docInfo.phone
+    }, {$set: {"disabled": "false"}});
+    // userCollection.findOneAndDelete({ firstname: docInfo.firstname, lastname: docInfo.lastname });
+
+    return res.json({ status: "Doctor has been enabled" });
   });
 
   router.post('/addNurse', (req, res) => {

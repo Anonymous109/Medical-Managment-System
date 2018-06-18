@@ -76,6 +76,15 @@ export class AddAppointmentComponent implements OnInit {
       return false;
     }
 
+    if(this.selectedDoctor.firstname == "Alemayehu")
+    {
+      if((this.parseDate(this.selectedDate).getDay() != 3 ) && (this.parseDate(this.selectedDate).getDay() != 5))
+      {
+        this.toastr.error("Doctor " + this.selectedDoctor.firstname + " is not available on this Day ,Try Wedenesday or Friday", 'Error !', { toastLife: 3000 });
+        return false;
+      }
+    }
+
     const payload = {
       patientFirstName: this.selectedPatient.firstname,
       patientLastName: this.selectedPatient.lastname,
