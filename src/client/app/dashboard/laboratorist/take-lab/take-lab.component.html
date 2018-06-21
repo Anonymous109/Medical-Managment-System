@@ -1,0 +1,95 @@
+<div class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-dark dark-sidebar-color logo-dark dark-theme">
+  <app-dashboard-header></app-dashboard-header>
+  <!-- Dashbord Content Goes Here {It is different from other Dash} -->
+  <div class="page-container">
+    <!-- start sidebar menu -->
+    <div class="sidebar-container">
+      <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+        <div id="remove-scroll">
+          <!-- Navigation SideBar Starts -->
+          <app-labratorist-side-bar-navigation></app-labratorist-side-bar-navigation>
+          <!-- Navigation SideBar Ends -->
+        </div>
+      </div>
+    </div>
+    <!-- end sidebar menu -->
+    <!-- start page content -->
+    <div class="page-content-wrapper">
+      <div class="page-content">
+        <div class="page-bar">
+          <div class="page-title-breadcrumb">
+            <div class="pull-left">
+              <!-- <div class="page-title">Add Patient</div> -->
+            </div>
+            <ol class="breadcrumb page-breadcrumb pull-right">
+              <li>
+                <i class="fa fa-home"></i>&nbsp;
+                <a class="parent-item" [routerLink]="['/labratorist/dash']">Home</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a class="parent-item" href="#">Patients</a>&nbsp;
+                <i class="fa fa-angle-right"></i>
+              </li>
+              <li class="active">Add Lab Result</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="card card-box">
+              <div class="card-head">
+                <header>
+                  <li class="active">Add Lab Result</header>
+                <button id="panel-button" class="mdl-button mdl-js-button
+                                    mdl-button--icon pull-right" data-upgraded=",MaterialButton">
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right
+                                    mdl-js-menu mdl-js-ripple-effect" data-mdl-for="panel-button">
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">assistant_photo</i>Action</li>
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">print</i>Another action
+                  </li>
+                  <li class="mdl-menu__item">
+                    <i class="material-icons">favorite</i>Something else here</li>
+                </ul>
+              </div>
+              <div class="card-body" id="bar-parent">
+                <div class="form-body form-group">
+
+                
+
+                  <div class="form-group row">
+                    <label class="control-label
+                                                    col-md-3">Lab Result
+                      <span class="required"> *
+                      </span>
+                    </label>
+                    <div class="col-md-5">
+                      <textarea rows="7" cols="70" placeholder="Write Lab Result here" [(ngModel)]="labResult"></textarea>
+                    </div>
+                  </div>
+
+
+
+                  <div class="form-actions">
+                    <div class="row">
+                      <div class="offset-md-3
+                                                    col-md-9">
+                        <button type="submit" class="btn btn-success" (click)="takeLab()">Save</button>
+                        <button type="button" class="btn btn-warning" [routerLink]="['/labratorist/dash']">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page content -->
+  </div>
+</div>

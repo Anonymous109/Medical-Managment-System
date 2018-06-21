@@ -104,6 +104,12 @@ import { ReportComponent as DoctorDashReportComponent } from './dashboard/doctor
 
 import { PatientDetailComponent as DoctorDashPatientDetailComponent} from './dashboard/doctor/patient/patient-detail/patient-detail.component';
 
+//Laboratorist
+import { PatientsComponent as LaboratoristDashPatientComponent } from './dashboard/laboratorist/patients/patients.component';
+import { TakeLabComponent } from './dashboard/laboratorist/take-lab/take-lab.component';
+
+
+
 // Message UI
 import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inbox/inbox.component';
 import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
@@ -440,6 +446,19 @@ const routes: Routes = [
     path: "doctor/patientDetail/:patientId",
     component: DoctorDashPatientDetailComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "labratorist/dash",
+    component:LaboratoristDashPatientComponent 
+  },
+  {
+    path : "labratorist/patients",
+    component:LaboratoristDashPatientComponent,
+    canActivate: [AuthGuard] 
+  },
+  {
+    path : "labratorist/takeLab/:patientId",
+    component : TakeLabComponent
   },
   {
     path: "message/inbox",

@@ -1170,6 +1170,27 @@ function apiRouter(database) {
     });
   });
 
+  router.post('/takeLab', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    const patientInfo = req.body;
+
+    patientCollection.find({patientId: patientInfo.patientId}, (err,result)=>{
+      if(err)
+      {
+        return res.json({error: "Error occured while taking vital Sign"});
+      }
+      
+      if(result)
+      {
+        patientCollection.findOneAndUpdate({patientId: patientInfo.patientId},
+              {$set: {"vitalSign": patientInfo.vitalSign, "labStatus": "taken",
+               "labResult": patientInfo.labResult}});
+        
+      }
+      return res.json({status: "Patient Lab Result Added Successfully"});
+    })
+  });
+
   router.post('/takeVitalSign', (req,res)=>{
     const patientCollection = database.collection('patientsBigData');
     const patientInfo = req.body;
@@ -1203,6 +1224,18 @@ function apiRouter(database) {
     });
   });
 
+  
+  router.get('/patientRequestingLab', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    patientCollection.find({labStatus: "notTaken"}).toArray((err, result)=>{
+      if(err)
+      {
+        return res.json({error: "Error Occured While Reteriving Patients Requesting Vital Sign"});
+      }
+      return res.json(result);
+    });
+  });
+
   router.post('/requestVitalSign', (req,res)=>{
     const patientCollection = database.collection('patientsBigData');
     const patientInfo = req.body;
@@ -1213,6 +1246,20 @@ function apiRouter(database) {
     });
     return res.json({status: "Vital Sign Requested"});
   });
+
+
+  
+  router.post('/requestLabResult', (req,res)=>{
+    const patientCollection = database.collection('patientsBigData');
+    const patientInfo = req.body;
+    patientCollection.find({firstname: patientInfo.firstname, lastname: patientInfo.lastname}, (err, result)=>{
+      if(result){
+          patientCollection.findOneAndUpdate({firstname: patientInfo.firstname, lastname: patientInfo.lastname}, {$set: {labStatus: "notTaken"}});
+      }
+    });
+    return res.json({status: "Labratory Result Requested"});
+  });
+
 
   router.get('/patientsToBeAssigned', (req,res)=>{
     const patientCollection = database.collection('patientsBigData');

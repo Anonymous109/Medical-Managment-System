@@ -171,6 +171,9 @@ import { InboxComponent as MessageInboxComponent} from './dashboard/messages/inb
 import { ComposeComponent as MessageComposeComponent } from './dashboard/messages/compose/compose.component';
 import { DetailComponent } from './dashboard/messages/inbox/detail/detail.component';
 
+import { PatientsComponent as LaboratoristDashPatientComponent } from './dashboard/laboratorist/patients/patients.component';
+import { LabratoristSideBarNavigationComponent } from './dashboard/laboratorist/labratorist-side-bar-navigation/labratorist-side-bar-navigation.component';
+import { TakeLabComponent } from './dashboard/laboratorist/take-lab/take-lab.component';
 
 
 @NgModule({
@@ -276,7 +279,10 @@ import { DetailComponent } from './dashboard/messages/inbox/detail/detail.compon
     AdminDashBirthReportsComponent,
     AdminDashDeathReportsComponent,
     TakeVitalSignComponent,
-    DoctorDashPatientDetailComponent
+    DoctorDashPatientDetailComponent,
+    LaboratoristDashPatientComponent,
+    LabratoristSideBarNavigationComponent,
+    TakeLabComponent
   ],
   imports: [
     BrowserModule,

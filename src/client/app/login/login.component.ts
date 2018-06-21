@@ -89,6 +89,9 @@ export class LoginComponent implements OnInit {
 
           this.checkDisabledStatus(values.username, "doctor");
           
+        }else if(data.role == 'labratorist')
+        {
+          this.router.navigate(['/labratorist/dash']);
         }else if(data.role == 'subscriber'){
           this.router.navigate(['/home']);
         }
