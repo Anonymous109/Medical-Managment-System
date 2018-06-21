@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../../shared/api.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-patient-detail',
@@ -19,14 +20,17 @@ export class PatientDetailComponent implements OnInit {
   bloodPressureSystolic : Number;
   bloodPressureDiastolic : Number;
   hemoglobin : String;
+  operationReportHistory: String = "";
 
+
+  
   constructor(private route: ActivatedRoute, private api: ApiService) { }
 
   ngOnInit() {
     this.patientId = this.route.snapshot.paramMap.get('patientId');
-    console.log("*** " + this.patientId);
     this.getPatientInfo();
-  }
+    this.getOperationReports();
+}
 
 
   getPatientInfo()
@@ -50,5 +54,15 @@ export class PatientDetailComponent implements OnInit {
             this.hemoglobin = data.hemoglobin;
           }
       });
+  }
+
+  getOperationReports() {
+
+    const payload = {
+      patientId : this.patientId
+    }
+    this.api.post('/getUserOperationHistory', payload).subscribe(data=>{
+        this.operationReportHistory = data.record;
+    });
   }
 }

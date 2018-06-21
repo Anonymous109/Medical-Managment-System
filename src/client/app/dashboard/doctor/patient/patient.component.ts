@@ -15,7 +15,7 @@ export class PatientComponent implements OnInit {
 
   patients: Observable<Array<any>>;
   patientId : String;
-
+  
   constructor(private api: ApiService, private auth: AuthService,private route: ActivatedRoute,
     public toastr: ToastsManager,
     vcr: ViewContainerRef,
@@ -116,4 +116,7 @@ export class PatientComponent implements OnInit {
     });
     
   }
+
+  
+
 }

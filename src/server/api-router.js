@@ -1126,6 +1126,26 @@ function apiRouter(database) {
     });
   });
 
+  router.post('/getUserOperationHistory', (req,res)=>{
+    const operationInfo = req.body;
+    const operationReport = database.collection('operationReport');
+    operationReport.find({patientId: operationInfo.patientId}).toArray((err,result)=> {
+      if(err)
+      {
+        return res.json({error: "Error Occured While Reteriving Patient Operation History"});
+      }
+      var record = "";
+      var recordLength = (result[0].reports.length);
+      for(var i = 0; i < recordLength ; i++)
+      {
+        record += "\n Operation Time - " + result[0].reports[i].operationTime + "::::: \n\n" +
+                  "\n Operation Reason -  "  + result[0].reports[i].reason + " :::::\n\n" +
+                  "\n Operated By (Doctor) : " +  result[0].reports[i].doctorUserName + ":::\n\n"
+      }
+      return res.json({record: record});
+    });
+  });
+
   router.post('/addOperationReport', (req, res) => {
 
     const operationInfo = req.body;

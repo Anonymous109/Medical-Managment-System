@@ -37,7 +37,6 @@ export class OperationReportsComponent implements OnInit {
 
     this.operationReportHistory += "Patient Id : ";
     this.operationReportHistory += operationReportsDisplay.patientId;
-    console.log(this.operationReportHistory);
     for(var i =0 ; i < operationReportsDisplay.reports.length; i++)
     {
       this.operationReportHistory += ("\n\n\nOperation Time : " + operationReportsDisplay.reports[i].operationTime + "   \n" +
