@@ -415,11 +415,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "doctor/operationReports",
-    component: DoctorDashReportComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: "doctor/operationReports/add",
     component: DoctorDashAddOperationReportComponent,
     canActivate: [AuthGuard]

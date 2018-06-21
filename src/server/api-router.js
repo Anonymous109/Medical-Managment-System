@@ -1113,6 +1113,18 @@ function apiRouter(database) {
 
   });
 
+  /** Operation Report Add And Reterive Starts */
+
+  router.get('/operationReports', (req,res)=>{
+    const operationReport = database.collection('operationReport');
+    const operationInfo = req.body;
+    operationReport.find({}).toArray((err,result)=>{
+      if (err) {
+        return res.json({ error: "Error occured while reteriving operation reports" });
+      }
+      return res.json(result);
+    });
+  });
 
   router.post('/addOperationReport', (req, res) => {
 
@@ -1154,6 +1166,8 @@ function apiRouter(database) {
     });
 
   });
+
+  /** Operation Report Add And Reterive Ends */
 
   router.post('/patientUserDetail', (req,res)=>{
     const userInfo = req.body;
