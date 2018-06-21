@@ -1114,6 +1114,47 @@ function apiRouter(database) {
   });
 
 
+  router.post('/addOperationReport', (req, res) => {
+
+    const operationInfo = req.body;
+    const patientCollection = database.collection('patientsBigData');
+    const operationReport = database.collection('operationReport');
+
+    patientCollection.findOne({ patientId: operationInfo.patientId }, (err, result) => {
+      if (err) {
+        return res.json({ error: "Error occured while adding operation report" });
+      }
+
+      if (!result) {
+        return res.json({ error: "Patient with the ID " + operationInfo.patientId + " is not found" });
+      }
+      //console.log(operationInfo);
+      operationReport.findOne({patientId: operationInfo.patientId}, (err,result)=>{
+        if(result)
+        {
+          operationReport.update({patientId: operationInfo.patientId},
+            {$push: {"reports" :{"operationTime": operationInfo.operationTime, "reason": operationInfo.reasonOfOperation,
+                         "doctorUserName" : operationInfo.doctorUserName
+            }}});
+            return res.json({ status: "Patient with the ID " + operationInfo.patientId + " is Operation Report Added (Updated) Successfully"});
+        }else{
+          operationReport.insertOne({"patientId": operationInfo.patientId, "reports": []} , (err,result)=>{
+            if (err) {
+              return res.json({ error: "Error occured while adding operation report"});
+            }
+            operationReport.update({patientId: operationInfo.patientId},
+              {$push: {"reports" :{"operationTime": operationInfo.operationTime, "reason": operationInfo.reasonOfOperation,
+                           "doctorUserName" : operationInfo.doctorUserName
+              }}});
+              return res.json({ status: "Patient with the ID " + operationInfo.patientId + " is Operation Report Added Successfully"});
+          });
+        }
+      })
+      
+    });
+
+  });
+
   router.post('/patientUserDetail', (req,res)=>{
     const userInfo = req.body;
     const id = userInfo.id;
@@ -1183,8 +1224,7 @@ function apiRouter(database) {
       if(result)
       {
         patientCollection.findOneAndUpdate({patientId: patientInfo.patientId},
-              {$set: {"vitalSign": patientInfo.vitalSign, "labStatus": "taken",
-               "labResult": patientInfo.labResult}});
+              {$set: {"labStatus": "taken", "labResult": patientInfo.labResult}});
         
       }
       return res.json({status: "Patient Lab Result Added Successfully"});
@@ -1206,7 +1246,7 @@ function apiRouter(database) {
         patientCollection.findOneAndUpdate({patientId: patientInfo.patientId},
               {$set: {"vitalSign": patientInfo.vitalSign, "vitalStatus": "taken",
                "bloodPressureSystolic": patientInfo.bloodPressureSystolic, "bloodPressureDiastolic": patientInfo.bloodPressureDiastolic,
-               "hemoglobin": patientInfo.hemoglobin}});
+               "hemoglobin": patientInfo.hemoglobin, "mass": patientInfo.mass , "temprature": patientInfo.temprature}});
         
       }
       return res.json({status: "Patient Vital Sign Added"});

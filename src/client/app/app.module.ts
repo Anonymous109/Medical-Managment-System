@@ -175,6 +175,8 @@ import { PatientsComponent as LaboratoristDashPatientComponent } from './dashboa
 import { LabratoristSideBarNavigationComponent } from './dashboard/laboratorist/labratorist-side-bar-navigation/labratorist-side-bar-navigation.component';
 import { TakeLabComponent } from './dashboard/laboratorist/take-lab/take-lab.component';
 
+import { OperationReportsComponent } from './dashboard/doctor/report/operation-reports/operation-reports.component';
+import { AddOperationReportComponent } from './dashboard/doctor/report/add-operation-report/add-operation-report.component';
 
 @NgModule({
   declarations: [
@@ -282,7 +284,9 @@ import { TakeLabComponent } from './dashboard/laboratorist/take-lab/take-lab.com
     DoctorDashPatientDetailComponent,
     LaboratoristDashPatientComponent,
     LabratoristSideBarNavigationComponent,
-    TakeLabComponent
+    TakeLabComponent,
+    OperationReportsComponent,
+    AddOperationReportComponent
   ],
   imports: [
     BrowserModule,

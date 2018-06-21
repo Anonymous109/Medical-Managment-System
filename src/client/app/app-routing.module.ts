@@ -95,6 +95,8 @@ import { PrescriptionComponent as DoctorDashPrescriptionComponent } from './dash
 import { AddPrescriptionComponent as DoctorDashAddPrescriptionComponent } from './dashboard/doctor/prescription/add-prescription/add-prescription.component';
 import { ProfileComponent as DoctorDashProfileComponent } from './dashboard/doctor/profile/profile.component';
 
+
+import { OperationReportsComponent } from './dashboard/doctor/report/operation-reports/operation-reports.component';
 import { AddOperationReportComponent as DoctorDashAddOperationReportComponent } from './dashboard/doctor/report/add-operation-report/add-operation-report.component';
 import { AddDeathReportComponent  as DoctorDashAddDeathReportComponent} from './dashboard/doctor/report/add-death-report/add-death-report.component';
 import { AddBirthReportComponent as DoctorDashAddBirthReportComponent} from './dashboard/doctor/report/add-birth-report/add-birth-report.component';
@@ -421,6 +423,11 @@ const routes: Routes = [
     path: "doctor/operationReports/add",
     component: DoctorDashAddOperationReportComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path : "doctor/operationReports",
+    component : OperationReportsComponent,
+    canActivate : [AuthGuard]
   },
   {
     path: "doctor/deathReports",
