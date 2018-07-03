@@ -1,4 +1,4 @@
-# MedNet Hospital Patient Record System 
+# Patient Record Project
 **Note**
 Always make sure you make a copy of `.env.sample`, rename it to `.env`, and add in the necessary environemtn variables for both the JWT secret and the MongoDB connection string.
 
