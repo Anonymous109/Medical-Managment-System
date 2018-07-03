@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "5b1687436fffef6aa44bba98" }, "firstname" : "Tsenu", "lastname" : "Gebremichael", "password" : "password", "department" : "Gynaecology", "gender" : "female", "phone" : "0928967412", "address" : "Addis Ababa , Ethiopia", "username" : "AAU Graduate" }

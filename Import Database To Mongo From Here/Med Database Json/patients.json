@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "5b14e358bee0d66d1448954b" }, "patientId" : "Afra_4789_2018_mednet", "firstname" : "Yeab", "lastname" : "Kal", "email" : null, "password" : null, "phone" : "0925478961", "gender" : "male", "age" : 19 }

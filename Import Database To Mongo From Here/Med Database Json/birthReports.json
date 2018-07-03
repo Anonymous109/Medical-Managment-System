@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "5b123fd82c3fe13950cd51f2" }, "childName" : "Christian Kassa", "gender" : "male", "birthDate" : "2018-06-04", "birthTime" : "10 : 45 am", "weightOfChild" : "3.6", "length" : "4.69", "widthBetweenShoulders" : "3.6", "motherFullName" : "Amesal Hailu", "fatherFullName" : "Henok Dejen", "attendingDoctor" : "Abel Tesfaye" }

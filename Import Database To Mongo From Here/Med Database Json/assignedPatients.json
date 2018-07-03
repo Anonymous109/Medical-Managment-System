@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "5b1698c2800201a7f879f8bd" }, "patientFirstName" : "Yeab", "patientLastName" : "Kal", "patientAge" : 19, "patientGender" : "male", "assignedDoctorFirstName" : "Kirubel", "assignedDoctorLastName" : "Mesganaw", "status" : "unadmitted" }
+{ "_id" : { "$oid" : "5b16a405893d335840741555" }, "patientFirstName" : "Edd", "patientLastName" : "Mek", "patientAge" : 24, "patientGender" : "male", "assignedDoctorFirstName" : "Kirubel", "assignedDoctorLastName" : "Mesganaw", "status" : "unadmitted" }
+{ "_id" : { "$oid" : "5b2cb8cb4983f130ec8410a1" }, "patientFirstName" : "Adonias", "patientLastName" : "mek", "patientAge" : 24, "patientGender" : "male", "assignedDoctorFirstName" : "Kirubel", "assignedDoctorLastName" : "Mesganaw", "status" : "unadmitted" }

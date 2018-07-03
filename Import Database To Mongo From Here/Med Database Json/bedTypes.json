@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "5adfdded50199d65080b3efe" }, "bedType" : "Cabin", "description" : "Well suited beds with great comfort for Patients" }
+{ "_id" : { "$oid" : "5adfdea150199d65080b3f00" }, "bedType" : "Icu", "description" : "Comfortable for Spinal Cord Patinets" }
+{ "_id" : { "$oid" : "5adfdef550199d65080b3f02" }, "bedType" : "Ward", "description" : "Well suited for children" }

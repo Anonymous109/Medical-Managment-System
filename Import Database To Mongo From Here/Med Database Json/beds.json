@@ -1,0 +1,4 @@
+{ "_id" : { "$oid" : "5b0c50179f1d0666ccdd6d4c" }, "bedNumber" : 6766, "allotmentTime" : "5/28/2018", "bedType" : "Ward", "bedDescription" : "yfk", "patientFirstName" : "Abera", "patientLastName" : "Kassa", "status" : "free" }
+{ "_id" : { "$oid" : "5b0c50899f1d0666ccdd6d4e" }, "bedNumber" : 5, "allotmentTime" : "5/28/2018", "bedType" : "Icu", "bedDescription" : "jhf", "patientFirstName" : "abera", "patientLastName" : "kiki", "status" : "reserved" }
+{ "_id" : { "$oid" : "5b0c530edd20d51a94e1aa0e" }, "bedNumber" : 4, "allotmentTime" : "5/28/2018", "bedType" : "Icu", "bedDescription" : "ghf", "patientFirstName" : "Abera", "patientLastName" : "Kassa", "status" : "free" }
+{ "_id" : { "$oid" : "5b2cba494983f130ec8410a2" }, "bedNumber" : 2, "allotmentTime" : "6/22/2018", "bedType" : "Cabin", "bedDescription" : "Cabin Bed", "patientFirstName" : "Yeab", "patientLastName" : "Kal", "status" : "reserved" }

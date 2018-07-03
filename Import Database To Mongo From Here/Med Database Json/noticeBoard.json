@@ -1,0 +1,4 @@
+{ "_id" : { "$oid" : "5b0901d450199d34d826ea56" }, "noticeBody" : "Best performance of the month goes to Doctor Sirak", "noticeTime" : "January , 2018" }
+{ "_id" : { "$oid" : "5b09027550199d34d826ea59" }, "noticeBody" : "Best performance of the month goes to Ms.Melat", "noticeTime" : "February , 2018" }
+{ "_id" : { "$oid" : "5b09029750199d34d826ea5c" }, "noticeBody" : "Dear Afra-Care Staff , this weekend we have a Trip , Don't miss it", "noticeTime" : "February , 2018" }
+{ "_id" : { "$oid" : "5b0902e650199d34d826ea5e" }, "noticeBody" : "Best performance of the month goes to Labratorist Mr.Kirubel", "noticeTime" : "January , 2018" }

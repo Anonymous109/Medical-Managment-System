@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5b2b79d550199d0fb4879279" }, "patientId" : "Afra_5487_2018_mednet", "reports" : [ { "operationTime" : "2017-05-20", "reason" : "Typhoid And Back Pain Problem", "doctorUserName" : "kiru" }, { "operationTime" : "2017-05-21", "reason" : "Eye Sight Issue", "doctorUserName" : "kiru" } ] }
+{ "_id" : { "$oid" : "5b2b7b956b004d4f88cca8bd" }, "patientId" : "Afra_3568_2018_mednet", "reports" : [ { "operationTime" : "2017-05-21", "reason" : "\nSevere Tuberculosis  ", "doctorUserName" : "kiru" } ] }

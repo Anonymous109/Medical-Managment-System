@@ -1,0 +1,7 @@
+{ "_id" : { "$oid" : "5b0d07e54c3042255c03a554" }, "departmentName" : "CadrioVascular" }
+{ "_id" : { "$oid" : "5b16878b6fffef6aa44bba99" }, "departmentName" : "Nurology" }
+{ "_id" : { "$oid" : "5b16879a6fffef6aa44bba9a" }, "departmentName" : "Orthopedics" }
+{ "_id" : { "$oid" : "5b1687ad6fffef6aa44bba9b" }, "departmentName" : "Gynaecology" }
+{ "_id" : { "$oid" : "5b1687b96fffef6aa44bba9c" }, "departmentName" : "Microbiology" }
+{ "_id" : { "$oid" : "5b1687ed6fffef6aa44bba9d" }, "departmentName" : "Radiotheraphy" }
+{ "_id" : { "$oid" : "5b1687fb6fffef6aa44bba9e" }, "departmentName" : "Pharmacy" }

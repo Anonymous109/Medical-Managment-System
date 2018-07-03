@@ -1,0 +1,7 @@
+{ "_id" : { "$oid" : "5b08a34903d5a093f0333d11" }, "patientId" : "Afra_3234_2018_mednet", "paymentReason" : "Payment for Bed", "paymentOn" : "Sat May 26 2018", "amount" : 200, "status" : "unpaid" }
+{ "_id" : { "$oid" : "5b13fec2fd10cc6cb0d58b7d" }, "patientId" : "Afra_5487_2018_mednet", "paymentReason" : "Registration Fee", "paymentOn" : "Sun Jun 03 2018", "amount" : 100 }
+{ "_id" : { "$oid" : "5b1400aafd10cc6cb0d58b80" }, "patientId" : "Afra_4789_2018_mednet", "paymentReason" : "Registration Fee", "paymentOn" : "Sun Jun 03 2018", "amount" : 100 }
+{ "_id" : { "$oid" : "5b14e358bee0d66d1448954c" }, "patientId" : "Afra_4789_2018_mednet", "paymentReason" : "Revist for Checkup", "paymentOn" : "Mon Jun 04 2018", "amount" : 100, "status" : "unpaid" }
+{ "_id" : { "$oid" : "5b14ec49a0e07fa0482773e0" }, "patientId" : "Afra_3568_2018_mednet", "paymentReason" : "Registration Fee", "paymentOn" : "Mon Jun 04 2018", "amount" : 100 }
+{ "_id" : { "$oid" : "5b16a3f5893d335840741554" }, "patientId" : "Afra_2233_2018_mednet", "paymentReason" : "Registration Fee", "paymentOn" : "Tue Jun 05 2018", "amount" : 100 }
+{ "_id" : { "$oid" : "5b2cb8914983f130ec84109f" }, "patientId" : "Afra_2233_2018_mednet", "paymentReason" : "Registration Fee", "paymentOn" : "Fri Jun 22 2018", "amount" : 100 }

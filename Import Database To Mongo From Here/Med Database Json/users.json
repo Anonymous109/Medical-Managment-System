@@ -1,0 +1,12 @@
+{ "_id" : { "$oid" : "5ad661bda457153bc48af1c2" }, "username" : "admin", "role" : "admin", "password" : "$2a$10$5Jh1Yz1uH9HP/ckadYGFy.6.eRSYJj1gH3QAVHfk.DteogWPCi41m" }
+{ "_id" : { "$oid" : "5ad661bda457153bc48af1c4" }, "username" : "john", "role" : "labratorist", "password" : "$2a$10$0FYNxRYVQWUWBnG0xrlJ1uzb6OHEJZdzIxE3HfF3lIyNHXaL9QJOS" }
+{ "_id" : { "$oid" : "5ad661bda457153bc48af1c5" }, "username" : "melat", "role" : "nurse", "password" : "$2a$10$0F2A6gqrTcZjUzaX5qUBxuJi4Xu3JLgT3uJKfhFHiE87XIhsROPkm" }
+{ "_id" : { "$oid" : "5ad661bda457153bc48af1c6" }, "username" : "lydia", "role" : "pharmacist", "password" : "$2a$10$bU9Eszaa8iithq3YzVa4p.Jd82DqSUWxq9I6zeG/wF05Qv07/Le6u" }
+{ "_id" : { "$oid" : "5ad661bda457153bc48af1c7" }, "username" : "Yoni-Man", "role" : "receptionist", "password" : "$2a$10$IS.LSdOLj7pn13PDlF07Cu2xZg5Z1oEf9n3X/Yu7.ZJT9PMGuSoQS" }
+{ "_id" : { "$oid" : "5adf72462f67524b049483ec" }, "firstname" : "John", "lastname" : "Doe", "gender" : "Male", "dateofbirth" : "2018-12-31", "password" : "$2a$10$Zun3T9hcNwgHcoKB5eOf9OnQ8nURBGpeR1bJm9aaE/SQ8uxo/keAG", "role" : "subscriber" }
+{ "_id" : { "$oid" : "5adf77126c8cbf4afc339b10" }, "firstname" : "John", "lastname" : "Doe", "gender" : "male", "dateofbirth" : "2018-12-31", "password" : "$2a$10$O478RVvZouGogWq/OoOWJekeMyx1u5/je0C9tQKcvubvkbPWUK84a", "role" : "subscriber" }
+{ "_id" : { "$oid" : "5adf7840a5d34a4a7843a03f" }, "fullname" : "Eyoel Seyoum", "username" : "eyu", "gender" : "Male", "password" : "$2a$10$6Dpjhl7gb5jiQaSmCZ0XMeN8RN.dzaqClwvFjBcv8MAtb1BZTb7Je", "role" : "subscriber" }
+{ "_id" : { "$oid" : "5ae3793a63d25e0494470db4" }, "fullname" : "Fraol ", "username" : "flex", "gender" : "Male", "email" : "flex@gmail.com", "password" : "$2a$10$lO7Vmmemlw6c3o6rowweBeGbkY2Ekcg7XyUNGFhWEl/pM5qCOzTIe", "role" : "subscriber" }
+{ "_id" : { "$oid" : "5b124feda5dd6b27acc893ea" }, "firstname" : "Bersufekad ", "lastname" : "Getachew", "password" : "$2a$10$1epIROSyz9iY44Er3BLEfO0vuBiJe59vEsDO3zH3enJy/NnUXB8GC", "role" : "doctor", "username" : "besse" }
+{ "_id" : { "$oid" : "5b1250d5e487a83604645ce5" }, "firstname" : "Kirubel", "lastname" : "Mesganaw", "password" : "$2a$10$oEMAI.ULB7a/LNYbp8dde.8VD0eXO0.VtsdaoLji6QUiYrQgeOCkq", "role" : "doctor", "username" : "kiru" }
+{ "_id" : { "$oid" : "5b1687436fffef6aa44bba97" }, "firstname" : "Tsenu", "lastname" : "Gebremichael", "password" : "$2a$10$ibFIwqXm2lAav4LaRfIIIexLIEbaucwlpJNPwbheCkXPQzgG/rCOm", "role" : "nurse", "username" : "AAU Graduate" }

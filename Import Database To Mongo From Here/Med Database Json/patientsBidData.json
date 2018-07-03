@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5b0c728b2c8e647128523ec5" }, "patientId" : "Afra_9874_2018_mednet", "firstname" : "Hana", "lastname" : "Tesfaye", "email" : "hani12@gmail.com", "password" : "password", "phone" : "0956987452", "gender" : "male", "age" : 24 }
+{ "_id" : { "$oid" : "5b0c74bbc68ad27becf3996c" }, "patientId" : "Afra_6982_2018_mednet", "firstname" : "Mekdelawit", "lastname" : "Shemeles", "email" : "mekdiii@hotmail.com", "password" : "password", "phone" : "08956982232", "gender" : "female", "age" : 44 }

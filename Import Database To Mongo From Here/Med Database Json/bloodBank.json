@@ -1,0 +1,7 @@
+{ "_id" : { "$oid" : "5ae13328fa890600d0f849c1" }, "bloodType" : "A+", "quantity" : 1 }
+{ "_id" : { "$oid" : "5ae2286450199d3994bdd793" }, "bloodType" : "A-", "quantity" : 2 }
+{ "_id" : { "$oid" : "5ae2288550199d3994bdd795" }, "bloodType" : "B-", "quantity" : 8 }
+{ "_id" : { "$oid" : "5ae2289150199d3994bdd797" }, "bloodType" : "B+", "quantity" : 4 }
+{ "_id" : { "$oid" : "5ae37d1763d25e0494470db6" }, "bloodType" : "O+", "quantity" : 12 }
+{ "_id" : { "$oid" : "5b08a9e6ee20d0900c2f01a4" }, "bloodType" : "O-", "quantity" : 78 }
+{ "_id" : { "$oid" : "5b08ad3ee0065d9e4075b778" }, "bloodType" : "AB", "quantity" : 41 }

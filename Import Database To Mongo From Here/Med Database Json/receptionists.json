@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "5adf988350199d2200fda404" }, "username" : "Yoni-Man", "role" : "receptionist", "password" : "$2a$10$IS.LSdOLj7pn13PDlF07Cu2xZg5Z1oEf9n3X/Yu7.ZJT9PMGuSoQS", "firstname" : "Yonas", "lastname" : "Dagmawi", "gender" : "male" }
